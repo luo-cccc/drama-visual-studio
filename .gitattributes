@@ -1,0 +1,10 @@
+# Keep line endings stable across platforms. This pack is plain text read by
+# agents and editors; a CRLF conversion changes byte counts and can break diffs.
+* text=auto eol=lf
+
+*.md   text eol=lf
+*.yaml text eol=lf
+*.py   text eol=lf
+*.png  binary
+*.jpg  binary
+*.zip  binary

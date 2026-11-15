@@ -1,0 +1,6 @@
+interface:
+  display_name: "Drama Visual Studio"
+  short_description: "从角色概念、人设三视图到场景与一致性提示词：统一半写实3DCG体系，支持MJ与GPT-image2、扩图和返图修正"
+  default_prompt: "Use $drama-visual-studio to design a character or costume, build an identity or costume sheet, produce a scene or scene variation, extend an image, or compare supplied results and write focused correction prompts."
+policy:
+  allow_implicit_invocation: true
