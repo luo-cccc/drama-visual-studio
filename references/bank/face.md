@@ -37,9 +37,72 @@ Do not write measurements into the English prompt. Use them here to decide, then
 
 This split is the practical answer to "how do I look different without looking like a different person." Change the mood set. Never change the identity set.
 
+**But the split is not a design procedure.** It tells you which parameters are stable; it does not tell you what to set them to. That is §2A, and it is the difference between a cast of distinct faces and a cast of one face ten times. The mood table in §4 is a good system for a single character and a homogenising one for a project, because it offers six temperaments and zero identity sets.
+
+## 2A. Deriving the identity set
+
+Read this before setting any identity parameter. §2 defines the dials; this section decides where to put them, and it exists because "the identity set comes from the character" is not a step.
+
+**The rule.** Each identity parameter is set by one **character fact**, not by the register, the genre, or the last character you designed. Walking the ten parameters without facts produces the population mean in every slot, which is a face.
+
+**Five steps. Do them in order.**
+
+1. **Take the Position triple** from [truth.md](truth.md) §2 — age band, gender presentation, and class or *what they command*. This is the only input to the first pass and it is mandatory.
+2. **Set the three anchoring parameters first.** Facial index (13), mouth width (11), and inter-canthal distance (1) carry the most silhouette information and are the ones a viewer reads as "a different person" at thumbnail size. Get these three off the mean and the rest can stay near it.
+3. **Derive the framing parameters** from the situation: philtrum (10), nose length (9), chin width (14), cheekbone (15).
+4. **Set the eye pair** — eye width to face (2) and iris fill (5) — against the mood the character's gaze has to carry. Do not reach for the glamour preset; §3's presets are starting positions for a character with no brief, and a briefed character always has a better answer.
+5. **Lock the ten values in the identity block, then check the batch ledger.** Two characters whose anchoring three all sit at the population mean are one character.
+
+### 2A-1. Parameter → character fact
+
+Every row names the fact that decides the value, the direction it pushes, and the visible consequence. Use the consequence wording in the prompt; the number stays in the blueprint, per §1.
+
+| # | Parameter | Decided by | Pushes toward | Visible consequence to write |
+| --- | --- | --- | --- | --- |
+| **13** | Facial index | how much of the face is bone vs soft tissue — set by age band and by how the character's life has stressed them | **long/narrow (1.5+)**: patrician, ascetic, withheld, has gone hungry or has been obeyed · **wide (1.25–1.3)**: grounded, warm, well-fed, physically working, young | `a long narrow face drawn down through the jaw` / `a broad short face with weight in the lower half` |
+| **11** | Mouth width | whether the character speaks for a living, and how much they compress their mouth | **narrow (0.75)**: restrained, cool, secretive, does not explain itself · **wide (0.85)**: expressive, generous, a talker, a performer | `a narrow mouth held closed at the corners` / `a wide mobile mouth` |
+| **1** | Inter-canthal distance | how intently the character watches — set by threat level, not by beauty | **close (<1.0)**: predatory, evaluating, a fighter or a schemer · **wide (>1.2)**: open, naive, nonhuman, a protected child | `close-set eyes under a heavy brow` / `widely spaced eyes giving the face an unguarded openness` |
+| **2** | Eye width to face | formality of the character's presentation and the register's bandwidth | **narrow (1.0–1.05)**: adult, formal, editorial, a face that could exist · **wide (1.15–1.2)**: stylized, cover-facing, younger | `large eyes in a formal adult face` / `eyes that take up more of the face than an adult's would` |
+| **5** | Iris fill | how much feeling the character is allowed to show, and the register | **high (0.9+)**: glamour, youthful, emotionally legible · **lower (0.75)**: adult, guarded, a person who does not perform | `a full bright iris that leaves almost no sclera` / `an iris with sclera visible above it` |
+| **9** | Nose length | class and ethnic world, plus how much the face has been allowed to grow | **long with a defined tip**: aristocratic, mature, ascetic · **short**: youthful, soft, or a specific regional read | `a long straight nose with a defined tip` / `a short small nose set high` |
+| **10** | Philtrum | age — it lengthens with it — and how much of the face is vertical | **long (0.6+)**: mature, patrician, cold · **short (<0.45)**: childlike, delicate, warm | `a long upper lip above a level mouth` / `a short philtrum under a small nose` |
+| **12** | Lip ratio | whether the mouth is a tool or an ornament | **1:1.4**: the human default and the editorial choice · **1:1.7+ with gloss**: glamour, ornament, cover · **1:1**: severe, closed, withheld | `a full lower lip under a thin upper` / `nearly equal lips, unglossed` |
+| **14** | Chin width | the strength the character leads with | **pointed (0.8)**: fragile, delicate, in danger · **broad (1.0)**: strong, androgynous, immovable | `a pointed fragile chin` / `a broad square chin` |
+| **15** | Cheekbone | whether the bone structure leads or the soft tissue does | **high and flat**: operatic, alien, powerful · **low and soft**: unformed, young, gentle | `high flat cheekbones cutting a shadow line` / `low soft cheekbones under full cheeks` |
+
+**These are directions, not quotas.** Two characters may both be `close-set` if the facts differ and the anchoring three still separate them. What is forbidden is setting a parameter because the register table offered one value.
+
+### 2A-2. Worked derivations
+
+Four characters from one project, showing that the same ten parameters land in four different places. Only the fact column changes; the craft strings stay verbatim.
+
+| Character | Position triple | 13 | 11 | 1 | 2 | 5 | 9 | 10 | 12 | 14 | 15 | One-line consequence |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **A** sect elder, exiled | 60s, feminine, commands a dead lineage | 1.52 | 0.76 | 0.98 | 1.05 | 0.78 | 0.55 | 0.62 | 1:1.1 | 0.82 | high flat | a long drawn face, narrow mouth, close eyes, thin unglossed lips |
+| **B** ferryman | 30s, masculine, owns nothing | 1.30 | 0.86 | 1.12 | 1.04 | 0.80 | 0.34 | 0.46 | 1:1.5 | 1.00 | low soft | a broad weathered face, wide mouth, square chin |
+| **C** teen apprentice | 15, feminine, is fed by others | 1.28 | 0.82 | 1.22 | 1.18 | 0.93 | 0.32 | 0.42 | 1:1.6 | 0.80 | low soft | a small round face, wide-set bright eyes, short philtrum |
+| **D** masked killer | 30s, androgynous, commands fear | 1.46 | 0.75 | 0.92 | 1.02 | 0.76 | 0.52 | 0.58 | 1:1.0 | 0.94 | high flat | a narrow face, close set eyes, level closed mouth, hard jaw |
+
+Reading the table: A and D both resolve long and cold, so the batch check applies — they differ on chin width, lip ratio, and mouth width, and one of them must take a different silhouette family. C and B are both wide; they differ on iris fill, eye width, and philtrum. **A cast is separated by which parameters were pushed and in which combination, not by pushing all ten.**
+
+### 2A-3. What not to do
+
+| Anti-pattern | Why it homogenises | Fix |
+| --- | --- | --- |
+| Walking the parameter list in order and taking the neutral band's midpoint everywhere | the midpoint of every band is the population mean, so ten midpoints is a stock face | push the anchoring three (13, 11, 1) off the mean first |
+| Taking the §3 register preset as the answer | the preset is one point in the space and it is the same point for every character in that register | use §3 only when the brief supplies no Position facts |
+| Setting parameters from the archetype table in §4 | §4 is **mood only** — it does not touch these ten values | derive identity from §2A-1, then pick mood from §4 |
+| Reusing the identity block of the last character with one value changed | one changed value reads as the same person in a different light | change the anchoring three, or the character is a twin by design — say so |
+| Pushing all ten parameters to extremes | six striking features read as a mask; the face stops being a person | push two or three, keep the rest inside the band |
+
+The last row is the counterweight to the rest of this section: the goal is not maximum distance from the mean, it is **a different combination**, held on a face whose parameters are otherwise in harmony — see §5.
+
+
 ## 3. Register presets
 
 Two full settings inside the band limits of [../contract/visual.md](../contract/visual.md) §4. These are starting positions, not quotas.
+
+**A preset is a fallback, not an answer.** Use this table only when the brief supplies no Position facts to derive from. When it does, §2A outranks this table, because a preset is one point in the space and it is the same point for every character in that register — which is how a cast of five acquires one face. Take the mood rows here (lid coverage, canthal tilt, fissure ratio, brow distance); derive the identity rows in §2A.
 
 | Parameter | Editorial face | Glamour face |
 | --- | --- | --- |
@@ -50,9 +113,11 @@ Two full settings inside the band limits of [../contract/visual.md](../contract/
 | Fissure ratio | 0.42–0.46 | 0.48–0.54 |
 | Brow–eye distance | 0.55–0.65 EW | 0.6–0.7 EW |
 | Lip ratio | 1 : 1.4 | 1 : 1.7 plus a glossed centre |
-| Facial index | whatever the character demands | 1.4–1.45, harmonised |
-| Cheekbone | mid, restrained | high but rounded, catching one specular |
+| Facial index | whatever the character demands | never assume 1.4–1.45; derive it in §2A |
+| Cheekbone | mid, restrained | high or low per §2A, catching one specular |
 | Asymmetry | two life traces may sit on the face | one deliberate asymmetry only |
+
+The glamour column's facial index is a derivation slot, not a value. A glamour cast that all sits at 1.42 is one face: the number would be doing homogenisation work rather than harmony work.
 
 **Why glamour moves where it does.** A larger iris with heavier lid coverage and a positive canthal tilt is the cartoon grammar for "warm, available, feline". Editorial's lower lid coverage and neutral tilt is the grammar for "present but unreadable". Neither is better; using one in the other's context is the failure.
 

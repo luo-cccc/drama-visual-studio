@@ -44,10 +44,14 @@ Glamour overrides five constraints; everything else still applies:
 | Constraint | editorial | glamour |
 | --- | --- | --- |
 | Imperfections | two required, visible at full-body distance | zero to one, zero preferred; flawlessness is the product |
-| Contradiction | one from directions 1–6 | Sacred / Dangerous (direction 7): flawless surface plus one lethal signal |
-| Ornament nodes | one hero + at most three supporting | no cap, but density must descend: head > chest > waist > hem |
+| Contradiction | one from directions 1–6 | direction 7 is the native direction; directions 1–6 are legal for a deliberately fallen, working, or paying-for-it character. See the batch rule in §9 — the **signal** must differ even when the direction does not |
+| Ornament nodes | one hero + at most three supporting | no cap inside the §8 density band, but density must descend: head > chest > waist > hem |
 | Hero node | one ornament node, never a prop | hair or a headpiece may be the hero |
-| Default palette | avoid moon white / celadon / ink / cinnabar | allowed and preferred; pearl white, silver, moon white, plus one saturated accent |
+| Palette | avoid moon white / celadon / ink / cinnabar unless the brief asks | the category's native range, so it is legal and common — but it is **not a default**. Choose it or don't; the batch rule in §9 means not every character in one project may sit in it |
+
+**Direction 7 in glamour is a family, not a single look.** `flawless surface plus one lethal signal` is the formula; the signal is the design decision. Crimson irises, a wire-thin chain, impossible symmetry, a hairline port, a breath of frost — pick one, and make it the only one. Two glamour characters in one project may both be direction 7 as long as the signal is visibly different; they may not share the signal.
+
+**The native-range trap.** Glamour's palette column reads as permission, and repeated over a project it becomes a single look: pearl white, silver, moon white, one saturated accent, high-key key, Top-Peak Cascade, direction 7. Five characters designed under that column are one character five times. The register picks acceptance criteria; it does not pick the design. §9 exists because this column is the most common cause of a homogenised cast.
 
 Glamour's one material obligation: flawlessness is not featurelessness. Damage is absent; BJD surface perfection carries the credibility — porcelain clarity, a controlled specular, sculpted strand clumps, a wet lower lid, a bright secondary eye reflection.
 
@@ -61,6 +65,8 @@ Glamour's one material obligation: flawlessness is not featurelessness. Damage i
 | **4** | **Surreal / Theatrical** | garment as object, body extension, impossible physics, grotesque or camp | up to 5 | gods, demons, concept pieces |
 
 Choose a level before the motif, together with the genre lock. **Default to Signature.** Polished only when the brief demands commercial safety. Avant-garde and Surreal must still keep the face as the first focal point.
+
+**The gear is also a batch axis.** A project where every character resolves at gear 2 Signature has a system, not a cast. Grade the cast: most characters at 2, one or two at 1 (the ones the world has flattened), the dangerous or iconic ones at 3. A single character carrying the project's only gear-3 design reads as the protagonist even if they are not.
 
 Gear names are risk levels, not registers. Signature, Avant-garde, and Surreal can each be delivered in either the editorial or the glamour register: the level says how far the design deviates, the register says what it optimises for.
 
@@ -142,3 +148,47 @@ State these plainly when they bear on the request. They are not hedging; they ar
 - **No invented parameters.** Do not invent pixel dimensions, stylization values, API settings, version IDs, filenames, or measurements. If a source ratio is unavailable, say to retain that frame and leave its numeric flag unspecified.
 - **Engine behaviour is version-dependent.** Version claims live only in [visual.md](visual.md) §3 and carry a verify-before-relying marker. Do not restate them as settled fact elsewhere.
 - **Technical vocabulary describes a target appearance.** PBR, subsurface scattering, and global illumination do not configure a pipeline and do not prove one ran.
+
+## 8. Craft versus decision
+
+Every line this skill asks you to write is one of two kinds. Confusing them is the mechanism behind a cast of identical faces, and it is the reason a fuller reference pack can reduce variety rather than increase it.
+
+| Kind | What it is | How to write it | Example |
+| --- | --- | --- | --- |
+| **Craft** | how to render a thing so it reads as the house style | **verbatim, every time, never varied** | `radial iris fibre with a darker limbal ring`; `smooth porcelain skin with a soft subsurface glow`; `grouped locks with sculpted strand clumps` |
+| **Decision** | what this particular character is | **derived from the character, never defaulted** | eye width to face `1.05×` vs `1.2×`; canthal tilt `−4°` vs `+7°`; iris fill `0.78` vs `0.94`; facial index `1.38` vs `1.52` |
+
+- **Craft is invariant.** Reuse the exact wording; drift here produces a different production standard, not a different character.
+- **Decision is what makes two characters different.** If a decision value appears in a reference file as the only option, it is a default and not a decision. Say which it is.
+- **A fixed string in a decision slot is the failure.** `large almond eyes with a defined upper lid line` is correct craft; using it as the whole eye description is a defaulted decision, and every character designed that way gets the same eyes.
+- **The test:** for each face and silhouette clause, ask "could a second character in this project use this exact clause?" If yes, it is craft, and the decision is still missing. Craft clauses may be shared freely; there must be at least one decision clause per character that no other character can reuse.
+- Sources: the face craft strings and the parameter bands are in [visual.md](visual.md) §4–5, the derivation procedure is in [../bank/face.md](../bank/face.md) §2A, and the silhouette/topology/palette decisions are in [../bank/form.md](../bank/form.md) and [../bank/costume.md](../bank/costume.md) §2.
+
+## 9. Batch differentiation
+
+A design is not judged alone. The unit that homogenises is the **project**, and no single-character check can see it, because each character passes on its own merits.
+
+**Read the batch ledger before designing, write to it after.** The ledger format is in [records.md](records.md) §8. If there is no ledger, this is the first character: create one.
+
+The nine axes below are the ones a viewer actually reads at thumbnail size. Use this vector, not an intuitive notion of "different".
+
+| # | Axis | Values to distinguish | Mandatory? |
+| --- | --- | --- | --- |
+| 1 | **Silhouette family** | column / bell / trapeze / cocoon / hourglass / asymmetric | **must differ** from every other character |
+| 2 | **Key colour family** | bone-white / obsidian / celadon / cinnabar-rust / glacier-grey / earth-jewel / other | **must differ** |
+| 3 | **Gravity topology** | the five in [../bank/costume.md](../bank/costume.md) §2 | must differ from the previous character |
+| 4 | **Register + gear** | editorial or glamour, at gear 1–4 | grade the cast; do not resolve all at one value |
+| 5 | **Contradiction direction and signal** | directions 1–7, plus the concrete signal | the **signal** must always differ; the direction may repeat if the signal and one structural axis differ |
+| 6 | **Persona light mode** | the four in [visual.md](visual.md) §8 | must differ from the previous character |
+| 7 | **Trim language** | the one edge treatment shared across edges | must differ; two characters banded in the same narrow silver filigree are one character |
+| 8 | **Motif family and its three scales** | the seed's macro / mid / micro instantiation | must differ |
+| 9 | **Identity-set face anchor** | the two or three identity parameters pushed furthest from the population mean | must differ; see [../bank/face.md](../bank/face.md) §2A |
+
+Rules:
+
+- **Axes 1 and 2 are hard failures.** Two characters sharing a silhouette family or a key colour family must be redesigned, even if everything else differs.
+- **At least five of the nine must differ** between any two characters. Axes 1 and 2 count toward that five.
+- **"Different colour" means different family, not different name.** Bone-white and pearl-white are one family; cinnabar-rust and oxblood are one family. A name swap is not a variation.
+- **Test in this order:** wide shot (silhouette), grayscale (value), desaturated thumbnail (key colour), then the nine-axis table. A cast that passes the first three and fails the fourth is still homogenised.
+- **The batch does not have to be complete.** Read the ledger, then write the one distinguishing clause each new character needs; do not re-audit characters already accepted unless the user asks.
+- **Report the vector, don't assert difference.** `对本批次：silhouette cocoon（与 A 的 column 不同）· key 土金宝石（与 A 骨白不同）· topology 4（与 A 的 5 不同）` is a check. `和其他角色有区分` is a claim.

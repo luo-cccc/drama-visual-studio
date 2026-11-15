@@ -104,6 +104,8 @@ Common proportion bands:
 
 State the proportion and the shoulder-waist-hip line together. A head count without a body returns an invented torso.
 
+**The band is a range, not a target.** `8.5-head` is the top of one band and it is the figure most often reached for; a cast in which every character is 8.5-head slender has a proportion system, not a cast. Use the band the character's Position earns: an exhausted elder is not 8.5-head, a labourer is not 8.5-head, and a child is not in these bands at all. The shoulder-waist-hip line is the second half of the decision and is never inherited from the previous character.
+
 **The skin rule.** Semi-real keeps pore-level detail at the close-up tier only — normally the bottom-right macro cell — and lets full-body views read as polished porcelain. Heroes are meant to look flawless at distance.
 
 ## 5. Characters
@@ -116,16 +118,23 @@ State the proportion and the shoulder-waist-hip line together. A head count with
 - Make costume materials specific: cloth thickness and weave, natural folds, embroidery, leather grain, jade or stone, controlled metal reflections. Include only materials present in the actual design.
 - A character may be more refined and stylized than the environment, but keeps believable volume, lighting response, and physical material behaviour. A realistic environment does not turn the character into a live-action actor.
 
-The anime face has six required elements:
+The anime face has six required elements. **Each element has two parts, and they are not the same kind of instruction** — see [gates.md](gates.md) §8. The craft string is reused verbatim in every prompt; the decision is set per character and must never be borrowed from another character.
 
-1. **Eye design**: `large almond eyes with a defined upper lid line, a clear double-lid crease, tapered inner and outer corners`.
-2. **Iris**: `radial iris fibre with a darker limbal ring, a glassy depth with a bright secondary reflection, a wet lower meniscus`. Two catchlights, not one.
-3. **Nose**: `a minimal bridge with a small defined tip, no nostril emphasis at full-body distance`.
-4. **Mouth**: `a soft gradient lip with a visible cupid's bow and a slightly glossed centre`; vertical striation only in the macro cell.
-5. **Brow**: `thin, shaped, and legible at distance`.
-6. **Porcelain skin**: `smooth porcelain skin with a soft subsurface glow`, with visible fine pores only in the close-up macro cell.
+| Element | Craft — reuse verbatim every time | Decision — derive per character |
+| --- | --- | --- |
+| **1. Eye design** | `large almond eyes with a defined upper lid line, a clear double-lid crease, tapered inner and outer corners` | eye width to face (1.0–1.2×), inter-canthal distance, fissure ratio, canthal tilt — the shape is designed, not anatomical |
+| **2. Iris** | `radial iris fibre with a darker limbal ring, a glassy depth with a bright secondary reflection, a wet lower meniscus` — two catchlights, not one | iris fill (0.75–0.95), iris colour, and its chroma against the costume |
+| **3. Nose** | `a minimal bridge` | bridge length to a defined tip vs a short high placement; nostril emphasis suppressed at full-body distance regardless |
+| **4. Mouth** | `a visible cupid's bow`; vertical striation only in the macro cell | lip ratio (1:1.0 / 1:1.4 / 1:1.7), glossed centre or matte, width against the interpupillary line |
+| **5. Brow** | `thin, shaped, and legible at distance` | brow angle and brow–eye distance — both mood parameters, moved per shot |
+| **6. Porcelain skin** | `smooth porcelain skin with a soft subsurface glow`, visible fine pores only in the close-up macro cell | where the one matte zone sits, and whether the specular is tight on the nose bridge or broad across the cheek |
 
-**The eye hierarchy is the single most important rule.** Anime eyes are the first fixation and the design signature. Any ornament, crown, or garment detail that competes with the eyes has to be quietened.
+Rules:
+
+- **Craft may be shared by the whole cast. Decision may not.** Two characters may both have `a visible cupid's bow`; they may not both have lip ratio 1:1.4 and the same iris fill, because that pair is what a viewer reads as the same face.
+- **Never let a craft string stand in for a decision.** Writing only the eye-design craft string describes how an anime eye is built, not whose eye it is — and every character described that way gets the same eyes.
+- **The derivation procedure is [../bank/face.md](../bank/face.md) §2A**, and the parameter bands are §4 above. The craft column here is the only part that must appear word-for-word.
+- **The eye hierarchy is the single most important rule.** Anime eyes are the first fixation and the design signature. Any ornament, crown, or garment detail that competes with the eyes has to be quietened — and because the eyes carry identity, a decision changed there is a recast, not a variation.
 
 Hair architecture — three tiers plus one linear interruption:
 
@@ -173,7 +182,9 @@ Four persona-driven modes. Choose one as the character's signature and route it 
 | **Warm tactile global illumination** | martial monks, desert wanderers, unruly prodigies, grounded fighters | `warm directional global illumination with crisp specular contrast, tactile response on raw fibre and oxidized bronze, natural skin warmth` |
 | **Overcast diffuse mist** | battlefields, ruined sects, mourning, rain, exhausted or low-status characters | `overcast diffuse daylight, very large soft source, low contrast with intact material detail, thin atmospheric mist at ground level` |
 
-Register defaults: editorial uses one of the four modes as the colour and quality signature, routed through sheet-safe exposure. Glamour defaults to high-key pearlescent, also routed through sheet-safe exposure so the back view stays readable; glamour rarely wants chiaroscuro, because heavy shadow flattens the hair and the hair is the product.
+**Choosing the mode is a decision, not a register lookup.** Editorial picks one of the four as the colour and quality signature, routed through sheet-safe exposure. Glamour most often takes high-key pearlescent, also routed through sheet-safe exposure so the back view stays readable — but `most often` is not `always`, and treating it as always is what gives a cast one light: a glamour schemer, a glamour antagonist, and a glamour character introduced at night all read better outside it.
+
+Reach for high-key pearlescent only when the character is genuinely the aloof or imperious figure the first row describes. Chiaroscuro costs hair detail, so it is wrong for a hair-as-hero design and right for a character whose threat should be legible before their face is. Warm tactile is the correct choice for anyone whose life happens outdoors. Overcast is the only honest choice for mourning, defeat, and exhaustion — and it is the one mode glamour almost never spends. Any mode is legal in either register; the batch rule is in [gates.md](gates.md) §9, axis 6.
 
 **Sheet-safe lighting** (identity and costume sheets): `sheet-safe soft directional key from the front-left, broad bounce fill, a clean rim separation, and a soft grounded contact shadow` across all panels. Chiaroscuro and hard rim are accents for the 2×2 close-ups by default. Sheet-safe is not flat: exposure stays even, but a real key direction and a real rim remain.
 

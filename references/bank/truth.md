@@ -43,6 +43,18 @@ Write one chosen formulation plus one alternative for each dimension. Every line
 
 **Position comes first.** Age, gender presentation, and class are the three axes a model defaults hardest on: unprompted, it returns a young, slender, high-status figure regardless of the brief. Specify Position for every character, including the ones the brief does not mention, and vary it deliberately across a cast.
 
+**The assembly-line failure.** If a cast of six designs all read as young and well-off, the costume system is being applied to one demographic over and over. That is the assembly-line costume failure with better tailoring — and no single-character check can catch it, because every sheet passes on its own. A drama needs hands that have worked, bodies that have aged, and at least one character who could not afford the garment they are wearing.
+
+Concretely, across a cast of five or more:
+
+- **At least one character aged 45+, written with the face and body that age produces** — a lengthened philtrum, a softened jaw, thinning at the temple, a body that has settled. Not an old face on a 25-year-old body.
+- **At least one character whose life has marked their hands** — a callus, a burn scar, a nail worn flat, ink or dye under the nail bed. Hands are the cheapest and most convincing evidence of labour, and the parameter set in [face.md](face.md) says nothing about them.
+- **At least one character who is wearing something they could not have bought** — inherited, issued, borrowed, found, mended past recognition. This is the fastest way out of "everyone is rich", and it costs one clause.
+- **At least one character whose proportion band differs from the cast's default.** If the cast is at 8.5-head, someone is 7.5.
+- **Vary Position across the three axes deliberately, not incidentally.** Two adjacent characters who share age band and class read would need a strong structural difference elsewhere to be told apart at thumbnail size.
+
+The register exception below is a design decision, not an exemption from batch differentiation: a glamour cast replaces the class axis with *what they command*, and the commands must differ — a title, a lineage, a rank, a power, a debt. Five glamour characters who all command "nobility" are one character.
+
 Register exception — glamour: the class axis usually collapses to "high". Replace class/income with **what they command** — a title, a lineage, a rank, or a power — written as a visible status marker. Manual-labour traces belong in editorial sheets. Register definitions are in [../contract/gates.md](../contract/gates.md) §2.
 
 **Visible-distance tiers**: full shot carries silhouette, palette, major garment shapes, and posture; medium carries layers, closures, fabric texture, accessories, wear; close-up carries pore hint, scars, lip texture, iris fibre, double catchlight, and micro-expression. Write only what the target panel can see.

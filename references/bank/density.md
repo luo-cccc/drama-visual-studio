@@ -200,3 +200,26 @@ One more cause: under-layering is often a brief failure rather than a design fai
 | **Ceremonial / imperial** | 6, incl. two floating | 90% | 15+, clustered at head | layered pattern |
 
 These settings stack on top of the risk dial in [../contract/gates.md](../contract/gates.md) §3 and never replace it: gear decides how far the design deviates; this table decides how much material is in it. A gear-2 glamour character can be very rich and still conventional; a gear-3 editorial character can be sparse and still strange.
+
+## 8A. Bands are ranges; a batch must use the range
+
+The table above was previously read as a set of targets, and a target applied to every character in a project produces the same layer count, the same edge rate, and the same node count on every sheet. Content changes; the shape of the density does not. That is a homogenisation mechanism, in the one factor system this bank exists to control.
+
+**Use the band as a spread, not as a pass mark.**
+
+| Factor | Wrong question | Right question |
+| --- | --- | --- |
+| Layers | "did I reach 5?" | "does this character sit at a different point in 5–6 than the last one — and if two characters both sit at 5, is that because both facts demand 5?" |
+| Edge rate | "did I reach 80%?" | "which edges did this character deliberately leave raw, and is that set different from the previous character's set?" |
+| Nodes | "did I reach 8?" | "does the node count differ from the previous character in the same register, and does the cluster sit at a different zone?" |
+| Pattern | "is it fielded?" | "is the motif at three scales in a different family, and does coverage sit at a different level — banded for one, fielded for another?" |
+
+Rules:
+
+- **Two characters in one register may not match on all four factors.** At least two of the four must sit at a different point in the band, or at a different coverage level.
+- **The lowest legal value is a design choice, not a failure.** A glamour character at 5 layers and 80% edges against one at 6 layers and 90% edges are different designs; forcing both to 6 and 90% removes the difference the register was supposed to allow.
+- **The untreated edges are the differentiation.** Two characters can both treat 80% of their edges and still differ, because the 20% left raw is a decision: a working cuff, a monk's hem, a torn vent. Record which edges are raw in the blueprint; a shared raw set is a shared design.
+- **Node count is not a quality score.** 8 nodes is not better than 15 or worse than 12. What carries quality is the descent and the structural job of each node — see §3.
+- **The count stays binding as a floor.** Below the band's minimum the design is under-designed; that rule is unchanged. The change is that reaching the minimum does not finish the job.
+
+Report the four values against the ledger, not against the table: `本批次：layers 5（A 为 6）· edges 82%（A 为 88%，未处理集为左袖口与靴顶，A 为腰带内缘）· nodes 9（A 为 12）· pattern banded（A 为 fielded）`. That is a differentiation check. `达到 glamour 标准` is not.

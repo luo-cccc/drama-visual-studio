@@ -6,7 +6,9 @@ Register definitions are in [../contract/gates.md](../contract/gates.md) §2; th
 
 ## 1. Motif seeds and the three growth rules
 
-Pick or invent one seed, then grow it with the three rules. The seed sets direction; the rules produce the garment.
+**Derive the seed from the script's conflict (§1C), then grow it with the three rules (§1A).** The seed sets direction; the rules produce the garment.
+
+The library in §1B is calibration, not a menu. A free choice between a fixed list and an undefined invention is always the list, and a fixed list gives two characters of one subgenre the same outfit. §1C replaces the choice with a procedure.
 
 ### 1A. Three growth rules
 
@@ -21,6 +23,8 @@ A seed that cannot answer all three is decoration. Change the seed.
 **Register note**: editorial prefers event and behaviour seeds, because they imply a posture, a wear pattern, and a scar. Glamour prefers material seeds, because they imply a surface, a lustre, and a silhouette — and because a glamour character's biography is usually supplied by the script. Inversion seeds work in both.
 
 ### 1B. Seed library
+
+**Calibration set.** Read these for the grammar — a seed is one short metaphor with a support, a pressure point, and a hand behaviour. Then derive your own with §1C. Use a library seed directly only when the brief has no character conflict to work from, and record that in the blueprint and the batch ledger so it is not spent twice.
 
 Every seed is prop-free: the hands column describes what the body does, never what it carries.
 
@@ -71,25 +75,35 @@ Each is a light behaviour as much as a motif; the parenthetical names the behavi
 | **Salt-Dried Canvas** | labour that never fully dries | raw sailcloth with visible weave and salt bloom, rope-and-brass closures, tarred hem, sun-blistered shoulders *(broad soft, dried brittle hand)* |
 | **Wool Held Together by Repairs** | endurance measured in patches | a single coat re-panelled in four mismatched wools, each patch a different decade, lining showing at the vent *(broad soft, four nap directions)* |
 
-### 1C. Genre routing
+### 1C. Deriving a seed from the script
 
-| Genre | Preferred seed families | Seeds that fit first |
-| --- | --- | --- |
-| Xianxia — Sect-Ranked | Inversion, Event, Behaviour | A Temple Kept Empty; The Verdict He Signed; Counting the Room |
-| Xianxia — Rogue | Behaviour, Event, Material | Exile on the Morning After; Wool Held Together by Repairs; Mending in Public |
-| Xianxia — Clan-Born | Material, Event | Thorns Through Lotus Silk; The Second Wedding Dress; Dragon Shadow in Night Mist |
-| Xianxia — Tribulation-Marked | Material, Event | Charred Temple, Relic Gold Leaf; Exile on the Morning After; Kintsugi Obsidian |
-| Xianxia — Demonic-Path | Material, Inversion | Spider Lily in Dark Amber; Kintsugi Obsidian |
-| Xianxia — Beast-Blood | Material, Behaviour | Spider Lily in Dark Amber; Sleeping in Armor |
-| Xuanhuan — Sect Politics | Event, Inversion, Behaviour | The Verdict He Signed; A Temple Kept Empty; Counting the Room |
-| Xuanhuan — Beast-Tamer | Material, Behaviour | Sleeping in Armor; Salt-Dried Canvas; Spider Lily in Dark Amber |
-| Xuanhuan — Imperial Ascension | Material, Event | Dragon Shadow in Night Mist; Charred Temple, Relic Gold Leaf |
-| Xuanhuan — Wasteland | Behaviour, Material, Event | Wool Held Together by Repairs; Salt-Dried Canvas; Exile on the Morning After |
-| Wuxia | Behaviour, Event, Inversion | The Long Watch; Mending in Public; The Clean Executioner |
-| Dark Fantasy / Gothic | Material, Inversion | Spider Lily in Dark Amber; Kintsugi Obsidian; Dressed for a Funeral He Caused |
-| Modern / Contemporary Couture | Behaviour, Inversion | Paying for Precision; New Clothes, Old Body; Refusing the Cup |
-| Sci-fi / Cyber | Material, Inversion | Mercury Through Celadon; New Clothes, Old Body |
-| Republican / Modern Historical | Event, Behaviour, Material | The Verdict He Signed; The Second Wedding Dress; Wool Held Together by Repairs |
+The seed library in §1B is a **calibration set, not a menu.** Its job is to show what a usable seed looks like: one short metaphor, prop-free, answerable by the three growth rules. It is not a list to pick from, and it is not organised by genre on purpose — a genre-to-seed lookup table collapses 47 candidates into the two or three that fit a subgenre, which means every character of that subgenre gets the same outfit.
+
+**Derive the seed from the character's conflict. Do this before opening §1B.**
+
+1. **Name the conflict, not the role.** Not "a sect elder" but "she is enforcing a rule nobody else still keeps." Not "a ferryman" but "he carries people across a river he is not allowed to cross himself."
+2. **Name what the conflict costs in the body's daily actions.** The rule-keeper spends her mornings straightening things nobody looks at. The ferryman never sits down. This is where the seed's pressure will land.
+3. **Name the one object-class the conflict makes impossible or compulsory.** Something they must always wear, or can never wear. That class is the seed's support.
+4. **Write the seed as a short metaphor in the same grammar as §1B** — a noun phrase, not a garment. If the candidate already names sleeves, filigree, and tassels it is an outfit, not a seed. Rewrite it.
+5. **Run the three growth rules.** If any of the three cannot be answered, the seed is decoration — return to step 1 rather than reaching for the library.
+
+**Worked derivation, so the step is not abstract.**
+
+| Step | Answer |
+| --- | --- |
+| Conflict | an archivist who has been told the archive is being demolished next month |
+| Cost in daily action | she keeps arranging things that will be destroyed; her hands are always lifting and setting down |
+| Compulsory or forbidden class | she must still wear the institution's formal collar, and it is the only formal thing left on her |
+| Seed | **The Collar Kept for a Building** |
+| Support | the collar itself, stiffened and re-stiffened, mounted on a plain worn dress |
+| Pressure | the collar edge, where her throat has worn the stiffness down |
+| Hands | lifting and setting down; one hand at the collar when she is told something she will not answer |
+
+That seed appears in no table above and does not need to. It arrived from the script.
+
+**When to use §1B instead:** when the brief supplies only a genre and no character conflict — a background figure, an unnamed guard, a design test. Then a library seed is the honest choice, and it should be labelled as library-sourced in the blueprint so the next character can avoid it. Check the batch ledger first; a library seed already spent on another character is out of circulation.
+
+**Cluster discipline.** Two characters of one subgenre must not both take a library seed from the same family. §1B's family labels (Event / Behaviour / Inversion / Material) are the axis: if the previous character used Material, this one takes Event, Behaviour, or Inversion, or derives its own. This replaces the old genre routing table as the only narrowing rule.
 
 ## 2. The five gravity topologies and back-view continuity
 
@@ -108,7 +122,7 @@ Pick one topology per character. Never distribute detail evenly, and never reuse
 - Topology 3 is **not** the `Asymmetric` silhouette family; a column silhouette can use Single-Side Mutation.
 - Topology 4 is the hardest at physical fidelity: name where the cloth is caught, where it releases, and where it pools.
 - Topology 5 pairs naturally with hourglass or inverted-triangle outlines, but the outline is chosen separately.
-- Glamour defaults to Top-Peak Cascade. Choosing Bottom-Anchored or Languid is legal but must be compensated: the face and hair still have to win.
+- Glamour most often resolves at Top-Peak Cascade, because the register's selling-point order puts the face and hair first. **That is a consequence of the register's priorities, not a rule.** Bottom-Anchored, Languid, Single-Side Mutation, and Bone-Sculpted are all legal in glamour; choosing one requires that the face and hair still win, and that compensation is the design work. A glamour cast where every character is Top-Peak has one silhouette system — the batch rule is in [../contract/gates.md](../contract/gates.md) §9, axis 3.
 - Cloth volume needs a support story; head volume does not. Above the shoulders, volume may float freely.
 
 ## 3. The 70% triple-texture matrices

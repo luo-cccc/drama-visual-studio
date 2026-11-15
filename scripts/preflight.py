@@ -3,14 +3,19 @@
 
 Parses a finished English prompt and reports the checks that can be counted:
 word budget, colour and material term frequencies against the role caps, banned
-words, and whether the required identity elements are present.
+words, whether the required identity elements are present, whether the identity
+set was derived rather than defaulted, and — with --ledger — whether the batch
+vector actually differs from the characters already designed.
 
 It does not judge silhouette readability, value hierarchy, "face wins", charm,
-or commercial read. Those need an eye. See references/pipeline/design.md §6A.
+commercial read, or whether the face looks like a different person. Those need
+an eye. See references/pipeline/design.md §6A.
 
 Usage:
     python -I preflight.py prompt.txt --register editorial
-    python -I preflight.py prompt.txt --register glamour --blocks 18
+    python -I preflight.py prompt.txt --register glamour --palette
+    python -I preflight.py prompt.txt --register glamour --ledger batch.txt
+    python -I preflight.py prompt.txt --register glamour --identity "facial index 1.52; mouth 0.76"
 
 Input may be a bare prompt or a fenced code block copied verbatim; fences and a
 trailing --ar/--no suffix are stripped before counting.
@@ -23,7 +28,7 @@ import argparse
 import re
 import sys
 
-# Caps from references/bank/aesthetic.md §3B and pipeline/design.md §6C/6D.
+# Caps from references/bank/form.md §3B and pipeline/design.md §6C/6D.
 CAPS = {
     "editorial": {"accent": 2, "anchor": 4, "base": 8, "material": 5},
     "glamour": {"accent": 2, "anchor": 4, "base": 8, "material": 5},
@@ -47,6 +52,11 @@ BANNED = [
     "gravity topology", "design evidence",
 ]
 
+# Numeric quality tags. Not \b-delimited on the left because they start with a
+# digit, which \b does not place between " " and "8". See gates.md §6.
+BANNED_NUMERIC = [(r"(?<![A-Za-z0-9])8k(?![A-Za-z0-9])", "8k"),
+                  (r"(?<![A-Za-z0-9])4k(?![A-Za-z0-9])", "4k")]
+
 # Engine settings that do not belong in an image prompt.
 SHADER = ["roughness", "metallic 1", "ior 1", "sss radius", "specular 0"]
 
@@ -54,6 +64,9 @@ SHADER = ["roughness", "metallic 1", "ior 1", "sss radius", "specular 0"]
 NO_FORBIDDEN = ["doll", "seams", "skin", "figure"]
 
 # Elements the prompt must name, from contract/visual.md §5 and §8.
+# These are CRAFT strings: shared by every character, reused verbatim. They are
+# not evidence that the face is specific to this character — that is
+# IDENTITY_DERIVED below. See gates.md §8.
 IDENTITY_REQUIRED = {
     "anime eye design": [r"upper lid", r"\bcrease\b", r"iris"],
     "second catchlight": [r"secondary reflection|second catchlight|two catchlight"],
@@ -61,6 +74,30 @@ IDENTITY_REQUIRED = {
     "hair clumps": [r"strand clump|sculpted lock|grouped lock"],
     "one key direction": [r"\bkey\b.*(left|right)|from the (left|right)|side-back|overhead"],
 }
+
+# The ten identity parameters from bank/face.md §2. Each must be decided by a
+# character fact (§2A-1), so the identity block has to state a value for at
+# least the three anchoring ones — facial index, mouth width, inter-canthal
+# distance — or the face was defaulted. Written as patterns for the visible
+# consequence, because measurements stay out of the English prompt (§1).
+IDENTITY_ANCHORS = {
+    "anchoring face value (facial index / mouth width / eye spacing)": [
+        r"long narrow face", r"broad short face", r"narrow mouth", r"wide mobile mouth",
+        r"close-set eyes", r"widely spaced eyes", r"broad jaw", r"narrow jaw",
+    ],
+    "one body proportion band, not a default": [
+        r"7-to-7\.5-head", r"7\.5-to-8-head", r"8\.5-head", r"\d(\.\d)?[- ]head",
+    ],
+}
+
+# The nine batch axes from contract/gates.md §9, in the order the ledger stores
+# them. Axis 1 and 2 are hard failures; five of nine must differ.
+LEDGER_AXES = [
+    "silhouette", "key colour", "topology", "register+gear",
+    "contradiction", "light", "trim", "motif", "face anchor",
+]
+LEDGER_MANDATORY = {0, 1}   # silhouette, key colour
+LEDGER_MIN_DIFFERENT = 5
 
 
 def strip_prompt(text):
@@ -110,21 +147,38 @@ def check(args):
 
     # --- banned words ---
     hits = [b for b in BANNED if re.search(r"\b" + re.escape(b) + r"\b", low)]
-    if hits:
-        failures.append("banned words: " + ", ".join(hits))
+    numeric_hits = [label for pat, label in BANNED_NUMERIC if re.search(pat, low)]
+    if hits or numeric_hits:
+        failures.append("banned words: " + ", ".join(hits + numeric_hits))
 
     # --- shader parameters ---
     shader = [s for s in SHADER if s in low]
     if shader:
         failures.append("engine settings in prompt: " + ", ".join(shader))
 
-    # --- required identity elements ---
+    # --- required identity elements (craft) ---
     missing = []
     for label, pats in IDENTITY_REQUIRED.items():
         if not any(re.search(p, low) for p in pats):
             missing.append(label)
     if missing:
-        failures.append("missing required elements: " + ", ".join(missing))
+        failures.append("missing required craft elements: " + ", ".join(missing))
+
+    # --- identity set derived, not defaulted (decision) ---
+    # The craft strings above can all be present while every character still
+    # has the same face. These anchors are what the CRAFT check cannot see.
+    missing_id = []
+    for label, pats in IDENTITY_ANCHORS.items():
+        if not any(re.search(p, low) for p in pats):
+            missing_id.append(label)
+    if missing_id:
+        failures.append(
+            "identity set not derived — no anchoring value or proportion band found: "
+            + ", ".join(missing_id)
+            + " (see bank/face.md §2A)"
+        )
+    else:
+        notes.append("identity set: anchoring face value and proportion band both present")
 
     # --- --no policy ---
     no_match = re.search(r"--no\s+([^\n]+)", raw)
@@ -167,14 +221,139 @@ def check(args):
                   key=lambda x: -x[1])
 
     # --- structural counts the prompt can reveal ---
-    layers = re.search(r"\b(three|four|five|six)\s+layers\b", low)
-    nodes = re.search(r"\b(\w+)\s+nodes?\b", low)
+    layers = re.search(r"\b(three|four|five|six|seven)\s+(?:visible\s+)?layers\b", low)
+    # Node counts are written as digits in the blueprint and as a count in prose.
+    # Matching "shaped node" (as the old \b(\w+)\s+nodes?\b did) reports a false
+    # clause; require a number or a count word.
+    nodes = re.search(r"\b(\d+|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen)\s+(?:ornament\s+)?nodes\b", low)
     if layers:
         notes.append(f"layer clause: {layers.group(0)}")
     if nodes:
         notes.append(f"node clause: {nodes.group(0)}")
+    else:
+        notes.append("node clause: no explicit node count in the prompt (count it from the blueprint)")
 
-    return failures, notes, freq, nwords
+    # --- batch differentiation against the ledger ---
+    differ, ledger_fail = [], []
+    if args.ledger:
+        try:
+            rows = read_ledger(args.ledger)
+        except OSError as exc:
+            ledger_fail.append(f"ledger unreadable: {exc}")
+            rows = []
+        if not rows:
+            notes.append("ledger supplied but holds no rows; this is the first character")
+        else:
+            # The blueprint's declared vector always wins. A prompt-derived
+            # vector can only see the axes that were written into prose, so
+            # diffing on it under-reports and would fail a compliant design.
+            declared = args.vector
+            if declared:
+                vector, source = parse_vector(declared), "declared (--vector)"
+            else:
+                vector, source = ledger_vector_from_prompt(low), "derived from prompt"
+            comparable = [i for i, v in enumerate(vector) if v]
+            notes.append(f"batch vector [{source}]: " + " · ".join(
+                f"{LEDGER_AXES[i]}={vector[i]}" for i in comparable))
+            if not args.vector:
+                notes.append(
+                    f"only {len(comparable)}/{len(LEDGER_AXES)} axes are visible in the prompt; "
+                    "pass --vector from the blueprint to check the full nine"
+                )
+            for name, row in rows:
+                res = compare_vector(vector, row)
+                differ.append(
+                    f"vs {name}: {res['different']}/{res['comparable']} comparable axes differ"
+                    + (f" — SAME mandatory {', '.join(res['same_mandatory'])}" if res["same_mandatory"] else ""))
+                if res["same_mandatory"]:
+                    ledger_fail.append(
+                        f"batch: {name} shares a mandatory axis ({', '.join(res['same_mandatory'])})")
+                # The five-of-nine rule is stated over nine axes. Apply it only
+                # when all nine were actually declared, otherwise require every
+                # comparable axis to differ and say the rest is unchecked.
+                need = LEDGER_MIN_DIFFERENT if args.vector else res["comparable"]
+                if res["comparable"] and res["different"] < need:
+                    ledger_fail.append(
+                        f"batch: {name} differs on {res['different']}/{res['comparable']} comparable axes, "
+                        f"needs {need}")
+    else:
+        notes.append("no --ledger supplied; batch differentiation not checked")
+
+    failures.extend(ledger_fail)
+    return failures, notes, freq, nwords, differ
+
+
+def parse_vector(text):
+    """Read a declared batch vector, nine axes in LEDGER_AXES order."""
+    parts = [p.strip().lower() for p in re.split(r"[·|,;]", text) if p.strip()]
+    return (parts + [""] * len(LEDGER_AXES))[: len(LEDGER_AXES)]
+
+
+def read_ledger(path):
+    """Read a batch ledger written to the format in contract/records.md §8.
+
+    A row is `<name> | axis · axis · ...` with the nine axes in LEDGER_AXES
+    order. Blank lines, the header word, and prose are ignored.
+    """
+    rows = []
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            if "|" not in line:
+                continue
+            name, _, rest = line.partition("|")
+            name = name.strip().lstrip("-* ").strip()
+            if not name or name.lower().startswith("批次账本"):
+                continue
+            parts = [p.strip().lower() for p in re.split(r"[·|]", rest) if p.strip()]
+            if len(parts) < 2:
+                continue
+            rows.append((name, parts))
+    return rows
+
+
+def ledger_vector_from_prompt(low):
+    """Detect the axes a finished prompt actually declares, so it can be diffed.
+
+    Only axes with a detectable marker are filled; an undetected axis is left
+    empty and is not counted as a difference, because the script cannot read a
+    design intent that was never written down.
+    """
+    sil = [("cocoon", r"cocoon|uncinched oversized"), ("column", r"\bcolumn\b|narrow vertical"),
+           ("bell", r"bell silhouette|a-line"), ("trapeze", r"trapeze"),
+           ("hourglass", r"hourglass"), ("asymmetric", r"asymmetric silhouette")]
+    topo = [("top-peak", r"top-peak|crown, hair and chest|density sits high"),
+            ("bottom", r"bottom-anchored|heavy drapery from the hip"),
+            ("single-side", r"single-side|diagonal architectural cut"),
+            ("languid", r"languid|negative space"),
+            ("bone", r"bone-sculpted|spinal axis")]
+    light = [("high-key", r"high-key|pearlescent"), ("chiaroscuro", r"chiaroscuro|side-back key"),
+             ("warm-gi", r"warm directional global illumination|warm tactile"),
+             ("overcast", r"overcast diffuse|diffuse mist")]
+    key = [("bone", r"\bbone\b|\bivory\b"), ("obsidian", r"obsidian|blue-black"),
+           ("celadon", r"celadon|\bjade\b"), ("cinnabar", r"cinnabar|oxblood|iron rust"),
+           ("glacier", r"glacier|titanium"), ("pearl", r"\bpearl\b|\bsilver\b")]
+
+    def first(table):
+        for label, pat in table:
+            if re.search(pat, low):
+                return label
+        return ""
+    return [first(sil), first(key), first(topo), "", "", first(light), "", "", ""]
+
+
+def compare_vector(vector, row):
+    """Diff a detected vector against one ledger row on the axes both declare."""
+    differing, same_mandatory, comparable = 0, [], 0
+    for i, mine in enumerate(vector):
+        if not mine or i >= len(row) or not row[i]:
+            continue
+        comparable += 1
+        theirs = row[i]
+        if mine not in theirs and theirs not in mine:
+            differing += 1
+        elif i in LEDGER_MANDATORY:
+            same_mandatory.append(LEDGER_AXES[i])
+    return {"different": differing, "comparable": comparable, "same_mandatory": same_mandatory}
 
 
 def main():
@@ -184,13 +363,18 @@ def main():
                     choices=["editorial", "glamour", "compact", "portrait", "scene"])
     ap.add_argument("--palette", action="store_true",
                     help="also read base/anchor/accent lines from the file and check caps")
+    ap.add_argument("--ledger", default=None,
+                    help="batch ledger file; check this character's axes against it (records.md §8)")
+    ap.add_argument("--vector", default=None,
+                    help="this character's nine-axis vector from the blueprint, '·'-separated; "
+                         "give it whenever --ledger is used so all nine axes are checked")
     ap.add_argument("--budget", default=None, help="override the upper word budget")
     args = ap.parse_args()
 
     if args.budget:
         BUDGET[args.register] = (0, int(args.budget))
 
-    failures, notes, freq, nwords = check(args)
+    failures, notes, freq, nwords, differ = check(args)
 
     print("=" * 62)
     print(f"PREFLIGHT  {args.path}  [{args.register}]")
@@ -198,6 +382,10 @@ def main():
     print("\nCounted:")
     for n in notes:
         print("  " + n)
+    if differ:
+        print("\nBatch differentiation (gates.md §9):")
+        for d in differ:
+            print("  " + d)
     if freq:
         print("\nTerm frequencies (colour and material):")
         for term, c in freq:
@@ -205,7 +393,8 @@ def main():
             print(f"  {term:<12} {c}{flag}")
     print("\nJudged (not checked here — see design.md §6A):")
     print("  silhouette at 10% / value hierarchy / face wins / charm /")
-    print("  commercial read / density gradient / no accidental clutter")
+    print("  commercial read / density gradient / no accidental clutter /")
+    print("  whether the face is visibly a different person from the batch's last")
     if failures:
         print("\nFAILURES:")
         for f in failures:

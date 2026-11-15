@@ -1,6 +1,6 @@
 # Pipeline: Design Mode
 
-Read [../contract/visual.md](../contract/visual.md) and [../contract/gates.md](../contract/gates.md) first. This file owns the design-mode process: the 6-layer stack, the 7-point blueprint, prompt assembly, the single preflight, and drift repair.
+Read [../contract/visual.md](../contract/visual.md) and [../contract/gates.md](../contract/gates.md) first. This file owns the design-mode process: the batch layer, the 6-layer design stack, the 7-point blueprint, prompt assembly, the single preflight, and drift repair.
 
 Layer content lives in the bank: character truth in [../bank/truth.md](../bank/truth.md); costume systems in [../bank/costume.md](../bank/costume.md); density in [../bank/density.md](../bank/density.md); form judgement in [../bank/form.md](../bank/form.md), material and restraint in [../bank/material.md](../bank/material.md) and [../bank/boldness.md](../bank/boldness.md). Layout details live in [sheet.md](sheet.md).
 
@@ -18,20 +18,27 @@ Design mode answers two questions in order: **who is this person**, then **what 
 
 Mode A layout, body occupancy, per-cell scoping, and backgrounds are specified in [sheet.md](sheet.md). Do not invent a different layout here. State the target canvas and engine with the mode.
 
-## 2. The 6-layer design stack
+## 2. The design stack
 
-Build in this order. Do not start with the costume.
+Build in this order. Do not start with the costume. Layer 0 is the batch, and the six design layers follow it.
+
+**Layer 0, before layer 1: read the batch ledger.** The ledger format is [../contract/records.md](../contract/records.md) §8 and the axes are [../contract/gates.md](../contract/gates.md) §9. Design in isolation and the checks in §6 will pass on a character who is the previous one with a different name, because every single-character check is satisfied. Layer 0 costs one read and one line of comparison, and it is the only mechanism in this skill that can see the project rather than the sheet.
 
 | Layer | Question | Output | Source |
 | --- | --- | --- | --- |
+| **0. Batch ledger** | Which design values are already spent in this project? | The nine-axis vector to clear, and the axes already taken | [../contract/records.md](../contract/records.md) §8; [../contract/gates.md](../contract/gates.md) §9 |
 | **1. Character truth** | Who is this, and what evidence do they wear? | Three answers + imperfections + one contradiction + design thesis + posture | [../bank/truth.md](../bank/truth.md) |
-| **2. Motif growth** | What single metaphor grows the outfit? | One seed, grown by the three growth rules | [../bank/costume.md](../bank/costume.md) §1 |
+| **2. Motif growth** | What single metaphor grows the outfit? | One seed derived from the script's conflict by §1C, grown by the three growth rules | [../bank/costume.md](../bank/costume.md) §1 |
 | **3. Gravity topology** | Where does detail concentrate? | One of five topologies + back-view resolution | [../bank/costume.md](../bank/costume.md) §2 |
-| **4. Ornament density** | Is there enough material in it? | Layers, treated edges, node count, pattern coverage | [../bank/density.md](../bank/density.md) |
+| **4. Ornament density** | Is there enough material in it? | Layers, treated edges, node count, pattern coverage — placed at a point in the band that differs from the batch | [../bank/density.md](../bank/density.md) §1–4, §8A |
 | **5. Aesthetic order** | Why does it look good? | Silhouette, value, palette, material, restraint, levers | [../bank/form.md](../bank/form.md), [../bank/material.md](../bank/material.md) §1–2, [../bank/boldness.md](../bank/boldness.md) |
-| **6. House render** | How does it read as game CG with an anime face? | Anime eye/lip design, BJD porcelain finish, sculpted hair, persona light, engine + resolution | [../contract/visual.md](../contract/visual.md) §4–8 |
+| **6. House render** | How does it read as game CG with an anime face? | Anime eye/lip craft, the derived identity set, BJD porcelain finish, sculpted hair, persona light, engine + resolution | [../contract/visual.md](../contract/visual.md) §4–8; [../bank/face.md](../bank/face.md) §2A |
 
 **Layer 4 is the answer to "it came out plain".** Layers 1–3 decide what the design means; Layer 5 decides whether it looks good; Layer 4 decides whether there is anything in it to look at. Skipping it and reaching for `elaborate` is the most common cause of a tasteful, correct, boring sheet.
+
+**Layer 2 derives the seed from the script.** A genre-to-seed routing table would narrow the library to two or three entries per subgenre and hand the same subgenre the same motif. The seed comes from the character's conflict instead — see [../bank/costume.md](../bank/costume.md) §1C — and the library is calibration only.
+
+**Layer 6 carries two kinds of instruction.** Craft strings (`radial iris fibre with a darker limbal ring`) are reused verbatim; identity values (iris fill, facial index, lip ratio) are derived per character by [../bank/face.md](../bank/face.md) §2A. Mixing the two is the mechanism behind a cast of identical faces — [../contract/gates.md](../contract/gates.md) §8.
 
 ## 3. The 7-point blueprint — and where each point comes from
 
@@ -41,11 +48,11 @@ Present the blueprint in Chinese, in this order. **Each point has exactly one so
 | --- | --- | --- | --- |
 | 1 | 题材、子类型与风险档 | lock line, aesthetic module, pigment family, silhouette family, gear | [../contract/gates.md](../contract/gates.md) §1–3; [../bank/material.md](../bank/material.md) §3 |
 | 2 | 角色事实与设计论点 | three answers, age/gender/status read, imperfections (editorial two; glamour zero or one), one contradiction and its direction, one-sentence thesis with a physical anchor | [../bank/truth.md](../bank/truth.md) |
-| 3 | 核心视觉母题 | the seed, plus the three growth answers — what supports it, where pressure lands, what the hands do (empty, never holding) | [../bank/costume.md](../bank/costume.md) §1 |
-| 4 | 视觉重心与背部叙事 | topology, back resolution, hero and supporting zones, understructure for extreme volume | [../bank/costume.md](../bank/costume.md) §2 |
-| 5 | **装饰密度（计数）** | visible layers in order and where each shows its edge; the edge inventory with one trim language; node count with each node's structural job and descending scale; the motif family at three scales and its coverage level — **all four factors counted, never described as an adjective** | [../bank/density.md](../bank/density.md) §1–4, §8 |
+| 3 | 核心视觉母题 | the seed **derived from the script's conflict** (§1C), plus the three growth answers — what supports it, where pressure lands, what the hands do (empty, never holding); if a library seed was used instead, say so | [../bank/costume.md](../bank/costume.md) §1A, §1C |
+| 4 | 视觉重心与背部叙事 | topology, back resolution, hero and supporting zones, understructure for extreme volume; the topology must clear ledger axis 3 | [../bank/costume.md](../bank/costume.md) §2; [../contract/gates.md](../contract/gates.md) §9 |
+| 5 | **装饰密度（计数）** | visible layers in order and where each shows its edge; the edge inventory with one trim language and the deliberately-raw set; node count with each node's structural job and descending scale; the motif family at three scales and its coverage level — **all four factors counted, and placed at a different point in the band than the batch's previous character** | [../bank/density.md](../bank/density.md) §1–4, §8A |
 | 6 | 审美秩序 | silhouette family, three-value plan, palette relationship with HEX for every colour, material contrasts and their light behaviours, focal point, open area, one chromatic anchor, gear, levers used, one rule deliberately broken | [../bank/form.md](../bank/form.md) §1–3 and [../bank/material.md](../bank/material.md) §2; [../bank/boldness.md](../bank/boldness.md) |
-| 7 | 半写实渲染与微妆 | proportions with shoulder-waist-hip; the **identity-set** face parameters in band; anime eye and lip design; BJD porcelain finish; hair clump structure and wisps; the one alive asymmetry; the bottom-right macro expression; persona light; engine and target canvas | [../contract/visual.md](../contract/visual.md) §4–8; [../bank/face.md](../bank/face.md) §2–6; [../bank/costume.md](../bank/costume.md) §4 |
+| 7 | 半写实渲染与微妆 | proportions with shoulder-waist-hip; the **derived identity set** (§2A) named as values, not adjectives; the anime eye and lip craft strings; BJD porcelain finish; hair clump structure and wisps; the one alive asymmetry; the bottom-right macro expression; persona light; engine and target canvas | [../contract/visual.md](../contract/visual.md) §4–8; [../bank/face.md](../bank/face.md) §2A–6; [../bank/costume.md](../bank/costume.md) §4 |
 
 Rules for the blueprint:
 
@@ -76,6 +83,8 @@ Continuous prose, no bracketed headers, no numeric percentages. Budget for the f
 - Mode A-Compact: keep the layout sentence, the four-pillar base, the eye design, and the thesis; cut palette and material elaboration to one clause each; 270–310 words.
 - The eye design lives in the identity block: lid line, crease, iris fibre, limbal ring, secondary reflection, meniscus. It is the invariant that makes two renders the same person.
 
+**Which word count is the budget measured against.** `scripts/preflight.py` counts alphabetic words before the engine flags, so `16:9`, `2x2`, and `two-centimetre` contribute zero, one, and one. A whitespace token count of the same prompt reads 10–15 words higher, because it counts the numerals and flags. Both numbers are correct measurements of different things: the budget is on **prose words**, which is the script's count. When reporting a word count, say which method produced it, and do not compare a script count against a whitespace count as though the difference were an error.
+
 Narrative order:
 
 1. Thesis and character truth: thesis with a physical anchor, invariant identity block (including shoulder-waist-hip and skin), look-specific evidence.
@@ -102,10 +111,12 @@ Some lines below are **counted** — a number can be produced and compared. Othe
 
 | Kind | Lines | How to report |
 | --- | --- | --- |
-| **Counted** | blueprint completeness; layers; edge rate; node count; pattern coverage; palette token frequencies; accent cap; material count; lever count; prompt word count; blueprint-to-prompt traceability | report the numbers |
-| **Judged** | silhouette at 10%; value hierarchy; face wins; commercial read; density gradient; no accidental clutter; whether the one risk actually reads as a risk | name what you saw, and what you would change if it is wrong |
+| **Counted** | blueprint completeness; layers; edge rate; node count; pattern coverage; palette token frequencies; accent cap; material count; lever count; prompt word count; blueprint-to-prompt traceability; identity-set derivation; batch differentiation | report the numbers |
+| **Judged** | silhouette at 10%; value hierarchy; face wins; commercial read; density gradient; no accidental clutter; whether the one risk actually reads as a risk; whether the face is visibly a different person from the batch's previous character | name what you saw, and what you would change if it is wrong |
 
-**Where the numeric bands come from.** The bands in 6C and 6D are a *compilation*, not an authority: they restate one register's column of the tables in [../bank/density.md](../bank/density.md) §8 and [../contract/gates.md](../contract/gates.md) §3 so the check can run without opening those files. If a band ever disagrees with its source, **the source wins and this table is the bug.** The sources are the four-factor minima in [../bank/density.md](../bank/density.md) §8, the node caps in §3, the colour caps in [../bank/form.md](../bank/form.md) §3B, and the lever cap in [../contract/gates.md](../contract/gates.md) §3.
+**The last judged line has no counted substitute.** `Identity set derived` and `Batch differentiation` are counted *procedures* — they check that ten values were derived from facts and that nine axes were compared. Neither proves the resulting face looks different, because a derived set can still land on a near neighbour. When the batch is large enough to matter, say that the visual comparison is pending until the images exist.
+
+**Where the numeric bands come from.** The bands in 6C and 6D are a *compilation*, not an authority: they restate one register's column of the tables in [../bank/density.md](../bank/density.md) §8 and [../contract/gates.md](../contract/gates.md) §3 so the check can run without opening those files. If a band ever disagrees with its source, **the source wins and this table is the bug.** The sources are the four-factor minima in [../bank/density.md](../bank/density.md) §8, the band-spread rule in §8A, the node caps in §3, the colour caps in [../bank/form.md](../bank/form.md) §3B, the lever cap in [../contract/gates.md](../contract/gates.md) §3, and the batch axes in [../contract/gates.md](../contract/gates.md) §9.
 
 ### 6B. Blueprint-to-prompt traceability — run this first
 
@@ -131,7 +142,9 @@ The same applies to point 6's palette: the colour named as base, anchor, and acc
 | Life traces | counted | two visible at full-body distance, plus one contradiction from directions 1–6, named in the blueprint | return to [../bank/truth.md](../bank/truth.md) |
 | Materials | counted | at least two light behaviours; one material surprise; no more than four named fabric types | add a translucent or heavy element; if five materials, remove two |
 | Restraint | counted | one hero node plus three supporting; one primary open area named | delete the weakest node |
-| Face parameters in band | counted | identity-set parameters inside [../contract/visual.md](../contract/visual.md) §4; no parameter pushed past the chibi or uncanny guard | pull back to the editorial preset in [../bank/face.md](../bank/face.md) §3 |
+| Face parameters in band | counted | identity-set parameters inside [../contract/visual.md](../contract/visual.md) §4; no parameter pushed past the chibi or uncanny guard | pull back to the band, not to the preset; derive the value with [../bank/face.md](../bank/face.md) §2A |
+| **Identity set derived, not defaulted** | counted | each of the ten identity parameters traces to a Position fact per [../bank/face.md](../bank/face.md) §2A-1; the anchoring three (facial index, mouth width, inter-canthal distance) are named in the blueprint as values | run §2A-1 and §2A-3; a parameter with no fact behind it is a default |
+| **Batch differentiation** | counted | axes 1–2 (silhouette, key colour family) differ from every ledger row; axes 3–9 clear at least five of nine total; the vector is reported against the ledger | return to Layer 0; redesign the repeating axis, not the whole character — [../contract/gates.md](../contract/gates.md) §9 |
 | Silhouette | judged | identifiable at 10% size, one family, one contrast shape | change the family or widen the hem/shoulder contrast |
 | Value | judged | clear dark / light / focal hierarchy in grayscale; focal contrast at face, chest, or hands | increase value separation; move the contrast off the hem |
 | Palette reads as named | judged | one relationship visibly present; one chromatic anchor legible at thumbnail after desaturation; dark mass has a named temperature | name the relationship, delete extra hues, give the dark mass a temperature |
@@ -148,16 +161,18 @@ The same applies to point 6's palette: the colour named as base, anchor, and acc
 | **Blueprint traced into prompt** | counted | every layer, edge, node, and pattern scale from point 5 appears in the prompt | add the missing clause or cut the promise |
 | **Palette token count** | counted | accent ≤ 2 (binding); base terms outnumber the accent at least 2:1; **silver and other dual colour-and-material words counted once as colour and once as material**, and both caps applied | cut the accent to 2; if a metal word is doing both jobs, convert some uses to a different material name |
 | **Prompt word budget** | counted | 540–585 glamour / ceremonial | cut palette elaboration first, then back-detail ornament |
-| Density factors | counted | layers 5–6; edge rate 80%+; nodes 8–15 descending; pattern fielded or allover; at least one floating layer | add the missing factor, not another node |
+| Density factors | counted | layers 5–6; edge rate 80%+; nodes 8–15 descending; pattern fielded or allover; at least one floating layer — **and the four values sit at a different point in the band than the previous character in this register** | add the missing factor, not another node; then move a value within the band per [../bank/density.md](../bank/density.md) §8A |
 | Top-zone richness | counted | the head carries at least two distinct ornament groups | add one head group before anything lower |
 | Hair as a system | counted | mass and length, crown volume, face framing, texture behaviour, inner streaks, headpiece inventory with hanging depth — all six written | see [../bank/costume.md](../bank/costume.md) §5A |
-| Face parameters in band | counted | glamour preset in [../bank/face.md](../bank/face.md) §3; iris fill and lid coverage raised, canthal tilt positive; no chibi drift | re-run the preset; check eye width to face ≤ 1.2 and iris fill ≤ 0.95 |
+| Face parameters in band | counted | glamour values inside [../bank/face.md](../bank/face.md) §3 and [../contract/visual.md](../contract/visual.md) §4; iris fill ≤ 0.95, eye width to face ≤ 1.2; no chibi drift | pull into the band; derive the value, do not re-run the preset |
+| **Identity set derived, not defaulted** | counted | each of the ten identity parameters traces to a Position fact per [../bank/face.md](../bank/face.md) §2A-1; facial index is derived, never assumed 1.4–1.45 | run §2A-1; the glamour preset's facial index is a slot, not a value |
+| **Batch differentiation** | counted | axes 1–2 differ from every ledger row; at least five of nine differ; the vector is reported against the ledger | return to Layer 0 — [../contract/gates.md](../contract/gates.md) §9 |
 | No props | counted | hands empty, in hair, or resting | see [../contract/gates.md](../contract/gates.md) §4 |
 | Accent cap | counted | 2, binding | cut to 2 |
 | Density gradient | judged | head > chest > waist > hem, each zone strictly lighter than the one above; at least one plain run or bare skin below the waist | move ornament upward; never add more below to even it out |
 | Face wins | judged | the face holds the frame at thumbnail size | quieten or raise the competing group |
 | **Charm present** | judged | one alive detail (asymmetry, gaze, tilt); two catchlights; one matte zone; the turn specified. Expense is not charm — see [../bank/face.md](../bank/face.md) §5 | add the asymmetry and the second catchlight; remove one ornament group and spend it on the face |
-| Contradiction | judged | one Sacred / Dangerous signal (direction 7); zero damage | replace damage with a lethal signal — crimson irises, one impossible detail |
+| Contradiction | judged | one direction-7 **signal**, and it differs from the batch's other direction-7 characters; zero damage. Directions 1–6 are legal for a deliberately fallen or working glamour character | replace damage with a lethal signal, and make the signal unlike the ledger's |
 | Specular near the face | judged | one glossed element in the head or chest zone | add a glossed lip, wet lower lid, or polished metal near the cheek |
 | No accidental clutter | judged | every node has a structural job | give each node a closure or junction, or remove it |
 
@@ -167,7 +182,9 @@ The face is the first fixation. Everything else is ranked behind it.
 
 Report the preflight as a short list: the counted numbers, then the judged observations in one line each. Do not claim a visual pass on the strength of a count. A prompt does not lock geometry — passing the preflight is a check on the design and the wording, not a guarantee of the render.
 
-Run the mechanical half with the checker rather than by eye where possible: `scripts/preflight.py` parses a finished prompt and reports word count, colour and material term frequencies against the caps, the banned-word list, and whether the named identity elements are present. Use it for the counted lines, then judge the rest yourself.
+**Two lines of the report are about the project, not the sheet** — `Identity set derived` and `Batch differentiation`. Report them against the ledger by name: `silhouette cocoon（账本 A 为 column）· key 土金宝石（A 骨白）· topology 4（A 5）· light 温和实用灯（A 高调珠光）· trim 铜棕皮革压边（A 窄银掐丝）· motif 蛇蜕鳞纹（A 五瓣星花）· face anchor 面部指数 1.52 / 眼裂 0.44（A 1.38 / 0.50）`. Without that line, "differentiated" is an assertion and not a check.
+
+Run the mechanical half with the checker rather than by eye where possible: `scripts/preflight.py` parses a finished prompt and reports word count, colour and material term frequencies against the caps, the banned-word list, whether the named identity elements are present, and — with `--ledger --vector` — whether the batch vector actually differs from the rows supplied. Pass the vector from the blueprint; the prompt prose alone exposes only three or four of the nine axes, so a ledger check without it under-reports and cannot clear the five-of-nine rule. Use it for the counted lines, then judge the rest yourself. **It cannot judge whether the face is the same person as last time; only the derived values and your eye can.**
 
 ## 7. Drift repair
 
@@ -193,6 +210,9 @@ When a returned sheet is wrong, diagnose and issue a targeted fix. Do not regene
 | Technically perfect, nobody home | render vocabulary substituted for character facts | return to Layer 1; restore the thesis and one life trace; cut render repeats |
 | Drifted chibi | eye ratio or head count out of band | restate the head count and `large almond eyes` without `very large`; check against [../contract/visual.md](../contract/visual.md) §4 |
 | Drifted uncanny half-realism | the face was pushed realistic | restate `defined upper lid line`, `minimal nose bridge`, and add `refined anime facial design` |
+| **Every character looks like the same person** | the identity set was never derived; craft strings are standing in for decisions | run [../bank/face.md](../bank/face.md) §2A: take the Position triple, push the anchoring three (facial index, mouth width, inter-canthal distance) to different values, then re-derive the rest |
+| **Every costume is the same outfit in a different colour** | the seed came from the library rather than the script's conflict; density sits at the same point in the band | derive the seed per [../bank/costume.md](../bank/costume.md) §1C; move layers, edges, nodes, and pattern to a different point per [../bank/density.md](../bank/density.md) §8A |
+| **The whole cast reads as one design system** | no ledger was read at Layer 0 | build the ledger from [../contract/records.md](../contract/records.md) §8, then redesign the repeated axes — axes 1 and 2 are hard failures |
 
 If the drift is broad, recommend returning to the last suitable version and reapplying the still-required changes, rather than patching a drifted result.
 
