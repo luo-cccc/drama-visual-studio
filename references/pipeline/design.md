@@ -156,8 +156,8 @@ Run `scripts/preflight.py` against the prompt, the 10-axis ledger vector, and (w
 | Check | Kind | Pass condition | If it fails |
 | --- | --- | --- | --- |
 | **Density factors** | counted | layers 2–3 working / 4–5 high-status; edge rate 60–80% + named raw set; nodes ≤ 4 (`1 hero + up to 3 supporting`) with mechanical closure jobs; pattern bare/banded/fielded, spread from previous cast row ([../atlas/density.md](../atlas/density.md) §6A) | add the missing layer or shared trim clause; delete any unemployed node |
-| **Life traces & contradiction** | counted | two physical traces visible at full-body distance + one contradiction from directions 1–6 | return to [../engine/01-truth-and-pose.md](../engine/01-truth-and-pose.md) §2, §5 |
-| **Materials & grounding** | counted | at least two light behaviours; physical understructure named for any rigid/voluminous piece; ≤ 4 named fabric types | add a tight-specular or translucent element; name the stay/yoke/support ([../engine/03-costume-and-craft.md](../engine/03-costume-and-craft.md) §2.5) |
+| **Transcendent traces & contradiction** | counted | 1–2 poetic/power-derived traces + one contradiction from the 7 high-aesthetic directions | return to [../engine/01-truth-and-pose.md](../engine/01-truth-and-pose.md) §2, §5 |
+| **Materials & couture grounding** | counted | at least two light behaviours (e.g. matte velvet + sheer siren-gauze + tight metal specular); haute-couture corsetry/armature named; ≤ 4 named fabric types | add a tight-specular or translucent element; name the waist-girdle/shoulder-yoke structure ([../engine/03-costume-and-craft.md](../engine/03-costume-and-craft.md) §2.5) |
 | **Restraint & open area** | counted | one hero node + ≤ 3 supporting; one primary unpatterned open breathing area named | delete the weakest node; clear one expanse of cloth |
 | **Face §1A + §1B** | counted | 10 bone values in band with 3 pushed anchors; 5 surface variables derived from facts; **0 facial marks by default** unless earned | run [../engine/02-face-derivation.md](../engine/02-face-derivation.md) §1A & §1B |
 

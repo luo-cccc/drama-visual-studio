@@ -38,24 +38,24 @@ Name exactly one silhouette family. Name the palette as pigments, not moods.
 
 ## 2. Register
 
-`gear` sets how far a design deviates. `register` sets what it is optimising for. They are independent.
+`gear` sets how far a design deviates. `register` sets the ornament density and presentation mode. **Both registers require high-aesthetic commercial beauty, idealized proportions, and luxury material craft.** Never interpret `editorial` as ugly, dirty, or mundane peasant realism.
 
 | Register | Optimises for | Typical use |
 | --- | --- | --- |
-| **editorial** (default) | credibility — a person who could exist, with evidence worn on them | character bibles, game assets, IP pitch, key art |
-| **glamour** | desirability — a figure the audience wants to be, or wants to keep looking at | manhua-drama, short drama, vertical mobile drama, cover art, weekly episodes |
+| **editorial** (default) | **Narrative haute-couture & silhouette clarity** — a charismatic, high-aesthetic character with crisp tailoring, 4–5 layers, ≤ 4 focal hardware nodes, and 1–2 transcendent/story traces | character bibles, 3DCG animation assets, drama main cast, IP pitch, key art |
+| **glamour** | **Maximum opulence & cover-art spectacle** — 5–6 layers including floating sheer drapery, 8–15 descending jeweller-grade nodes, and a full 6-layer hair/headpiece system | manhua-drama, short drama covers, vertical mobile key art, awakening / ceremonial forms |
 
-Infer from the brief: 漫剧人设 / 短剧 / 封面 / 头图 / 追更 → glamour; 概念稿 / 设定集 / 游戏资产 / 概念片 → editorial. When still unclear, ask — the two registers produce incompatible acceptance criteria.
+Infer from the brief: 漫剧封面 / 盛装觉醒 / 极致繁复头图 → glamour; 角色设定集 / 动画与短剧常规主役 / 概念设定稿 → editorial.
 
-Glamour overrides five constraints; everything else still applies:
+Register comparison:
 
 | Constraint | editorial | glamour |
 | --- | --- | --- |
-| Imperfections | two required, visible at full-body distance | zero to one, zero preferred; flawlessness is the product |
-| Contradiction | one from directions 1–6 | direction 7 is the native direction; directions 1–6 are legal for a deliberately fallen, working, or paying-for-it character. See the batch rule in §9 — the **signal** must differ even when the direction does not |
-| Ornament nodes | one hero + at most three supporting | no cap inside the [../atlas/density.md](../atlas/density.md) §6 density band, but density must descend: head > chest > waist > hem |
-| Hero node | one ornament node, never a prop | hair or a headpiece may be the hero |
-| Palette | avoid moon white / celadon / ink / cinnabar unless the brief asks | the category's native range, so it is legal and common — but it is **not a default**. Choose it or don't; the batch rule in §9 means not every character in one project may sit in it |
+| Narrative / transcendent traces | 1–2 poetic or power-derived traces (e.g. frost-rimmed cuff, ink-jade fingertips, gold-mended blade cut; never ugly dirt) | 0–1 trace; flawlessness + one lethal/divine signal is the product |
+| Contradiction | one from the 7 high-aesthetic directions ([../engine/01-truth-and-pose.md](../engine/01-truth-and-pose.md) §5) | one from the 7 high-aesthetic directions (Directions 1, 2, 4, 6, 7 native). The concrete **signal** must differ across the cast (§9) |
+| Ornament nodes | one hero + at most three supporting (≤ 4 total) | 8–15 inside the [../atlas/density.md](../atlas/density.md) §6 density band, descending strictly: `head > chest > waist > hem` |
+| Hero node | one sculpted worn ornament or armature piece, never a held prop | hair/crown system or chest armature may be the hero |
+| Palette | classic Eastern fantasy palettes (玄黑、月白、天青、绛红、鎏金、幻紫) are fully legal; differentiate across the batch via §9 | same; no two characters in one project may share the same key colour family (§9, axis 2) |
 
 **Direction 7 in glamour is a family, not a single look.** `flawless surface plus one lethal signal` is the formula; the signal is the design decision. A wire-thin collar chain, impossible symmetry, a hairline port, a breath of frost, ash-stained fingertips — pick one derived from the character's conflict, and make it the only one. Two glamour characters in one project may both be direction 7 as long as the signal is visibly different; they may not share the signal.
 

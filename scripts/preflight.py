@@ -86,17 +86,20 @@ IDENTITY_REQUIRED = {
 # and Orthographic Pose (D3) were each explicitly stated as consequences in prose.
 IDENTITY_ANCHORS = {
     "D1 bone geometry anchor (facial index / mouth width / eye spacing / jaw / cheekbone)": [
-        r"long narrow face", r"broad short face", r"narrow mouth", r"wide mobile mouth",
-        r"close-set", r"widely spaced eyes", r"wide-set eyes", r"broad jaw", r"narrow jaw",
-        r"square chin", r"pointed chin", r"tapered chin", r"high flat cheekbone",
+        r"slender tapered oval face", r"compact heart-shaped face", r"long narrow face",
+        r"broad short face", r"delicately proportioned mouth", r"narrow mouth",
+        r"wide mobile mouth", r"expressive mouth", r"sharply focused almond eyes",
+        r"close-set", r"widely spaced", r"wide-set", r"tapered v-shaped chin",
+        r"tapered chin", r"pointed chin", r"chiseled resolute chin", r"square chin",
+        r"high sculpted cheekbone", r"high flat cheekbone", r"smoothly contoured cheek",
         r"low soft cheekbone",
     ],
     "D1 body proportion band": [
-        r"7-to-7\.5-head", r"7\.5-to-8-head", r"8\.5-head", r"\d(\.\d)?[- ]head",
+        r"7-to-7\.5-head", r"7\.5-to-8-head", r"8-to-8\.5-head", r"8\.5-head", r"\d(\.\d)?[- ]head",
     ],
     "D2 facial surface decision (specific iris optics + lip state + matte/specular zone)": [
         r"[a-z-]+ irises with radial fibre",
-        r"matte cheek|specular break|specular line|velvet-matte",
+        r"matte cheek|specular break|specular line|velvet-matte|pearl-sheen",
     ],
     "D3 orthographic static pose (explicit weight axis + empty-hand action + chin/gaze)": [
         r"weight (?:on|planted|shifted|settled|forward|locked|cocked|across)",
@@ -122,8 +125,8 @@ CLICHE_TRAPS = [
      r"snow-crowned.*starflower|starflower.*narrow silver filigree"),
     ("default pose reflex (weight on left leg, shoulders uneven, right hand loose)",
      r"weight on the left leg, shoulders slightly uneven, right hand loose at (?:her|his) side"),
-    ("generic Xianxia floating-ribbon trap",
-     r"floating silk ribbons|anti-gravity ribbons"),
+    ("mundane peasant/butcher downgrade trap (rawhide/surgical apron or tarred oilskin)",
+     r"surgical apron|rawhide apron|butcher apron|tarred oilskin"),
 ]
 
 # Boilerplate house craft & sheet layout words excluded when computing

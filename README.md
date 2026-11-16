@@ -98,21 +98,21 @@ python -I scripts/preflight.py prompt.txt --register editorial
 python -I scripts/preflight.py prompt.txt --register glamour --palette
 python -I scripts/preflight.py char_b.txt --register editorial --palette \
     --ledger batch.txt \
-    --vector "cocoon · 土金赭石 · topology 4 松弛负空间 · editorial gear 2 · dir2/浆洗立领 · 温和实用灯 · 柏油麻绳包边 · 绳结刻度 · 面部指数1.30+暗褐虹膜+眉骨旧疤 · 重心前倾+右拇指勾腰带+下巴微抬" \
+    --vector "column · 月白+天青 · topology 5 骨相紧束 · editorial gear 2 · dir4/金丝修补寒玉剑冠 · 高调珠光 · 冷银窄压边 · 冰裂剑气几何纹 · 面部指数1.50+霜银琉璃瞳+无印记 · 双足并立+双手拢广袖+平视清冷" \
     --compare-prompt char_a.txt
-python -I scripts/preflight.py char_a_wedding.txt --register glamour \
-    --ledger batch.txt --variant-of "A 守祠宗主" --inherit \
-    --vector "topology 1 顶峰下泻 · 青铜压边 · 篆刻云雷纹 · 节点聚于高冠与肩章"
+python -I scripts/preflight.py char_a_ceremony.txt --register glamour \
+    --ledger batch.txt --variant-of "A 九幽魔宗左护法" --inherit \
+    --vector "topology 1 顶峰下泻 · 暗绯鎏金宽镶边 · 业火红莲暗纹 · 节点聚于乌金高冠与双肩垂链"
 ```
 
 ## 使用示例
 
-- 角色设计：`仙侠 / 宗门序列 / editorial。设计一位在待拆藏经阁里每天跪抄残卷的老执事，出 16:9 身份三视图设定图。`
-- 角色换装（变体模式）：`基于 A 守祠宗主的角色记录，设计她出席宗门大祭时的第二套礼服造型，走变体模式。`
+- 角色设计：`仙侠 / 魔道九幽 / editorial。设计一位执掌摄魂骨铃的九幽魔宗左护法，昳丽危险，出 16:9 身份三视图设定图。`
+- 角色换装（变体模式）：`基于 A 九幽魔宗左护法的角色记录，设计他出席血海祭典时的盛装觉醒造型，走变体模式。`
 - 竖屏首帧：`设计一位短剧女主的竖屏首帧，9:16，雨夜，冷光，脸在上三分之一。`
-- 次要角色 GPT 设定图：`设计一位成年男性渡口记账吏，直接给 GPT Image 2 设定图提示词，参考附件重要角色设定图的画风。`
-- 场景与变更：`黄昏的树屋村落，不要人。` / `基于这张 MJ 村落底图，给我 GPT Image 2 雨夜版提示词，保留机位与建筑道路结构。`
-- 扩图与返图审查：`只补全被裁掉的油布披肩和袖口，不扩成全身。` / `对比设定图和这张返图，指出偏移，先只给观察。`
+- 次要角色 GPT 设定图：`设计一位仙门世家年轻剑侍，直接给 GPT Image 2 设定图提示词，参考附件重要角色设定图的画风。`
+- 场景与变更：`黄昏的悬空仙山楼阁，不要人。` / `基于这张 MJ 底图，给我 GPT Image 2 雨夜版提示词，保留机位与建筑道路结构。`
+- 扩图与返图审查：`只补全被裁掉的流光纱披帛和袖口，不扩成全身。` / `对比设定图和这张返图，指出偏移，先只给观察。`
 
 ## 安装与分发
 

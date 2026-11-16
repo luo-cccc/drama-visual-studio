@@ -112,11 +112,11 @@ python -I scripts/preflight.py prompt.txt --register editorial
 python -I scripts/preflight.py prompt.txt --register glamour --palette
 python -I scripts/preflight.py prompt.txt --register editorial \
     --ledger batch.txt \
-    --vector "cocoon · 土金赭石 · topology 4 松弛负空间 · editorial gear 2 · dir2/浆洗立领 · 温和实用灯 · 柏油麻绳包边 · 绳结刻度 · 面部指数1.30+暗褐虹膜+眉骨旧疤 · 重心前倾+右拇指勾腰带+下巴微抬" \
+    --vector "asymmetric · 玄黑+幽冥紫黑 · topology 3 单侧异化 · editorial gear 2 · dir1/墨玉指尖与乌金护指 · 明暗伦勃朗侧逆 · 乌金掐丝包边 · 幽冥骨铃脊椎纹 · 面部指数1.48+深渊血珀瞳+眼尾魔纹 · 重心落右腿+左手搭腰玉+微抬下巴垂眸" \
     --compare-prompt prev_character.txt
 python -I scripts/preflight.py variant.txt --register glamour \
-    --ledger batch.txt --variant-of "A 守祠宗主" --inherit \
-    --vector "topology 1 顶峰下泻 · 青铜压边 · 篆刻云雷纹 · 节点聚于高冠与肩章"
+    --ledger batch.txt --variant-of "A 九幽魔宗左护法" --inherit \
+    --vector "topology 1 顶峰下泻 · 暗绯鎏金宽镶边 · 业火红莲暗纹 · 节点聚于乌金高冠与双肩垂链"
 ```
 
 ## Files

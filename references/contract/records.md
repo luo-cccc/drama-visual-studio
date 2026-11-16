@@ -143,14 +143,14 @@ Keep it in the conversation or deliver it as text; do not create project files u
 
 A **variant line** sits under its character with a `↳` marker. It records only the four look factors, because a variant's identity is locked and its silhouette and key colour are inherited — see [gates.md](gates.md) §9A. A variant never consumes a silhouette or key colour slot in the cast, and it is never compared against other characters on axes 1 and 2.
 
-Worked rows, one project, showing all ten axes separating cleanly:
+Worked rows, one project, showing all ten axes separating cleanly across high-aesthetic Oriental fantasy characters:
 
 ```text
 批次账本
-A 守祠宗主 | column · 骨白 · topology 5 骨相紧束 · editorial gear 2 · dir3 / 袖口常年沾着香灰 · 高调珠光 · 素麻暗缝滚边 · 断碑裂纹 · 面部指数 1.52 + 眼裂 0.40 + 灰琥珀虹膜无痣 · 左腿锁死 + 双手拢袖贴腹 + 下巴微收平视
-    ↳ A 祭礼 | identity locked · topology 1 顶峰下泻 · 青铜压边 · 篆刻云雷纹 · 节点聚于高冠与肩章
-B 渡口记账吏 | cocoon · 土金赭石 · topology 4 松弛负空间 · editorial gear 2 · dir2 / 破旧油布衣下浆洗笔挺的立领 · 温和实用灯 · 柏油麻绳包边 · 绳结刻度 · 面部指数 1.30 + 口宽 0.86 + 暗褐虹膜 + 右眉骨旧疤 · 重心前倾压双脚掌 + 右拇指掐算食指 + 下巴微抬定视左前
-C 魔宗炼器师 | asymmetric · 冰川钛灰 · topology 3 单侧异化 · glamour gear 3 · dir7 / 右耳至颈侧一道熔银焊痕 · 明暗伦勃朗侧逆 · 拉丝黑铁铆接边 · 淬火鳞片 · 眼距 0.92 + 眼角 +7° + 熔金虹膜 + 颈侧焊痕 · 重心压右胯 + 左手按腰封铁扣右手垂落 + 侧首 20° 俯视镜头
+A 九幽魔宗左护法 | asymmetric · 玄黑+幽冥紫黑 · topology 3 单侧异化 · editorial gear 2 · dir1/墨玉化指尖与乌金骨刺护手 · 明暗伦勃朗侧逆 · 乌金掐丝包边(烟纱外袖与开衩毛边留空) · 幽冥骨铃脊椎纹 · 面部指数1.48+眼角+6°+深渊血珀瞳+左眼尾暗金魔纹 · 重心落右腿微曲+左手乌金护指轻搭腰玉+微抬下巴垂眸睨视
+    ↳ A 血海祭典盛装 | identity locked · topology 1 顶峰下泻 · 暗绯鎏金宽镶边 · 业火红莲暗纹 · 节点聚于乌金高冠与双肩垂链
+B 太虚剑宗首座 | column · 月白+天青 · topology 5 骨相紧束 · editorial gear 2 · dir4/金丝修补的半碎寒玉剑冠 · 高调珠光 · 冷银窄压边(素白内衬袖口留空) · 冰裂剑气几何纹 · 面部指数1.50+口宽0.76+霜银琉璃瞳+无面部印记 · 双足并立修长挺拔+双手拢入广袖+平视清冷直视
+C 妖族凰血少主 | hourglass · 绛红+鎏金 · topology 2 底重下坠 · glamour gear 3 · dir6/蝉翼金纱下紧锁心口的玄铁锁灵甲 · 暖调全局光 · 鎏金羽鳞滚边(层叠拖尾纱边留空) · 烬羽凰尾纹 · 面部指数1.36+眼距1.12+熔金竖瞳+眉心赤金凤羽印 · 重心前倾压步+右手微抬轻触锁骨金链+侧首4°挑眉邪笑
 ```
 
 Rules:
