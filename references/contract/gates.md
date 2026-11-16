@@ -1,10 +1,10 @@
-# Gates: Register, Risk, Conflict Order, No-Props, Discipline, Limits
+# Gates: Lock, IFV, Register, Risk, No-Props, Swap Test, 10-Axis Batch
 
 This file holds the cross-cutting constraints that apply in **every** mode and register. A rule appears here once. Other files reference the section number and never restate the text.
 
-## 1. Lock before design
+## 1. Lock and IFV triple before design
 
-Lock one genre, one subgenre, one risk level, and one register **before** choosing a motif. The lock sets the default palette, materials, silhouette, clichés, and how far the design may deviate.
+Lock one genre, one subgenre, one risk level, and one register **before** choosing a motif, and immediately declare the character's **IFV triple** (Invariant / Free / Forbidden).
 
 | Genre | Subgenres (all peers — none is the default) |
 | --- | --- |
@@ -16,17 +16,25 @@ Lock one genre, one subgenre, one risk level, and one register **before** choosi
 | Sci-fi / Cyber | Neo-oriental / hard-tech / biotech |
 | Republican / Modern Historical | 1930s / wartime / old-money / working class |
 
-**No subgenre is the default.** If the brief names only a genre, the subgenre is undetermined: infer it from the story's actual state and say so, or offer two contrasting subgenres in Mode B. The genre modules in [../bank/material.md](../bank/material.md) §3 are listed for lookup, not in order of preference.
+**No subgenre is the default.** If the brief names only a genre, the subgenre is undetermined: infer it from the story's actual state and say so, or offer two contrasting subgenres in Mode B. Read [../atlas/genre-traps.md](../atlas/genre-traps.md) for the locked subgenre's **Training-Mean Traps** and **Physical Pressure Anchors** — never as a menu of ready-made outfits.
 
-Write the lock as one line before any design work:
+Write the lock and the **IFV triple** before any design work:
 
 ```text
-[genre] / [subgenre] / [pigment family] / [silhouette family] / [gear: risk level] / [register]
+锁定行: [genre] / [subgenre] / [pigment family] / [silhouette family] / [gear: risk level] / [register]
+IFV 声明:
+  - Invariant (不变量): [1 physical structural rule locked to carry the character's thesis]
+  - Free (自由变量): [2–3 garment/construction axes left open to explore in this design]
+  - Forbidden (题材禁令): [3 concrete clichés from atlas/genre-traps.md or character logic strictly banned here]
 ```
 
-Example: `Xianxia / Tribulation-Marked / low-chroma storm violet with molten gold and a warm iron-black anchor / asymmetric / gear 3 Avant-garde / editorial`.
+Rules for the IFV triple:
 
-Name exactly one silhouette family. Name the palette as pigments, not moods. The lock line is the first line of the blueprint and the first decision of the design.
+- **Invariant** must be a physical structure or posture lock derived from the script (e.g. `collar locked rigid and high to hide a throat scar; shoulder line strictly horizontal`), never a vague mood.
+- **Free** proves the design was not retrieved as a pre-packaged row. If Free is empty, the design is a template.
+- **Forbidden** blocks the model's training-mean reflex for that subgenre before any garment line is written (e.g. `no floating ribbons, no lotus hair crown, no under-eye tear-mole`).
+
+Name exactly one silhouette family. Name the palette as pigments, not moods.
 
 ## 2. Register
 
@@ -45,13 +53,13 @@ Glamour overrides five constraints; everything else still applies:
 | --- | --- | --- |
 | Imperfections | two required, visible at full-body distance | zero to one, zero preferred; flawlessness is the product |
 | Contradiction | one from directions 1–6 | direction 7 is the native direction; directions 1–6 are legal for a deliberately fallen, working, or paying-for-it character. See the batch rule in §9 — the **signal** must differ even when the direction does not |
-| Ornament nodes | one hero + at most three supporting | no cap inside the §8 density band, but density must descend: head > chest > waist > hem |
+| Ornament nodes | one hero + at most three supporting | no cap inside the [../atlas/density.md](../atlas/density.md) §6 density band, but density must descend: head > chest > waist > hem |
 | Hero node | one ornament node, never a prop | hair or a headpiece may be the hero |
 | Palette | avoid moon white / celadon / ink / cinnabar unless the brief asks | the category's native range, so it is legal and common — but it is **not a default**. Choose it or don't; the batch rule in §9 means not every character in one project may sit in it |
 
-**Direction 7 in glamour is a family, not a single look.** `flawless surface plus one lethal signal` is the formula; the signal is the design decision. Crimson irises, a wire-thin chain, impossible symmetry, a hairline port, a breath of frost — pick one, and make it the only one. Two glamour characters in one project may both be direction 7 as long as the signal is visibly different; they may not share the signal.
+**Direction 7 in glamour is a family, not a single look.** `flawless surface plus one lethal signal` is the formula; the signal is the design decision. A wire-thin collar chain, impossible symmetry, a hairline port, a breath of frost, ash-stained fingertips — pick one derived from the character's conflict, and make it the only one. Two glamour characters in one project may both be direction 7 as long as the signal is visibly different; they may not share the signal.
 
-**The native-range trap.** Glamour's palette column reads as permission, and repeated over a project it becomes a single look: pearl white, silver, moon white, one saturated accent, high-key key, Top-Peak Cascade, direction 7. Five characters designed under that column are one character five times. The register picks acceptance criteria; it does not pick the design. §9 exists because this column is the most common cause of a homogenised cast.
+**The native-range trap.** Glamour's palette column reads as permission, and repeated over a project it becomes a single look: pearl white, silver, moon white, one saturated accent, high-key light, Top-Peak Cascade, direction 7. Five characters designed under that column are one character five times. The register picks acceptance criteria; it does not pick the design. §9 exists because this column is the most common cause of a homogenised cast.
 
 Glamour's one material obligation: flawlessness is not featurelessness. Damage is absent; BJD surface perfection carries the credibility — porcelain clarity, a controlled specular, sculpted strand clumps, a wet lower lid, a bright secondary eye reflection.
 
@@ -83,11 +91,11 @@ Semi-real 3D game CG with an anime face changes what each lever costs:
 - **"Shouldn't be there" elements are cheap.** A material from another world costs less here than in realism; it still needs a design reason.
 - **The one thing that never gets cheap**: the face must stay inside the proportion band in [visual.md](visual.md) §4. Push the eye ratio past 1.6× or the head count past 9 and the sheet drifts to chibi — a different product, not a bolder one.
 
-The ten levers themselves live in [../bank/boldness.md](../bank/boldness.md) §2.
+The ten levers themselves live in [../engine/03-costume-and-craft.md](../engine/03-costume-and-craft.md) §3.1.
 
 ## 4. No-props rule
 
-Design the person, not their inventory. **No held or carried objects in a character sheet**, in either register: no weapons, artifacts, fans, flutes, lanterns, or floating sigils. Hands stay empty, touch the hair, or hang.
+Design the person, not their inventory. **No held or carried objects in a character sheet**, in either register: no weapons, artifacts, fans, flutes, lanterns, or floating sigils. Hands stay empty, touch the hair, or engage the garment.
 
 - **Worn ornaments are in scope**: crowns, earrings, hairpins, hair chains, belts, bracelets, collars, veil pins, jewellery. The test is held/carried → out; worn → in.
 - **A script-required weapon is designed in the shot prompt**, as a shot-level asset. It is matched to the sheet's palette and motif, and must never occlude the torso or back in the sheet. Say so once in the delivery.
@@ -98,7 +106,7 @@ Design the person, not their inventory. **No held or carried objects in a charac
 | Instead of this | Design this |
 | --- | --- |
 | a prop grown from the same motif as the outfit | ornaments grown from the seed; the held object is a separate shot asset |
-| a weapon held at arm's length | hands empty, touching the hair, or braced on the body |
+| a weapon held at arm's length | hands empty, touching the hair, or braced on the garment |
 | a blade hovering beside one shoulder | a blade-fragment ornament attached to a pauldron by chain |
 | a scabbard at the hip | shot-level only; keep the hip line clean in the sheet |
 | a needle held mid-air | a threaded needle kept in the collar as a worn ornament |
@@ -123,17 +131,19 @@ Revise only what the request changes. Preserve explicit user choices, identity d
 
 ## 6. Banned prompt language
 
-One list, binding in every register and every engine. This is the union of what the individual files previously enforced.
+One list, binding in every register and every engine.
 
-**Empty fluff adjectives:** `gorgeous`, `masterpiece`, `breathtaking`, `stunning`, `very detailed`, `highly detailed`, `beautiful texture`, `ultra detailed`, `8k`.
+**Empty fluff adjectives:** `gorgeous`, `masterpiece`, `breathtaking`, `stunning`, `very detailed`, `highly detailed`, `beautiful texture`, `ultra detailed`, `8k`, `4k`.
 
-**Richness requested as an adjective:** `elaborate`, `intricate`, `ornate`, `richly decorated`, `lavishly detailed`. Enumerate layers, edges, nodes, and pattern coverage instead, per [../bank/density.md](../bank/density.md) §6.
+**Richness requested as an adjective:** `elaborate`, `intricate`, `ornate`, `richly decorated`, `lavishly detailed`. Enumerate layers, edges, nodes, and pattern coverage instead, per [../atlas/density.md](../atlas/density.md) §5.
 
 **Review vocabulary in the English prompt:** `hero ornament`, `primary open area`, `design thesis`, `aesthetic order`, `gravity topology`, `design evidence`. Translate each into visible description: "hero ornament" becomes the loudest element, "primary open area" becomes the one quiet area, "gravity topology" becomes the density sitting high or low. A model reading "the filigree is the hero ornament" learns nothing about pixels.
 
 **Engine settings dressed as images:** `roughness 0.4`, `metallic 1.0`, `IOR 1.5`, and any shader parameter.
 
 **Structure noise:** bracketed section headers, numeric percentages, comma-spliced lists of three ideas standing in for one design.
+
+**Bare generic pose strings:** `neutral balanced stance` written without a concrete weight-bearing leg, shoulder line, empty-hand action, and chin/gaze vector.
 
 Also banned as evidence: a style word used in place of an observation. `cinematic`, `game CG`, `BJD`, `anime`, `cinematic lighting` describe a production standard, not this character. Replace each with a named light direction, a named material behaviour, or a named depth cue.
 
@@ -149,66 +159,64 @@ State these plainly when they bear on the request. They are not hedging; they ar
 - **Engine behaviour is version-dependent.** Version claims live only in [visual.md](visual.md) §3 and carry a verify-before-relying marker. Do not restate them as settled fact elsewhere.
 - **Technical vocabulary describes a target appearance.** PBR, subsurface scattering, and global illumination do not configure a pipeline and do not prove one ran.
 
-## 8. Craft versus decision
+## 8. Craft versus decision — and The Swap Test
 
-Every line this skill asks you to write is one of two kinds. Confusing them is the mechanism behind a cast of identical faces, and it is the reason a fuller reference pack can reduce variety rather than increase it.
+Every line this skill asks you to write is one of two kinds. Confusing them is the mechanism behind a cast of identical faces and costumes.
 
 | Kind | What it is | How to write it | Example |
 | --- | --- | --- | --- |
 | **Craft** | how to render a thing so it reads as the house style | **verbatim, every time, never varied** | `radial iris fibre with a darker limbal ring`; `smooth porcelain skin with a soft subsurface glow`; `grouped locks with sculpted strand clumps` |
-| **Decision** | what this particular character is | **derived from the character, never defaulted** | eye width to face `1.05×` vs `1.2×`; canthal tilt `−4°` vs `+7°`; iris fill `0.78` vs `0.94`; facial index `1.38` vs `1.52` |
+| **Decision** | what this particular character is across all four dimensions (Bone, Surface, Pose, Garment) | **derived from the character's specific facts, never defaulted** | facial index `1.38` vs `1.52`; iris optics `smoke-grey matte` vs `amber-ochre`; pose `weight on locked left leg, thumb hooked in belt` vs `weight forward, hands clasped behind back` |
 
 - **Craft is invariant.** Reuse the exact wording; drift here produces a different production standard, not a different character.
-- **Decision is what makes two characters different.** If a decision value appears in a reference file as the only option, it is a default and not a decision. Say which it is.
-- **A fixed string in a decision slot is the failure.** `large almond eyes with a defined upper lid line` is correct craft; using it as the whole eye description is a defaulted decision, and every character designed that way gets the same eyes.
-- **The test:** for each face and silhouette clause, ask "could a second character in this project use this exact clause?" If yes, it is craft, and the decision is still missing. Craft clauses may be shared freely; there must be at least one decision clause per character that no other character can reuse.
-- Sources: the face craft strings and the parameter bands are in [visual.md](visual.md) §4–5, the derivation procedure is in [../bank/face.md](../bank/face.md) §2A, and the silhouette/topology/palette decisions are in [../bank/form.md](../bank/form.md) and [../bank/costume.md](../bank/costume.md) §2.
+- **Decision is what makes two characters different.** Every decision must pass **The Swap Test (换人测试)**:
+  > *"If I transplant this exact decision (iris colour, facial mark, motif seed, posture, or colour relationship) onto another character of the same genre and status, does it still make sense?"*
+  - If **yes** (e.g. "she is an aloof sword immortal, so she has ice-blue irises and a tear-mole"), the decision is a **genre cliché**, not a character derivation. Reject it and re-derive from a non-sharable personal fact (daily physical cost, specific wound, occupational habit).
+  - If **no** (it breaks immediately on anyone else because it is tied to her specific daily action or conflict), it passes.
 
-## 9. Batch differentiation
+## 9. Batch differentiation — the ten axes
 
 A design is not judged alone. The unit that homogenises is the **project**, and no single-character check can see it, because each character passes on its own merits.
 
 **Read the batch ledger before designing, write to it after.** The ledger format is in [records.md](records.md) §8. If there is no ledger, this is the first character: create one.
 
-The nine axes below are the ones a viewer actually reads at thumbnail size. Use this vector, not an intuitive notion of "different".
+The **ten axes** below cover all four orthogonal dimensions (Silhouette/Form, Garment System, Face Bone + Surface, and Static Pose):
 
 | # | Axis | Values to distinguish | Mandatory? |
 | --- | --- | --- | --- |
-| 1 | **Silhouette family** | column / bell / trapeze / cocoon / hourglass / asymmetric | **must differ** from every other character |
-| 2 | **Key colour family** | bone-white / obsidian / celadon / cinnabar-rust / glacier-grey / earth-jewel / other | **must differ** |
-| 3 | **Gravity topology** | the five in [../bank/costume.md](../bank/costume.md) §2 | must differ from the previous character |
+| 1 | **Silhouette family** | column / bell / trapeze / cocoon / hourglass / asymmetric ([../atlas/coordinates.md](../atlas/coordinates.md) §2) | **must differ** from every other character |
+| 2 | **Key colour family** | bone-white / obsidian / celadon / cinnabar-rust / glacier-grey / earth-jewel / other | **must differ** from every other character |
+| 3 | **Gravity topology** | the five in [../atlas/coordinates.md](../atlas/coordinates.md) §3 | must differ from the previous character |
 | 4 | **Register + gear** | editorial or glamour, at gear 1–4 | grade the cast; do not resolve all at one value |
-| 5 | **Contradiction direction and signal** | directions 1–7, plus the concrete signal | the **signal** must always differ; the direction may repeat if the signal and one structural axis differ |
+| 5 | **Contradiction direction & signal** | directions 1–7, plus the concrete physical signal | the **signal** must always differ; the direction may repeat if the signal and one structural axis differ |
 | 6 | **Persona light mode** | the four in [visual.md](visual.md) §8 | must differ from the previous character |
-| 7 | **Trim language** | the one edge treatment shared across edges | must differ; two characters banded in the same narrow silver filigree are one character |
-| 8 | **Motif family and its three scales** | the seed's macro / mid / micro instantiation | must differ |
-| 9 | **Identity-set face anchor** | the two or three identity parameters pushed furthest from the population mean | must differ; see [../bank/face.md](../bank/face.md) §2A |
+| 7 | **Trim language & raw set** | the one edge treatment shared across edges + which edges stay raw | must differ; two characters banded in narrow silver filigree are one character |
+| 8 | **Motif family (3 scales)** | the seed's macro / mid / micro instantiation | must differ |
+| 9 | **Face anchor (Bone + Surface)** | the 2–3 pushed bone parameters (§1A) **plus** iris colour/optics and the 0-or-1 surface mark (§1B) | **both bone anchor and iris/mark must differ** from the previous character; see [../engine/02-face-derivation.md](../engine/02-face-derivation.md) |
+| 10 | **Orthographic pose vector** | `weight axis · empty-hand action · chin & gaze` ([../engine/01-truth-and-pose.md](../engine/01-truth-and-pose.md) §7) | **at least two of the three components must differ** from every adjacent character |
 
 Rules:
 
 - **Axes 1 and 2 are hard failures.** Two characters sharing a silhouette family or a key colour family must be redesigned, even if everything else differs.
-- **At least five of the nine must differ** between any two characters. Axes 1 and 2 count toward that five.
+- **Axes 9 (Surface) and 10 (Pose) have sub-rules that never relax:** two characters in one project may not share the same iris colour + facial mark combination, and may not share more than one component of `weight · hands · gaze`.
+- **At least six of the ten axes must differ** between any two characters. Axes 1 and 2 count toward that six.
 - **"Different colour" means different family, not different name.** Bone-white and pearl-white are one family; cinnabar-rust and oxblood are one family. A name swap is not a variation.
-- **Test in this order:** wide shot (silhouette), grayscale (value), desaturated thumbnail (key colour), then the nine-axis table. A cast that passes the first three and fails the fourth is still homogenised.
-- **The batch does not have to be complete.** Read the ledger, then write the one distinguishing clause each new character needs; do not re-audit characters already accepted unless the user asks.
-- **Report the vector, don't assert difference.** `对本批次：silhouette cocoon（与 A 的 column 不同）· key 土金宝石（与 A 骨白不同）· topology 4（与 A 的 5 不同）` is a check. `和其他角色有区分` is a claim.
+- **Lexical overlap cap:** stripping out the ~111 words of fixed house craft strings, any two character prompts in the same project must have a **non-craft design word Jaccard overlap ≤ 28%** (checked via `scripts/preflight.py --compare-prompt`).
+- **Report the vector, don't assert difference.** Name the comparison explicitly against the ledger rows.
 
-### 9A. Same-character variants are exempt from axes 1 and 2
+### 9A. Same-character variants are exempt from axes 1, 2, and 9 (Bone)
 
-**These nine axes govern different characters. They do not govern a second outfit for one character.** A new costume, hairstyle, or ornament set on an existing character is a **variant**, not a cast member, and applying the cast rule to it produces the wrong answer: the rule says a shared silhouette and a shared key colour are hard failures, while a variant is *supposed* to keep both.
+**These ten axes govern different characters. They do not govern a second outfit for one character.** A new costume, hairstyle, or ornament set on an existing character is a **variant**, not a cast member.
 
-Why the exemption is correct rather than a loophole: silhouette family and key colour family are what the viewer uses to recognize a character across shots. Recasting them for a costume change is how a character stops being the same person between episodes — the exact failure the identity block exists to prevent, moved from the face to the outline.
-
-**The requirement moves instead of disappearing.** A variant is judged on two things:
+A variant is judged on two things:
 
 | Test | Requirement | If it fails |
 | --- | --- | --- |
-| **Identity integrity** | the identity block is reused **word for word** from the character's record — face parameters, hairline, permanent marks, body ratio, skin finish. No re-derivation. | recast: restore the record's identity block verbatim, discard the derived values |
-| **Look separation** | at least **three of four** look factors differ from that character's previous look: trim language, motif family, gravity topology, node distribution | the variant reads as the same outfit recoloured; change a look factor, not the identity |
+| **Identity integrity** | the identity block is reused **word for word** from the character's record — bone parameters, iris colour, hairline, permanent marks, body ratio, skin finish. No re-derivation. | recast: restore the record's identity block verbatim, discard the derived values |
+| **Look separation** | at least **three of four** look factors differ from that character's previous look: `gravity topology · trim language · motif family · node distribution` | the variant reads as the same outfit recoloured; change a look factor, not the identity |
 
-Look factors are the ones the look layer owns per [../bank/truth.md](../bank/truth.md) §8 — hair styling, clothing, makeup, temporary accessories. Silhouette and key colour are **preserved by default** and may change only when the character's situation has actually changed their status or role, and the change is stated in the blueprint.
+Look factors are the ones the look layer owns per [../engine/01-truth-and-pose.md](../engine/01-truth-and-pose.md) §8 — hair styling, clothing, makeup tint, temporary accessories. Silhouette and key colour are **preserved by default** and may change only when the character's situation has actually changed their status or role, and the change is stated in the blueprint.
 
-- **A variant is not a new ledger row competing with its character.** Record it as a variant of that character; the format is in [records.md](records.md) §8. It does not consume a silhouette or key colour slot.
-- **A variant may carry its own topology, trim, and motif, and should.** Two outfits for one character that share all four look factors are one outfit with a different name.
-- **Do not re-derive the identity set for a variant.** [../bank/face.md](../bank/face.md) §2A is the procedure for a new character. Running it again for an outfit change generates a different person and calls it a wardrobe update.
-- **Ornaments are look, not identity.** A permanent accessory named in the record stays; added pieces are per-outfit. The no-props rule still holds — [§4](gates.md) does not relax for a variant.
+- **A variant is not a new ledger row competing with its character.** Record it as a `↳` variant line under its character per [records.md](records.md) §8.
+- **Do not re-derive the identity set for a variant.** [../engine/02-face-derivation.md](../engine/02-face-derivation.md) §1A is the procedure for a new character. Running it again for an outfit change generates a different person and calls it a wardrobe update.
+- **Ornaments are look, not identity.** A permanent accessory named in the record stays; added pieces are per-outfit. The no-props rule (§4) still holds.

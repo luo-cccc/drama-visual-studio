@@ -1,178 +1,151 @@
 ---
 name: drama-visual-studio
-description: Design bold, high-aesthetic characters and costumes in a unified semi-realistic 3DCG house style (refined anime face, high-grade BJD porcelain surface, commercial animation art direction), then turn the design into production-ready prompts. Use for character design from a concept, genre/subgenre/risk/register selection, motif seeds derived from the script's conflict, ornament density, derived identity sets, three-view plus 2x2 concept sheets, GPT Image 2 minor-character sheets, scene bases, scene variations, viewpoint changes, controlled outpainting, two-stage Midjourney-to-GPT-Image-2 asset chains, and checking returned images to write correction prompts. Also use when characters or costumes converge on one look across a project, since it carries a batch ledger and nine differentiation axes. Delivers prompt text and design specs only; it does not generate or edit images. Triggers include 角色设计、人设、三视图、服装设计、装饰密度、角色同质化、场景底图、场景一致性、扩图、返图修正、角色设定图.
+description: Design bold, high-aesthetic characters and costumes in a unified semi-realistic 3DCG house style (refined anime face, high-grade BJD porcelain surface, commercial animation art direction), then turn the design into production-ready prompts. Uses a 4D derivation engine (Truth & Orthographic Pose, Cranial Bone & Facial Surface Signifiers, Conflict-to-Seed + IFV Triple, and 5 Craft Operators) plus an Adversarial Critique Gate (Swap Test) and a 10-axis batch ledger to prevent facial, pose, and costume homogenization. Covers character design, costume variants, three-view plus 2x2 concept sheets, GPT Image 2 sheets, scene bases, scene variations, viewpoint changes, controlled outpainting, two-stage Midjourney-to-GPT-Image-2 asset chains, and returned-image drift repair. Delivers prompt text and design specs only; it does not generate or edit images. Triggers include 角色设计、人设、三视图、服装设计、装饰密度、角色同质化、场景底图、场景一致性、扩图、返图修正、角色设定图.
 ---
 
 # Drama Visual Studio
 
-One skill, four modes. Design the character, design a second look for one, produce the prompts its production needs — or start from a design that already exists.
+One skill, four modes. Derive a character across four orthogonal dimensions, design a second look for an existing character, produce downstream production prompts, or diagnose a returned image.
 
-The pack is engine-agnostic by structure. Midjourney is the default engine for art direction and first images, GPT Image 2 for structured sheets and scene edits, with SD/Flux and CN engines supported through the same exclusion policy. Midjourney is the default, not the requirement.
+The pack is engine-agnostic by structure. Midjourney is the default engine for art direction and first images, GPT Image 2 for structured sheets and scene edits, with SD/Flux and CN engines supported through the same exclusion policy.
 
 ## Load contract
 
-Files are grouped by how they load, not by topic. Read the required set, open the optional set only when the task needs it, and do not read a bank file end to end when a section reference will do.
+Files are grouped by how they load:
 
 - `contract/` — binding on every output. One rule, one home. Never restated elsewhere.
-- `pipeline/` — numbered procedures. They reference the contract and the bank; they do not redefine them.
-- `bank/` — lookup and diagnosis. Read sections on demand.
+- `engine/` — 4D derivation procedures, inline craft operators, adversarial critique, and drift repair.
+- `atlas/` — orthogonal coordinate systems, unbundled physical lexicon, and subgenre cliché blacklists. Read after `engine/01`–`02` have established the character's facts.
+- `pipeline/` — numbered workflow procedures and syntactic assembly wireframes.
 
 | Task | Required | Optional | Do not load |
 | --- | --- | --- | --- |
-| Character design | [contract/visual.md](references/contract/visual.md), [contract/gates.md](references/contract/gates.md) §8–9, [contract/records.md](references/contract/records.md) §8, [pipeline/design.md](references/pipeline/design.md), [bank/truth.md](references/bank/truth.md), [bank/face.md](references/bank/face.md) §2A–6, [bank/costume.md](references/bank/costume.md) §1, [bank/form.md](references/bank/form.md), [bank/material.md](references/bank/material.md), [bank/density.md](references/bank/density.md) | [bank/boldness.md](references/bank/boldness.md), [references/demos.md](references/demos.md) | — |
-| Identity or costume sheet | [contract/visual.md](references/contract/visual.md), [contract/records.md](references/contract/records.md), [pipeline/sheet.md](references/pipeline/sheet.md), [bank/face.md](references/bank/face.md) | [bank/costume.md](references/bank/costume.md) §5A | design bank, scene files |
-| GPT Image 2 sheet | [contract/visual.md](references/contract/visual.md), [contract/records.md](references/contract/records.md), [pipeline/gpt-sheet.md](references/pipeline/gpt-sheet.md), [bank/face.md](references/bank/face.md) | [pipeline/sheet.md](references/pipeline/sheet.md) | MJ parameter columns |
-| Vertical frame or portrait | [contract/visual.md](references/contract/visual.md), [bank/framing.md](references/bank/framing.md) | [bank/face.md](references/bank/face.md) | design bank |
-| Scene base | [contract/visual.md](references/contract/visual.md), [pipeline/scene.md](references/pipeline/scene.md) | [bank/material.md](references/bank/material.md) §3, [bank/framing.md](references/bank/framing.md) §3 | design bank |
-| Scene variation or viewpoint change | [contract/visual.md](references/contract/visual.md), [contract/records.md](references/contract/records.md), [pipeline/scene-edit.md](references/pipeline/scene-edit.md) | [pipeline/outpaint.md](references/pipeline/outpaint.md) | design bank |
-| Outpainting | [contract/visual.md](references/contract/visual.md), [pipeline/outpaint.md](references/pipeline/outpaint.md) | [contract/records.md](references/contract/records.md) §1 | design bank |
-| Asset chain | [contract/visual.md](references/contract/visual.md), [contract/records.md](references/contract/records.md), [pipeline/asset-chain.md](references/pipeline/asset-chain.md) | [bank/framing.md](references/bank/framing.md) §5 | design bank |
-| Review a returned image | [contract/records.md](references/contract/records.md), the repair table in the matching pipeline file | [bank/face.md](references/bank/face.md) §7 for face drift | everything else |
+| **Character design (Mode A / B / Portrait)** | [contract/visual.md](references/contract/visual.md), [contract/gates.md](references/contract/gates.md), [contract/records.md](references/contract/records.md) §8, [pipeline/design.md](references/pipeline/design.md), [engine/01-truth-and-pose.md](references/engine/01-truth-and-pose.md), [engine/02-face-derivation.md](references/engine/02-face-derivation.md), [engine/03-costume-and-craft.md](references/engine/03-costume-and-craft.md), [engine/04-critique-and-repair.md](references/engine/04-critique-and-repair.md) §1–2, [atlas/genre-traps.md](references/atlas/genre-traps.md), [atlas/density.md](references/atlas/density.md), [atlas/lexicon.md](references/atlas/lexicon.md) | [atlas/coordinates.md](references/atlas/coordinates.md), [pipeline/sheet.md](references/pipeline/sheet.md) | scene files |
+| **Costume variant (Mode C)** | [contract/visual.md](references/contract/visual.md), [contract/gates.md](references/contract/gates.md) §9A, [contract/records.md](references/contract/records.md) §1 & §8, [pipeline/design.md](references/pipeline/design.md) §1 Mode C, [engine/03-costume-and-craft.md](references/engine/03-costume-and-craft.md), [atlas/density.md](references/atlas/density.md), [atlas/lexicon.md](references/atlas/lexicon.md) | [engine/04-critique-and-repair.md](references/engine/04-critique-and-repair.md) §1–2 | `engine/02-face-derivation.md` §1A (never re-derive face) |
+| **Identity or costume sheet** | [contract/visual.md](references/contract/visual.md), [contract/records.md](references/contract/records.md), [pipeline/sheet.md](references/pipeline/sheet.md), [engine/01-truth-and-pose.md](references/engine/01-truth-and-pose.md) §7 | [engine/03-costume-and-craft.md](references/engine/03-costume-and-craft.md) §3.2 | scene files |
+| **GPT Image 2 sheet** | [contract/visual.md](references/contract/visual.md), [contract/records.md](references/contract/records.md), [pipeline/gpt-sheet.md](references/pipeline/gpt-sheet.md), [pipeline/sheet.md](references/pipeline/sheet.md) | [engine/01-truth-and-pose.md](references/engine/01-truth-and-pose.md) | MJ parameter columns |
+| **Vertical frame or portrait** | [contract/visual.md](references/contract/visual.md), [atlas/coordinates.md](references/atlas/coordinates.md) §4 | [engine/02-face-derivation.md](references/engine/02-face-derivation.md) §4–5 | sheet files |
+| **Scene base** | [contract/visual.md](references/contract/visual.md), [pipeline/scene.md](references/pipeline/scene.md) | [atlas/coordinates.md](references/atlas/coordinates.md) §4, [atlas/genre-traps.md](references/atlas/genre-traps.md) | character design engine |
+| **Scene variation or viewpoint change** | [contract/visual.md](references/contract/visual.md), [contract/records.md](references/contract/records.md), [pipeline/scene-edit.md](references/pipeline/scene-edit.md) | [pipeline/outpaint.md](references/pipeline/outpaint.md) | character design engine |
+| **Outpainting** | [contract/visual.md](references/contract/visual.md), [pipeline/outpaint.md](references/pipeline/outpaint.md) | [contract/records.md](references/contract/records.md) §1 | character design engine |
+| **Asset chain** | [contract/visual.md](references/contract/visual.md), [contract/records.md](references/contract/records.md), [pipeline/asset-chain.md](references/pipeline/asset-chain.md) | [atlas/coordinates.md](references/atlas/coordinates.md) §4, [engine/03-costume-and-craft.md](references/engine/03-costume-and-craft.md) §3.3 | — |
+| **Review a returned image** | [contract/records.md](references/contract/records.md), [engine/04-critique-and-repair.md](references/engine/04-critique-and-repair.md) §4 (for characters) or [pipeline/scene-edit.md](references/pipeline/scene-edit.md) §6 (for scenes) | — | everything else |
 
 ## Choose the mode
 
-### Design mode — create a character or outfit
+### Design mode — derive a new character or outfit
 
-Use when the user supplies a character concept, a race/profession/archetype, a costume idea, or asks for a new design sheet, and the requested design or costume is not yet confirmed. A second outfit for a character who already exists is [variant mode](#variant-mode--a-second-outfit-for-a-character-who-already-exists), not design mode.
+Use when the user supplies a character concept, a script conflict, or asks for a new design sheet. A second outfit for a character who already exists is [Variant mode](#variant-mode--a-second-outfit-for-a-character-who-already-exists), not Design mode.
 
-Follow [pipeline/design.md](references/pipeline/design.md). It owns the batch layer, the 6-layer design stack, the 7-point blueprint, the prompt budget, the single preflight, and drift repair.
+Follow [pipeline/design.md](references/pipeline/design.md). Read the batch ledger ([contract/records.md](references/contract/records.md) §8) first; if none exists, create one. Deliver, in order:
 
-Deliver, in order:
-
-1. The lock line: `[genre] / [subgenre] / [pigment family] / [silhouette family] / [gear] / [register]`.
-2. **All 7** blueprint points in Chinese — including point 5, ornament density, **counted** (layers, edge rate, node count, pattern coverage), never described as an adjective, and placed at a different point in the band than the batch's previous character.
-3. The preflight result for the locked register, as a short list of counts, including the batch vector.
-4. One copy-ready prompt for the selected design output (portrait, Midjourney sheet, or GPT Image 2 sheet), in a fenced code block.
-5. Engine-appropriate exclusions, a short note on inferred details, and the target canvas.
-
-For a reusable character that later shots will reuse, finish with the compact character record from [contract/records.md](references/contract/records.md) §1.
-
-**Before designing anything, read the batch ledger** ([contract/records.md](references/contract/records.md) §8) **and check whether this is a new character or a second look.** Those two cases have different rules and the wrong one fails a correct design.
-
-- **New character** — silhouette and key colour must differ from every existing row, and five of the nine axes must differ from any other character ([contract/gates.md](references/contract/gates.md) §9).
-- **Second look for an existing character** — this is Mode C, a variant. Silhouette and key colour are **inherited**, not cleared; the identity block is restated verbatim and never re-derived; and three of four look factors must differ from that character's previous look ([contract/gates.md](references/contract/gates.md) §9A, [pipeline/design.md](references/pipeline/design.md) §1 Mode C). Running the cast rule here would demand that the character stop looking like themselves.
-
-When there is no ledger, this is the first character: create one.
-
-**Two things are decided, not copied.** The seed comes from the script's conflict ([bank/costume.md](references/bank/costume.md) §1C), not from the seed library, which is calibration. The identity set of ten face parameters comes from the character's Position facts ([bank/face.md](references/bank/face.md) §2A), not from a register preset. Craft strings — the eye design, the iris fibre, the porcelain finish — are reused verbatim; those are how a thing renders, not who this person is. [Contract/gates.md](references/contract/gates.md) §8 is the distinction and §9 is the batch check.
-
-Keep the work proportional: a one-off portrait may abbreviate to the lock line, thesis, identity block, and palette. A design sheet or a recurring character gets the full 7 points.
+1. **Lock line + IFV Triple** (`Invariant / Free / Forbidden`, blocking 3 subgenre reflexes from [atlas/genre-traps.md](references/atlas/genre-traps.md)).
+2. **All 7 blueprint points in Chinese**:
+   - Point 1: genre/risk lock and the **4D Orthographic Pose Vector** (`weight axis · shoulder-neck line · empty-hand action · chin & gaze`).
+   - Point 2: Position triple, Step 0 daily body cost (if thin brief), life traces, contradiction signal, and physical-anchor thesis.
+   - Point 3: conflict-derived motif seed and the three growth answers (Support, Pressure, Empty Hands).
+   - Point 4: gravity topology, **vertical cut proportions** (§2.1), **physical understructure/grounding** (§2.5), and back-view resolution.
+   - Point 5: **all four density factors counted** (layers, edge rate + raw edge set, node count with mechanical jobs, 3-scale motif) plus the **open breathing area and rhythmic breakpoint** (§2.2).
+   - Point 6: **10% grayscale Notan 70/25/5 masses** (§2.3), HEX codes, **counter-temperature clash** (§2.4), and material light behaviours.
+   - Point 7: head-count band + shoulder-waist-hip, **§1A ten derived bone values**, **§1B five derived surface signifiers** (iris optics, periocular weight, lip state, specular/matte map, **0-mark default**), hair architecture, bottom-right macro shift, light mode, and canvas.
+3. **The 3-line Adversarial Critique Gate** ([engine/04-critique-and-repair.md](references/engine/04-critique-and-repair.md) §1): `Generic Accusation` vs `Specific Rebuttal (3 drawable nouns)` + `Swap Verdict`.
+4. **Preflight & 10-Axis Batch Vector report**.
+5. **One copy-ready English prompt** assembled via the 5-block syntactic wireframe ([pipeline/design.md](references/pipeline/design.md) §4) in a fenced code block, plus engine exclusions and a brief note on any `[inferred biography]`.
+6. For recurring characters, finish with the compact **Character Record** and updated **10-Axis Batch Ledger row** ([contract/records.md](references/contract/records.md) §1, §8).
 
 ### Variant mode — a second outfit for a character who already exists
 
-Use when the request is a new outfit, hairstyle, ornament set, or occasion look on a character who already has a record, and the character themself is not changing.
+Follow [pipeline/design.md](references/pipeline/design.md) §1 Mode C and [contract/gates.md](references/contract/gates.md) §9A:
 
-Follow [pipeline/design.md](references/pipeline/design.md) §1 Mode C. In short:
-
-1. **Read the character record** ([contract/records.md](references/contract/records.md) §1) and reuse its identity block, palette roles, and confirmed finish word for word. **Do not run [bank/face.md](references/bank/face.md) §2A** — that procedure derives a new face, and this character already has one.
-2. **Derive the seed from this outfit's occasion**, not the character's whole life ([bank/costume.md](references/bank/costume.md) §1C).
-3. **Design the look layer:** layers, construction, closures, materials, trim language, motif family, gravity topology, ornament set. Clear three of four against the character's previous look.
-4. **Keep silhouette and key colour** unless their status or role has actually changed, and say so when it has.
-5. Deliver the same 7-point blueprint, with points 2 and 7 rewritten per Mode C: point 2 is the occasion, point 7 restates the record's identity values.
-
-Record the result as a `↳` variant line under its character in the ledger, carrying `identity locked` plus the four look factors — not as a new cast row.
+1. **Read the character record** ([contract/records.md](references/contract/records.md) §1) and reuse its identity block (§1A bone + §1B surface/iris/mark), palette roles, and confirmed finish word for word. **Do not re-run `engine/02-face-derivation.md` §1A.**
+2. **Derive the seed from this outfit's specific occasion** ([engine/03-costume-and-craft.md](references/engine/03-costume-and-craft.md) §1).
+3. **Clear the look-separation test:** at least **three of four** look factors (`gravity topology · trim language · motif family · node distribution`) must differ from that character's previous look.
+4. **Keep silhouette and key colour** unless their status or role has actually changed.
+5. Record the result as a `↳` variant line under its character in the ledger.
 
 ### Production mode — turn a design into an output prompt
 
-Use when a character design already exists — from design mode, another design skill, or the user — and the request is for a specific downstream prompt.
-
 1. Build or read the character record in [contract/records.md](references/contract/records.md) §1. Reuse its identity block word-for-word.
 2. Route by requested output using the load contract table above.
-3. Keep the work proportional: a recurring, identity-critical character gets a full record; a one-off background figure gets a short identity clause, not a design pass.
+3. Deliver one copy-ready prompt in a fenced code block.
 
 ### Review mode — check a returned image
 
-Use when the user supplies a generated image and asks whether it matches its source.
+- Compare only images actually supplied ([contract/gates.md](references/contract/gates.md) §7).
+- For character sheets and portraits, use [engine/04-critique-and-repair.md](references/engine/04-critique-and-repair.md) §4.
+- For scenes, use [pipeline/scene-edit.md](references/pipeline/scene-edit.md) §6.
+- Report observed differences first; provide a focused correction prompt only when requested.
 
-- Compare only images actually supplied. Do not declare a visual pass without seeing them.
-- For scenes, use the returned-image checks in [pipeline/scene-edit.md](references/pipeline/scene-edit.md) §6.
-- For character sheets, use the drift-repair table in [pipeline/design.md](references/pipeline/design.md) §7.
-- Report observed differences and, when requested, one focused correction prompt from the selected version. If the drift is broad, recommend returning to the last suitable version and reapplying the still-required changes.
+## Output contract & rule ownership
 
-## Output contract
-
-- **Design mode**: lock line, 7-point blueprint, preflight counts, one prompt per selected sheet mode, engine-appropriate exclusions, and a short inferred-detail note.
-- **Variant mode**: lock line with silhouette and key colour marked as inherited, 7-point blueprint with points 2 and 7 rewritten, preflight counts including variant integrity, one prompt, exclusions, and the `↳` ledger line.
-- **Production mode**: a short handoff note when useful (source, locked fields, inferred fields), then one copy-ready prompt per requested output.
-- **Review mode**: observed findings first; a focused correction prompt only when requested.
-
-Universal rules — each is owned by one file, so read it there rather than expecting a restatement here:
+Universal rules — each is owned by one file:
 
 | Rule | Owner |
 | --- | --- |
-| House style, medium selection, parameters, version facts | [contract/visual.md](references/contract/visual.md) §1–3 |
-| Face craft vs face decision, the six required elements | [contract/visual.md](references/contract/visual.md) §5 |
-| Lighting — character modes, scene modes, interiors, night, multi-source | [contract/visual.md](references/contract/visual.md) §8 and §8A |
-| Background, resolution, split protocol | [contract/visual.md](references/contract/visual.md) §9–10 |
-| Exclusion policy per engine | [contract/visual.md](references/contract/visual.md) §11 |
-| Register, risk gear, conflict order, no-props | [contract/gates.md](references/contract/gates.md) §1–5 |
-| Banned prompt language | [contract/gates.md](references/contract/gates.md) §6 |
-| Capability limits and what never to promise | [contract/gates.md](references/contract/gates.md) §7 |
-| **Craft versus decision — what is reused and what is derived** | [contract/gates.md](references/contract/gates.md) §8 |
-| **Batch differentiation — the nine axes and the five-of-nine rule** | [contract/gates.md](references/contract/gates.md) §9 |
-| **Same-character variants — identity locked, look separation** | [contract/gates.md](references/contract/gates.md) §9A |
-| Character and location records, reference roles, output delta | [contract/records.md](references/contract/records.md) |
-| **Batch ledger — the project's axis vector** | [contract/records.md](references/contract/records.md) §8 |
-| Canvas choice, vertical composition, safe areas | [bank/framing.md](references/bank/framing.md) |
-| Face parameters, register presets, charm, **identity-set derivation** | [bank/face.md](references/bank/face.md) §2A, §3–7 |
-| **Motif seed derivation from the script** | [bank/costume.md](references/bank/costume.md) §1C |
+| House style, medium selection, engine parameters, version facts | [contract/visual.md](references/contract/visual.md) §1–3 |
+| Semi-real proportions & the six required face craft vs decision elements | [contract/visual.md](references/contract/visual.md) §4–5 |
+| Character/scene lighting, background value, split protocol, exclusions | [contract/visual.md](references/contract/visual.md) §8–11 |
+| Genre lock + IFV triple, register, risk gear, no-props, conflict order | [contract/gates.md](references/contract/gates.md) §1–5 |
+| Banned prompt language & capability limits | [contract/gates.md](references/contract/gates.md) §6–7 |
+| **Craft vs decision & The Swap Test** | [contract/gates.md](references/contract/gates.md) §8 |
+| **10-axis batch differentiation & Mode C variant rules** | [contract/gates.md](references/contract/gates.md) §9, §9A |
+| Character/location records, reference roles, output delta, **10-axis ledger** | [contract/records.md](references/contract/records.md) §1–8 |
+| Step 0 Thin-Brief compiler, contradiction directions, **4D orthographic pose** | [engine/01-truth-and-pose.md](references/engine/01-truth-and-pose.md) §1, §5, §7 |
+| **§1A ten bone parameters & §1B five facial surface signifiers** | [engine/02-face-derivation.md](references/engine/02-face-derivation.md) §1A, §1B |
+| Conflict-to-seed compiler, IFV triple, **5 inline Craft Operators** | [engine/03-costume-and-craft.md](references/engine/03-costume-and-craft.md) §1–2 |
+| **Adversarial Critique Gate, 12 Generic Autopsies, drift repair** | [engine/04-critique-and-repair.md](references/engine/04-critique-and-repair.md) §1–4 |
+| 16 face dials (EW), 6 silhouettes, 5 topologies, canvas framing (`9:16` / `16:9` / `3:4`) | [atlas/coordinates.md](references/atlas/coordinates.md) §1–4 |
+| 4-factor ornament density, 4-clause template, **batch band-spread** | [atlas/density.md](references/atlas/density.md) §1–6A |
+| Unbundled physical lexicon, mineral pigments, token-frequency caps | [atlas/lexicon.md](references/atlas/lexicon.md) §1–5 |
+| 15 subgenre cliché blacklists (`Forbidden` sources) & physical pressure anchors | [atlas/genre-traps.md](references/atlas/genre-traps.md) §1–3 |
 
-Two rules that apply everywhere and are worth stating once at the top level:
-
-1. **Put the finished prompt in a fenced code block** so it is easy to copy. Add analysis or layout guidance only when the workflow or the user asks for it.
-2. **Deliver prompt text.** Do not generate an image unless the user separately asks for one, and do not claim a mask, structure guide, reference binding, or renderer has been configured or executed.
+Two rules apply everywhere:
+1. **Put the finished prompt in a fenced code block** so it is easy to copy.
+2. **Deliver prompt text only.** Do not generate an image unless separately requested, and do not claim a mask, control map, reference binding, or renderer has been executed.
 
 ## Run the counted checks
 
-`scripts/preflight.py` is the mechanical half of the preflight in [pipeline/design.md](references/pipeline/design.md) §6. It parses a finished prompt and reports word count, colour and material term frequencies against the caps, banned words, `--no` policy, whether the required identity elements are present, whether the identity set was derived rather than defaulted, and — with `--ledger` — whether the batch vector actually differs from the characters already designed. It exits non-zero on failure, so it can gate a pipeline.
+`scripts/preflight.py` checks word budget, colour/material caps, banned words, bare generic pose strings, required house craft elements, all four 4D decision anchors, cliché N-gram traps, 10-axis batch ledger differentiation, and cross-cast non-craft lexical overlap:
 
 ```bash
 python -I scripts/preflight.py prompt.txt --register editorial
 python -I scripts/preflight.py prompt.txt --register glamour --palette
-python -I scripts/preflight.py prompt.txt --register glamour \
-    --ledger batch.txt --vector "cocoon · umber · languid · glamour gear 2 · dir2 · warm-gi · rope piping · rope-knot · facial 1.30"
+python -I scripts/preflight.py prompt.txt --register editorial \
+    --ledger batch.txt \
+    --vector "cocoon · 土金赭石 · topology 4 松弛负空间 · editorial gear 2 · dir2/浆洗立领 · 温和实用灯 · 柏油麻绳包边 · 绳结刻度 · 面部指数1.30+暗褐虹膜+眉骨旧疤 · 重心前倾+右拇指勾腰带+下巴微抬" \
+    --compare-prompt prev_character.txt
 python -I scripts/preflight.py variant.txt --register glamour \
-    --ledger batch.txt --variant-of "A 女主" --inherit \
-    --vector "topology 5 骨相紧束 · 珠白缎镶边 · 团花缠枝 · 节点聚于发冠"
+    --ledger batch.txt --variant-of "A 守祠宗主" --inherit \
+    --vector "topology 1 顶峰下泻 · 青铜压边 · 篆刻云雷纹 · 节点聚于高冠与肩章"
 ```
-
-Pass `--vector` whenever you pass `--ledger`. For a new character it is the blueprint's nine axes; without it the checker can only see the three or four axes visible in the prompt prose and will report fewer differences than the design has. For a variant, `--variant-of` switches to Mode C: axes 1 and 2 are exempt and `--vector` becomes the four look factors instead. Add `--inherit` to verify the opposite of the cast rule — that the silhouette and key colour still match the character, so a new character cannot be filed as a variant to escape axes 1-2.
-
-Use it for the counted lines, then judge the rest yourself. It cannot see silhouette readability, value hierarchy, whether the face wins, whether the design is charming, or whether it reads as a product. It also cannot see whether the face looks like the batch's last character — it checks that ten values were derived from facts, which is a procedure and not a result. Those are judged checks, and reporting them as though a script passed them is the one thing the preflight forbids.
 
 ## Files
 
-Contract — binding, one home per rule:
+Contract:
+- `references/contract/visual.md` — house style, engine parameters, proportions, face craft vs decision, environments, lighting (§8 & §8A), background, split protocol, exclusions.
+- `references/contract/gates.md` — genre lock + IFV triple, register, risk gear, no-props rule, banned language, capability limits, craft vs decision + Swap Test, 10-axis batch differentiation & Mode C variants.
+- `references/contract/records.md` — character record, location record, version selection, reference roles, output delta, 10-axis batch ledger.
 
-- `references/contract/visual.md` — house style, style selection, engine parameters and version facts, proportions, character and environment rendering, integration, lighting, background, resolution and split, exclusion policy, prompt discipline.
-- `references/contract/gates.md` — genre and subgenre lock, register, risk gear and lever cap, no-props rule, conflict order, banned prompt language, capability limits, **craft versus decision**, **batch differentiation**.
-- `references/contract/records.md` — character record, location record, source and version selection, reference roles, output delta, delivery shape, **batch ledger**.
+Engine:
+- `references/engine/01-truth-and-pose.md` — Step 0 Thin-Brief compiler, three questions, ten dimensions, seven contradiction directions, design thesis, 4D orthographic pose vector.
+- `references/engine/02-face-derivation.md` — §1A ten bone geometry parameters + §1B five facial surface signifiers (iris optics, periocular weight, lip state, specular/matte map, 0-mark default), mood dials, charm, gaze/turn/tilt.
+- `references/engine/03-costume-and-craft.md` — conflict-to-seed compiler, three growth rules, IFV triple, 5 inline Craft Operators (Proportion, Rhythm, Notan, Colour, Grounding), ten boldness levers, glamour hair system, I2V adaptation.
+- `references/engine/04-critique-and-repair.md` — Adversarial Critique Gate (Swap Test), 12 Generic Failure Autopsies, under/over-shoot detection, returned-image drift repair.
 
-Pipeline — procedures, numbered, reference the contract:
+Atlas:
+- `references/atlas/coordinates.md` — 16 face parameters (EW), 6 silhouette families, 5 gravity topologies, narrative & sheet canvas framing (`9:16`, `16:9`, `3:4`).
+- `references/atlas/density.md` — 4 density factors (layers, edges + raw set, nodes with mechanical jobs, 3-scale pattern), gradient, 4-clause template, batch band-spread (§6A).
+- `references/atlas/lexicon.md` — unbundled atomic physical lexicon (4 light behaviours, fabric weight/drape, historical tailoring & hardware, patina & wear, mineral pigments, token-frequency caps).
+- `references/atlas/genre-traps.md` — 15 subgenre cliché blacklists & world physical pressure anchors.
 
-- `references/pipeline/design.md` — batch layer, 6-layer design stack, 7-point blueprint with per-point sources, prompt budget and its counting method, **the single preflight**, drift repair.
-- `references/pipeline/sheet.md` — identity sheet, costume sheet, asset sheet; layout, occupancy, assembly scaffolds.
-- `references/pipeline/gpt-sheet.md` — GPT Image 2 sheet design, layout reuse, MJ-syntax conversion.
-- `references/pipeline/scene.md` — first scene base, character placement, composition, signage.
-- `references/pipeline/scene-edit.md` — fixed-view variations, new views, available control, returned-image checks.
+Pipeline:
+- `references/pipeline/design.md` — modes, 4D derivation stack, 7-point blueprint, content-free 520–585 word syntactic wireframe, dual preflight + critique gate.
+- `references/pipeline/sheet.md` — identity, costume, and asset sheets.
+- `references/pipeline/gpt-sheet.md` — GPT Image 2 character sheets.
+- `references/pipeline/scene.md` — first scene base.
+- `references/pipeline/scene-edit.md` — fixed-view variations, camera moves, returned-image scene checks.
 - `references/pipeline/outpaint.md` — controlled crop completion.
-- `references/pipeline/asset-chain.md` — Midjourney style base to GPT Image 2 structured assets and first frames.
-
-Bank — lookup and diagnosis sections:
-
-- `references/bank/face.md` — 16 face parameters in eye-width units, **identity-set derivation**, editorial and glamour presets, six archetype mood sets, charm, gaze and turn, face drift diagnosis.
-- `references/bank/framing.md` — canvas choice by use, vertical 9:16 composition and safe areas, widescreen, portrait, sequence consistency.
-- `references/bank/truth.md` — three questions, ten dimensions, contradictions, thesis, posture, identity layers, ensemble differentiation, prompt-ready blocks.
-- `references/bank/costume.md` — motif seeds, **seed derivation from the script**, gravity topologies, texture matrices, persona makeup, glamour hair, ensemble matrix.
-- `references/bank/form.md` — silhouette, value hierarchy, colour system, palette saturation discipline, token-frequency quota, render-vocabulary budget, reference synthesis.
-- `references/bank/material.md` — material system and light behaviours, composition and restraint, genre aesthetic modules, diagnostic checks.
-- `references/bank/boldness.md` — ten levers, anti-conservative rules, under- and over-shoot detection, bold palettes and silhouettes.
-- `references/bank/density.md` — layers, edges, nodes, pattern coverage, density gradient, four-clause template, **band spread across a batch**.
-
-Calibration:
-
-- `references/demos.md` — three worked demos (two editorial, one glamour) that clear the batch check against each other, all with 7 blueprint points and a counted preflight.
+- `references/pipeline/asset-chain.md` — two-stage Midjourney-to-GPT-Image-2 asset chain.
 
 Tooling:
-
-- `scripts/preflight.py` — the mechanical half of the preflight: word budget, colour and material caps, banned words, required craft elements, identity-set derivation, and batch differentiation against a ledger. Does not judge.
+- `scripts/preflight.py` — mechanical preflight, 4D anchor checker, cliché N-gram trap scanner, 10-axis ledger comparator, and cross-cast non-craft lexical overlap checker.

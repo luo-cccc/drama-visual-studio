@@ -49,8 +49,6 @@ Use the user's requested language, otherwise the language of the request. Delive
 
 Describe the aspect ratio in natural language, normally retaining the source frame rather than resetting it to 16:9. Keep unrequested text absent, preserve established signage, and use exact replacement words only when supplied or readable. Remove MJ suffixes, reference codes, and weights, including `--ar`, `--raw`, `--s`, `--sref`, `--cref`, `--oref`, and `--no`. Do not translate them into invented GPT Image settings or claim UI/API configuration. Full exclusion rules are in [../contract/visual.md](../contract/visual.md) §11.
 
-This scaffold is for an available source and a fixed-view edit. Fill it from actual inputs and omit irrelevant clauses. For a new view, crop, or extension, replace the affected locks. Without an attachment, describe the pending source rather than claiming it is present.
-
 ```text
 以附件[实际编号或明确描述]的[底图或当前版本]为编辑对象，生成同一地点的一张变更图。[其他附件如有：说明各自提供的结构、其他视角、身份或画风依据，以及本次取用的内容。]
 
@@ -74,6 +72,6 @@ Review only images actually available. Without a returned result, supply the pro
 
 If an error is local, describe the specific difference and issue a focused correction prompt from the selected result or a suitable earlier source. If drift is broad, suggest returning to the last suitable version and reapplying all still-required accepted changes explicitly; do not silently discard the current state. Decompose changes only when it helps isolate an observed failure or the user asks for stages.
 
-For a character sheet, use the drift-repair table in [design.md](design.md) §7. For a character inserted into a scene, check the identity block against the character record before judging the scene, and separate identity drift from scene drift.
+For a character sheet, use the drift-repair tables in [../engine/04-critique-and-repair.md](../engine/04-critique-and-repair.md) §4. For a character inserted into a scene, check the identity block against the character record before judging the scene, and separate identity drift from scene drift.
 
 Mention only observed issues and relevant unknowns. For strict preservation outside a local edit, a supported mask plus compositing can be recommended as a separate tool operation; generation instructions alone do not guarantee unchanged pixels. Do not perform image generation or editing without the user's separate request.

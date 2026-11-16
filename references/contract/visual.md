@@ -2,7 +2,7 @@
 
 This file is the **only** source of truth for the house style, rendering language, lighting, background, resolution, engine parameters, and exclusion policy. Every other file references these sections and never restates them.
 
-Read it with every workflow, in all three modes.
+Read it with every workflow, in all four modes.
 
 Every new image defaults to one unified semi-realistic 3DCG system with next-generation game-cinematic and commercial-animation production values. Characters are refined and stylized; environments are naturalistic and physically grounded. Both rest on the same art direction, rendering logic, material system, lighting behaviour, colour management, and cinematic post-processing. Different visual treatment is intended; looking like two different worlds is not.
 
@@ -56,7 +56,7 @@ One table, all outputs. User-specified values override every default here.
 | GPT Image 2 / Gemini | natural language, e.g. "16:9 landscape canvas" | no MJ flags at all |
 | Stable Diffusion / Flux / ComfyUI | set in the UI | drop `--ar` and resolution tokens from the positive |
 
-**Canvas is chosen by use, not by habit.** Composition, figure occupancy, safe areas, and the information budget differ per canvas and are specified in [../bank/framing.md](../bank/framing.md). Vertical 9:16 is the narrative default for short drama; 16:9 is the scene-plate and sheet default; neither converts into the other by cropping.
+**Canvas is chosen by use, not by habit.** Composition, figure occupancy, safe areas, and the information budget differ per canvas and are specified in [../atlas/coordinates.md](../atlas/coordinates.md) §4. Vertical 9:16 is the narrative default for short drama; 16:9 is the scene-plate and sheet default; neither converts into the other by cropping.
 
 Rules:
 
@@ -88,21 +88,21 @@ Semi-real is a specific set of proportions and a specific amount of texture, not
 
 | Dimension | Semi-real target | Too realistic | Too anime |
 | --- | --- | --- | --- |
-| Head count | 7.5–8.5 heads, idealized | 7–7.5, naturalistic | 9+, doll-extreme |
+| Head count | 7.0–8.5 heads, deliberate per character | < 7.0 naturalistic stock | 9+, doll-extreme |
 | Eye size | large, 1.4–1.6× realistic socket fill | realistic, small | 2×+ realism, face mostly eye |
 | Nose | minimal bridge line, defined tip | full bridge and nostril structure | single dot or line |
-| Mouth | shaped, soft gradient lip, visible cupid's bow | full lip texture, wet interior | two lines |
+| Mouth | shaped, soft gradient or matte lip, visible cupid's bow | full lip texture, wet interior | two lines |
 | Skin | fine pore hint at close range, BJD-smooth at full body | visible pores at all distances | zero texture, airbrushed |
 | Hair | grouped locks with sculpted strand clumps and flyaways | individual hair simulation | single painted mass |
-| Silhouette | idealized, slightly elongated, elegant | naturalistic | rubbery, unreadable |
+| Silhouette | idealized, deliberate waist/hem cut, readable | naturalistic | rubbery, unreadable |
 
-Common proportion bands:
+Common proportion bands (derive via [../engine/03-costume-and-craft.md](../engine/03-costume-and-craft.md) §2.1):
 
-- Idealized / xianxia / haute couture: `8.5-head slender fashion proportion`.
-- Grounded modern / tactical / martial: `7.5-to-8-head athletic proportion`.
-- Youthful / prodigy: `7-to-7.5-head lithe youthful frame`.
+- Detached / aristocratic / austere / haute couture: `8.5-head slender fashion proportion`.
+- Grounded / martial / working / approachable: `7.5-to-8-head athletic proportion`.
+- Youthful / compressed / compact: `7-to-7.5-head lithe youthful frame`.
 
-State the proportion and the shoulder-waist-hip line together. A head count without a body returns an invented torso.
+State the proportion, the waist-cut height, and the shoulder-waist-hip line together. A head count without a body returns an invented torso.
 
 **The band is a range, not a target.** `8.5-head` is the top of one band and it is the figure most often reached for; a cast in which every character is 8.5-head slender has a proportion system, not a cast. Use the band the character's Position earns: an exhausted elder is not 8.5-head, a labourer is not 8.5-head, and a child is not in these bands at all. The shoulder-waist-hip line is the second half of the decision and is never inherited from the previous character.
 
@@ -118,22 +118,22 @@ State the proportion and the shoulder-waist-hip line together. A head count with
 - Make costume materials specific: cloth thickness and weave, natural folds, embroidery, leather grain, jade or stone, controlled metal reflections. Include only materials present in the actual design.
 - A character may be more refined and stylized than the environment, but keeps believable volume, lighting response, and physical material behaviour. A realistic environment does not turn the character into a live-action actor.
 
-The anime face has six required elements. **Each element has two parts, and they are not the same kind of instruction** — see [gates.md](gates.md) §8. The craft string is reused verbatim in every prompt; the decision is set per character and must never be borrowed from another character.
+The anime face has six required elements. **Each element has two parts, and they are not the same kind of instruction** — see [gates.md](gates.md) §8. The craft string is reused verbatim in every prompt; the decision is derived per character across **both bone geometry (§1A) and facial surface (§1B)** in [../engine/02-face-derivation.md](../engine/02-face-derivation.md), and must never be borrowed from another character.
 
-| Element | Craft — reuse verbatim every time | Decision — derive per character |
+| Element | Craft — reuse verbatim every time | Decision — derive per character ([../engine/02-face-derivation.md](../engine/02-face-derivation.md) §1A & §1B) |
 | --- | --- | --- |
-| **1. Eye design** | `large almond eyes with a defined upper lid line, a clear double-lid crease, tapered inner and outer corners` | eye width to face (1.0–1.2×), inter-canthal distance, fissure ratio, canthal tilt — the shape is designed, not anatomical |
-| **2. Iris** | `radial iris fibre with a darker limbal ring, a glassy depth with a bright secondary reflection, a wet lower meniscus` — two catchlights, not one | iris fill (0.75–0.95), iris colour, and its chroma against the costume |
+| **1. Eye design** | `large almond eyes with a defined upper lid line, a clear double-lid crease, tapered inner and outer corners` | eye width to face (1.0–1.2×), inter-canthal distance, fissure ratio, canthal tilt, plus **periocular weight** (outward vs inward vs bare) |
+| **2. Iris** | `radial iris fibre with a darker limbal ring, a glassy depth with a bright secondary reflection, a wet lower meniscus` — two catchlights, not one | iris fill (0.75–0.95), **derived iris hue/value/temperature from gaze intent**, and chroma contrast against the costume |
 | **3. Nose** | `a minimal bridge` | bridge length to a defined tip vs a short high placement; nostril emphasis suppressed at full-body distance regardless |
-| **4. Mouth** | `a visible cupid's bow`; vertical striation only in the macro cell | lip ratio (1:1.0 / 1:1.4 / 1:1.7), glossed centre or matte, width against the interpupillary line |
+| **4. Mouth** | `a visible cupid's bow`; vertical striation only in the macro cell | lip ratio (1:1.0 / 1:1.4 / 1:1.7), width against the interpupillary line, and **functional lip state** (glossed mask vs matte/pressed/chapped tool) |
 | **5. Brow** | `thin, shaped, and legible at distance` | brow angle and brow–eye distance — both mood parameters, moved per shot |
-| **6. Porcelain skin** | `smooth porcelain skin with a soft subsurface glow`, visible fine pores only in the close-up macro cell | where the one matte zone sits, and whether the specular is tight on the nose bridge or broad across the cheek |
+| **6. Porcelain skin & marks** | `smooth porcelain skin with a soft subsurface glow`, visible fine pores only in the close-up macro cell | **specular/matte map** (where the matte zone and specular break sit) + **single mark rule** (default **zero** marks; at most 1 derived scar/ritual/occupational trace, never a copied mole) |
 
 Rules:
 
-- **Craft may be shared by the whole cast. Decision may not.** Two characters may both have `a visible cupid's bow`; they may not both have lip ratio 1:1.4 and the same iris fill, because that pair is what a viewer reads as the same face.
+- **Craft may be shared by the whole cast. Decision may not.** Two characters may both have `a visible cupid's bow`; they may not both have lip ratio 1:1.4, the same iris colour, and a mole beneath the eye, because that bundle is what a viewer reads as the same face.
 - **Never let a craft string stand in for a decision.** Writing only the eye-design craft string describes how an anime eye is built, not whose eye it is — and every character described that way gets the same eyes.
-- **The derivation procedure is [../bank/face.md](../bank/face.md) §2A**, and the parameter bands are §4 above. The craft column here is the only part that must appear word-for-word.
+- **The derivation procedures are [../engine/02-face-derivation.md](../engine/02-face-derivation.md) §1A (Bone) and §1B (Surface)**, and the parameter bands are [../atlas/coordinates.md](../atlas/coordinates.md) §1 and §4 above. The craft column here is the only part that must appear word-for-word.
 - **The eye hierarchy is the single most important rule.** Anime eyes are the first fixation and the design signature. Any ornament, crown, or garment detail that competes with the eyes has to be quietened — and because the eyes carry identity, a decision changed there is a recast, not a variation.
 
 Hair architecture — three tiers plus one linear interruption:
@@ -233,7 +233,7 @@ Most scene failures are a single-source lighting instruction applied to a multi-
 
 > Example hierarchy clause: `the wall lamp is the key at half the strength of daylight, the open door supplies cool fill from the left, and one candle near the table is an accent that lights only the hands`
 
-**Colour temperature is the scene's mood, and it must be one decision.** Pick a dominant temperature and one counter-temperature (this mirrors the counter-temperature rule for palettes in [../bank/form.md](../bank/form.md) §3A). A warm interior against one cold window, or a cool exterior against one warm lantern. Two dominant temperatures of equal strength cancel.
+**Colour temperature is the scene's mood, and it must be one decision.** Pick a dominant temperature and one counter-temperature (this mirrors the counter-temperature rule for palettes in [../atlas/lexicon.md](../atlas/lexicon.md) §5). A warm interior against one cold window, or a cool exterior against one warm lantern. Two dominant temperatures of equal strength cancel.
 
 **Time of day changes more than colour.** Each band sets contrast, shadow length, and what is lit:
 

@@ -33,13 +33,13 @@ Once confirmed, this image's actual appearance becomes the style evidence for st
 
 ## 2. Stage two: GPT Image 2 asset images
 
-Assign the Midjourney image as a **style reference**, not an identity source. Identity, structure, and palette come from the written design. When a character record exists, its identity block is the written design; reuse it word-for-word rather than paraphrasing it.
+Assign the Midjourney image as a **style reference**, not an identity source. Identity, structure, pose vector, and palette come from the written design. When a character record exists, its identity block is the written design; reuse it word-for-word rather than paraphrasing it.
 
 Declare every input's role using the table in [../contract/records.md](../contract/records.md) §4. For each input image, state what it supplies and what it must not carry in. When one image serves several roles, declare each separately.
 
 ### Character asset images
 
-Two outputs: an identity master that establishes the face, and a multi-view sheet that establishes costume and build across angles. Use the character record's identity block and palette roles; do not redesign the character for the asset sheet.
+Two outputs: an identity master that establishes the face, and a multi-view sheet that establishes costume and build across angles. Use the character record's identity block and palette roles; do not redesign the character for the asset sheet. For I2V motion-safe adjustments (hem, hair, sleeve binding), see [../engine/03-costume-and-craft.md](../engine/03-costume-and-craft.md) §3.3.
 
 Two rules with mechanical reasoning behind them:
 
@@ -47,7 +47,7 @@ Two rules with mechanical reasoning behind them:
 
 **Use a neutral mid-gray ground, not pure white.** Pure white creates maximum subject-to-background contrast, and video models amplify small errors most at high-contrast edges — that is where halo, edge breathing, and contour instability get baked in once the still is read as a reference frame. Mid-gray lowers that contrast and extracts cleaner edges. Pair it with the opposite requirement for the subject: the background is neutral, the subject is **not** neutralized. Skin renders at its designed tone, never cooled or washed out by the backdrop. Keep hands empty or resting on the body; held objects are designed at first-frame composition, not in the asset sheet.
 
-Panel layout follows the production's needs. One workable default: front, exact 90-degree side, and back full-body views, plus frontal head-and-shoulders, 45-degree head-and-shoulders, side profile, and a closer frontal face. Every view shares one height proportion, one costume construction, and one key-light direction; only the viewing direction changes. Do not relight each view as frontal flat light.
+Panel layout follows the production's needs. One workable default: front, exact 90-degree side, and back full-body views, plus frontal head-and-shoulders, 45-degree head-and-shoulders, side profile, and a closer frontal face. Every view shares one height proportion, one costume construction, one static pose vector, and one key-light direction; only the viewing direction changes. Do not relight each view as frontal flat light.
 
 ### Scene asset images
 
@@ -71,7 +71,7 @@ On platforms where reference images and first-frame mode are mutually exclusive,
 
 - Write the state at the shot's start, not the shot's main action.
 - Declare each input image's role.
-- Write one sentence per character for position in frame, facing, and posture.
+- Write one sentence per character for position in frame, facing, and posture ([../atlas/coordinates.md](../atlas/coordinates.md) §4.2 for vertical 9:16 framing).
 - State where the top and bottom frame edges fall on the body.
 - Write fixed objects' visible form and open/closed state. Facts stated only in the scene plate do not carry over here automatically.
 

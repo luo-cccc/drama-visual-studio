@@ -1,4 +1,4 @@
-# Records: Character, Location, Version, Reference Roles, Delta
+# Records: Character, Location, Version, Reference Roles, Delta, Ledger
 
 Two records, one abstraction. A **character record** holds identity and costume; a **location record** holds place and state. Both exist for the same reason: one place to keep what must stay fixed while cameras, outfits, and states change.
 
@@ -6,7 +6,7 @@ Keep a record in the conversation, or deliver it as text when useful; do not cre
 
 ## 1. Character record
 
-Build it in production mode, and at the end of design mode for a character that later outputs will reuse. It turns a design — from this skill or from an external design skill — into one compact record that every downstream prompt reads. It is not a copy of the design prompt, not a redesign, and not a substitute for the design bank.
+Build it in production mode, and at the end of design mode for a character that later outputs will reuse. It turns a design — from this skill or from an external design skill — into one compact record that every downstream prompt reads. It is not a copy of the design prompt, not a redesign, and not a substitute for the derivation engine.
 
 Extract; do not re-invent. Mark every field as **observed** (visible in a supplied image), **confirmed** (stated in text or adopted by the user), or **inferred** (missing, completed conservatively).
 
@@ -14,10 +14,11 @@ When only an image is supplied, record what is visible — face, hairline, perma
 
 | Field | What to take | Why |
 | --- | --- | --- |
-| **Identity block** | age band, gender presentation, status read; head count with shoulder-waist-hip; face bone structure, eye shape and colour, brows, nose, lips; hairline and permanent hair; permanent marks and worn accessories | copied word-for-word into every prompt; this is what keeps renders the same person |
-| **Look layer** | current costume: layers in order, construction, closures, materials, palette roles (base / anchor / accent, with HEX when supplied), worn ornaments | sheet, scene, asset, and edit prompts |
+| **Lock & IFV** | genre / subgenre / pigment family / silhouette family / gear / register + Invariant / Free / Forbidden | locks acceptance criteria and blocks cliché regression |
+| **Identity block** | age band, gender presentation, status read; head count with waist-cut and shoulder-waist-hip; derived face bone structure (§1A), iris colour/optics, brows, nose, lip state, specular/matte map, and 0-or-1 mark (§1B); hairline and permanent hair; permanent accessories | copied word-for-word into every prompt; this is what keeps renders the same person |
+| **Look layer** | current costume: layers in order with physical understructure, closures, materials, trim language + raw set, motif family, palette roles (base / anchor / accent, with HEX when supplied), worn ornaments | sheet, scene, asset, and edit prompts |
+| **Pose vector** | `weight axis · shoulder-neck line · empty-hand action · chin & gaze` | prevents turnaround sheets from collapsing into a generic neutral stance |
 | **State layer** | current condition, imperfections, contradiction signal, recent events | scene placement and variation prompts |
-| **Lock line** | genre / subgenre / risk gear / register when supplied | sets acceptance criteria and allowed deviation |
 | **Palette** | 70/25/5 roles, plain-language names, HEX from the blueprint, one chromatic anchor | prevents the render from inverting the palette |
 | **Evidence status** | observed / confirmed / inferred, plus unknown areas | controls what may be asserted |
 | **Reference roles** | which image supplies identity, style, layout, or edit target | prevents a style reference from becoming an identity source |
@@ -37,8 +38,10 @@ Rules:
 ```text
 角色记录
 锁定行：[genre / subgenre / pigment family / silhouette family / gear / register]
-身份块：[verbatim identity block]
-外观层：[current costume layers, construction, closures, materials, palette roles, worn ornaments]
+IFV 声明：Invariant [...] · Free [...] · Forbidden [...]
+身份块：[verbatim identity block: Position, proportion + waist-cut, §1A bone + §1B surface/iris/lip/mark, hairline]
+姿态向量：[weight axis · shoulder-neck line · empty-hand action · chin & gaze]
+外观层：[current costume layers, physical support, closures, materials, trim + raw edges, motif, worn ornaments]
 状态层：[current condition, imperfections, contradiction signal, recent events]
 配色：[70% base / 25% anchor / 5% accent + HEX + chromatic anchor]
 证据状态：[observed / confirmed / inferred / unknown]
@@ -100,10 +103,10 @@ For each requested output, decide what is preserved, what may change, and what m
 | Output | Preserve | May change | Re-derive or infer |
 | --- | --- | --- | --- |
 | **Portrait** | identity, costume, palette, confirmed finish | framing, background, light | lower body outside the crop |
-| **Identity sheet** | identity, build, costume construction, palette | layout, panel count, background value | hidden anatomy, back details, footwear |
-| **Costume sheet** | identity, costume construction, palette | display magnification, background value | hidden head space, costume back |
+| **Identity sheet** | identity, build, costume construction, palette, pose vector | layout, panel count, background value | hidden anatomy, back details, footwear |
+| **Costume sheet** | identity, costume construction, palette, pose vector | display magnification, background value | hidden head space, costume back |
 | **Costume variant** | identity **verbatim**, palette roles, confirmed finish, silhouette family (unless status changed) | garment layers, construction, closures, materials, trim, motif, topology, ornament set, hair styling | the new look's hidden backs, footwear, and the support for any new volume |
-| **GPT Image 2 sheet** | identity, design, palette, medium | layout language, exclusion form | newly designed minor-character details |
+| **GPT Image 2 sheet** | identity, design, palette, medium, pose vector | layout language, exclusion form | newly designed minor-character details |
 | **Character in a scene** | identity, costume, palette, register | pose, scale, camera, environmental light | contact shadows, bounce light, occlusion |
 | **Scene variation** | scene structure, current accepted state | time, weather, characters, props | new lighting, reflections, surface state |
 | **Outpainting** | the original region's design, scale, perspective | canvas, framing | cut-off anatomy or background |
@@ -123,9 +126,9 @@ For each requested output, decide what is preserved, what may change, and what m
 - One copy-ready prompt per requested output, in the language and engine form its workflow specifies.
 - If asked only to review or extract, stop at the record and findings.
 
-## 8. Batch ledger
+## 8. Batch ledger (10 axes)
 
-One ledger per project. It holds the nine differentiation axes from [gates.md](gates.md) §9 so a new character can be differentiated against the cast instead of designed in isolation.
+One ledger per project. It holds the **ten differentiation axes** from [gates.md](gates.md) §9 so a new character can be differentiated against the cast across silhouette, colour, topology, register, contradiction, lighting, trim, motif, **face bone+surface**, and **orthographic pose vector**.
 
 Keep it in the conversation or deliver it as text; do not create project files unless asked. A single one-off character does not need one.
 
@@ -133,38 +136,28 @@ Keep it in the conversation or deliver it as text; do not create project files u
 
 ```text
 批次账本
-[角色名或编号] | silhouette · key colour family · topology · register+gear · contradiction+signal · light · trim language · motif family · face anchor
+[角色名或编号] | silhouette · key colour family · topology · register+gear · contradiction+signal · light · trim language · motif family · face anchor (bone + iris/mark) · pose vector (weight/hands/gaze)
     ↳ [variant label] | identity locked · topology · trim language · motif family · node distribution
 [角色名或编号] | ...
 ```
 
-A **variant line** sits under its character with a `↳` marker. It records only the look factors, because a variant's identity is locked and its silhouette and key colour are inherited — see [gates.md](gates.md) §9A. A variant never consumes a silhouette or key colour slot in the cast, and it is never compared against other characters on axes 1 and 2.
+A **variant line** sits under its character with a `↳` marker. It records only the four look factors, because a variant's identity is locked and its silhouette and key colour are inherited — see [gates.md](gates.md) §9A. A variant never consumes a silhouette or key colour slot in the cast, and it is never compared against other characters on axes 1 and 2.
+
+Worked rows, one project, showing all ten axes separating cleanly:
 
 ```text
 批次账本
-A 女主 | cocoon · 骨白 · topology 4 松弛负空间 · glamour gear 2 · dir7 / 血红虹膜 · 高调珠光 · 窄银掐丝包边 · 五瓣星花 · 面部指数 1.52 + 眼裂 0.44
-    ↳ A 夜行 | identity locked · topology 1 顶峰下泻 · 铜棕皮革压边 · 蛇蜕鳞纹 · 节点上移至肩
-    ↳ A 婚礼 | identity locked · topology 5 骨相紧束 · 珠白缎镶边 · 团花缠枝 · 节点聚于发冠
-B 女配 | column · 铁锈朱砂 · topology 1 顶峰下泻 · glamour gear 2 · dir7 / 发际线一道冷光细缝 · 温和实用灯 · 铜棕皮革压边 · 蛇蜕鳞纹 · 口宽 0.78 + 颌角方
-```
-
-Note that `A 夜行` shares trim and motif with `B`. That is legal: a variant is only compared against **its own character's other looks**, never against the cast, so the reuse does not collide with B's slot. If the intent was for A's night look and B to be visually distinct on set, that is a staging decision, not a ledger failure — say so and change one of them for a different reason.
-
-Worked rows, one project, one glamour short drama. The point is that axes 1 and 2 never repeat and only five axes need to clear:
-
-```text
-批次账本
-A 女主 | cocoon · 骨白 · topology 4 松弛负空间 · glamour gear 2 · dir7 / 血红虹膜 · 高调珠光 · 窄银掐丝包边 · 五瓣星花 · 面部指数 1.52 + 眼裂 0.44
-B 女配 | column · 铁锈朱砂 · topology 1 顶峰下泻 · glamour gear 2 · dir7 / 发际线一道冷光细缝 · 温和实用灯 · 铜棕皮革压边 · 蛇蜕鳞纹 · 口宽 0.78 + 颌角方
-C 反派 | asymmetric · 冰川钛灰 · topology 5 骨相紧束 · glamour gear 3 · dir3 / 指尖始终干净的不合时宜 · 明暗伦勃朗侧逆 · 拉丝钛金属硬边 · 断刃碎片 · 眼角 +7° + 虹膜填充 0.94
+A 守祠宗主 | column · 骨白 · topology 5 骨相紧束 · editorial gear 2 · dir3 / 袖口常年沾着香灰 · 高调珠光 · 素麻暗缝滚边 · 断碑裂纹 · 面部指数 1.52 + 眼裂 0.40 + 灰琥珀虹膜无痣 · 左腿锁死 + 双手拢袖贴腹 + 下巴微收平视
+    ↳ A 祭礼 | identity locked · topology 1 顶峰下泻 · 青铜压边 · 篆刻云雷纹 · 节点聚于高冠与肩章
+B 渡口记账吏 | cocoon · 土金赭石 · topology 4 松弛负空间 · editorial gear 2 · dir2 / 破旧油布衣下浆洗笔挺的立领 · 温和实用灯 · 柏油麻绳包边 · 绳结刻度 · 面部指数 1.30 + 口宽 0.86 + 暗褐虹膜 + 右眉骨旧疤 · 重心前倾压双脚掌 + 右拇指掐算食指 + 下巴微抬定视左前
+C 魔宗炼器师 | asymmetric · 冰川钛灰 · topology 3 单侧异化 · glamour gear 3 · dir7 / 右耳至颈侧一道熔银焊痕 · 明暗伦勃朗侧逆 · 拉丝黑铁铆接边 · 淬火鳞片 · 眼距 0.92 + 眼角 +7° + 熔金虹膜 + 颈侧焊痕 · 重心压右胯 + 左手按腰封铁扣右手垂落 + 侧首 20° 俯视镜头
 ```
 
 Rules:
 
 - **The ledger is a diff tool, not a design tool.** It never supplies a design; it tells you which values are already spent.
 - **Record what was adopted, not what was proposed.** An unadopted draft does not occupy an axis.
-- **A repeat on a non-mandatory axis is allowed only with a stated reason.** Five of nine differing is the floor; if a character must share the trim language (a uniformed faction), say so and take a different axis instead.
+- **A repeat on a non-mandatory axis is allowed only with a stated reason.** Six of ten differing is the floor; if a character must share the trim language (a uniformed faction), say so and take a different axis instead.
 - **Do not invent a row for a character who has no record.** The ledger and the character record in §1 are separate: §1 holds one character's identity, §8 holds the cast's spread.
 - **A variant line is not a cast row.** It inherits silhouette and key colour from its character, carries only the look factors, and is exempt from the axis 1/2 hard rule per [gates.md](gates.md) §9A.
 - **Do not restate the axis definitions here.** They live in [gates.md](gates.md) §9 and this file only stores the values.
-

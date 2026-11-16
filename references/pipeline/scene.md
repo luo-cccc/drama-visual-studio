@@ -4,7 +4,7 @@ Use this workflow for the first Midjourney scene base, revisions to its prompt b
 
 For existing scenes, repeated viewpoints, or returned-image corrections, read [scene-edit.md](scene-edit.md). Once a scene image exists, subsequent variations default to [scene-edit.md](scene-edit.md) unless the user specifies another engine. For GPT Image 2 frame extensions, use that workflow; Midjourney extensions and other crop-completion requests use [outpaint.md](outpaint.md).
 
-Read [../contract/visual.md](../contract/visual.md) for style priority, lighting, background, parameters, and exclusions — all defined there, not here.
+Read [../contract/visual.md](../contract/visual.md) for style priority, lighting (§8A), background, parameters, and exclusions — all defined there, not here. Read [../atlas/coordinates.md](../atlas/coordinates.md) §4 for canvas and vertical/widescreen framing rules, and [../atlas/genre-traps.md](../atlas/genre-traps.md) to avoid generic world clichés.
 
 ## 1. Design decisions
 
@@ -12,7 +12,7 @@ Read [../contract/visual.md](../contract/visual.md) for style priority, lighting
 - Make the place recognizable through one or two strong visual motifs, such as a landmark structure, a signature plant, or a distinctive material.
 - Keep construction plausible for the setting. Show wear, repairs, or traces of use where the place's history calls for them.
 - Give the image one clear focal point. Do not add random props, unrelated characters, or decorative clutter.
-- Choose a time of day, season, and weather that support the intended mood. Describe the light concretely, including its source, direction, and color, such as low warm sunlight from the left.
+- Choose a time of day, season, and weather that support the intended mood. Describe the light concretely per [../contract/visual.md](../contract/visual.md) §8A, including its source, direction, and color, such as low warm sunlight from the left.
 
 ## 2. Initial base and later variations
 
@@ -33,7 +33,7 @@ Read [../contract/visual.md](../contract/visual.md) for style priority, lighting
 
 ## 4. Composition
 
-- For a new base, default to a wide, eye-level establishing shot at full scale, with the focal point off center. Existing-image revisions preserve the source camera and composition unless a change is requested.
+- For a new base, default to a wide, eye-level establishing shot at full scale, with the focal point off center ([../atlas/coordinates.md](../atlas/coordinates.md) §4.2–4.3). Existing-image revisions preserve the source camera and composition unless a change is requested.
 - Build depth with a framing element in the foreground, the focal point in the midground, and layered silhouettes in the background. Use atmospheric haze to separate distances, and leading lines such as roads, rivers, or stairs to guide the eye to the focal point.
 - Show scale with familiar objects such as doors, stairs, lanterns, or windows.
 - Avoid cluttered composition without a clear focal point, muddy colors, flat lighting, warped architecture, inconsistent perspective, and generic stock-photo or mobile-game backdrops.
@@ -49,7 +49,7 @@ Include a concise integration clause: a common light direction and color tempera
 
 For an explicitly requested painting or named medium, use the shared alternative-medium rules instead of the CG clauses. Do not append cinematic-render or CG skin-shading language to a wholly painted scene. An explicit request to match an attached image's medium takes priority over defaults.
 
-A new base uses 16:9 with the standard preset [../contract/visual.md](../contract/visual.md) §3. A current aspect-ratio request takes priority; otherwise an existing-image revision inherits the scene source's frame. Never copy a character portrait's ratio merely because it is attached.
+A new base uses 16:9 (or 9:16 for vertical drama) with the standard preset [../contract/visual.md](../contract/visual.md) §3. A current aspect-ratio request takes priority; otherwise an existing-image revision inherits the scene source's frame. Never copy a character portrait's ratio merely because it is attached.
 
 ## 6. Notes to the user
 
