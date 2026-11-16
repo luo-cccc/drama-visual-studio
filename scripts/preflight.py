@@ -28,7 +28,7 @@ Usage:
     python -I scripts/preflight.py prompt.txt --register glamour --palette
     python -I scripts/preflight.py prompt.txt --register glamour \
         --ledger batch.txt \
-        --vector "cocoon · earth-umber · languid · editorial gear 2 · dir2/starched collar · warm-gi · tarred rope · rope-knot · facial 1.30+brown iris no mark · weight forward+thumb counting+chin lifted"
+        --vector "asymmetric · 玄黑+幽冥紫黑 · topology 3 单侧异化 · editorial gear 2 · dir1/墨玉指尖与乌金护指 · 明暗伦勃朗侧逆 · 乌金掐丝包边 · 幽冥骨铃脊椎纹 · 面部指数1.48+深渊血珀瞳+眼尾魔纹 · 重心落右腿+左手搭腰玉+微抬下巴垂眸"
     python -I scripts/preflight.py prompt2.txt --register editorial \
         --compare-prompt prompt1.txt
 """
@@ -313,11 +313,12 @@ def check(args):
     colourish = ["white", "bone", "pearl", "ivory", "silver", "gold", "black",
                  "crimson", "cinnabar", "oxblood", "celadon", "jade", "rust",
                  "violet", "grey", "gray", "cyan", "amber", "ochre", "umber",
-                 "verdigris", "azurite", "malachite", "sulfur", "bronze", "pewter"]
+                 "verdigris", "azurite", "malachite", "sulfur", "bronze", "pewter",
+                 "plum", "agate", "vermilion", "wisteria", "obsidian"]
     materialish = ["silk", "organza", "gauze", "jacquard", "filigree", "lace",
                    "velvet", "satin", "wool", "linen", "leather", "chiffon",
-                   "brocade", "crystal", "bronze", "lacquer", "hemp", "canvas",
-                   "oilskin", "obsidian", "horn", "ceramic", "iron", "steel"]
+                   "brocade", "crystal", "bronze", "lacquer", "damask", "tulle",
+                   "obsidian", "horn", "ceramic", "iron", "steel"]
     freq = sorted(((t, count_term(low, t)) for t in dict.fromkeys(colourish + materialish) if count_term(low, t)),
                   key=lambda x: -x[1])
     if args.register in CAPS:

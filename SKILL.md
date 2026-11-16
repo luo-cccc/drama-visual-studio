@@ -42,7 +42,7 @@ Follow [pipeline/design.md](references/pipeline/design.md). Read the batch ledge
 1. **Lock line + IFV Triple** (`Invariant / Free / Forbidden`, blocking 3 subgenre reflexes from [atlas/genre-traps.md](references/atlas/genre-traps.md)).
 2. **All 7 blueprint points in Chinese**:
    - Point 1: genre/risk lock and the **4D Orthographic Pose Vector** (`weight axis · shoulder-neck line · empty-hand action · chin & gaze`).
-   - Point 2: Position triple, Step 0 daily body cost (if thin brief), life traces, contradiction signal, and physical-anchor thesis.
+   - Point 2: Position & aura, Step 0 Dao/power signature (if thin brief), transcendent/story traces, contradiction signal, and haute-couture thesis.
    - Point 3: conflict-derived motif seed and the three growth answers (Support, Pressure, Empty Hands).
    - Point 4: gravity topology, **vertical cut proportions** (§2.1), **physical understructure/grounding** (§2.5), and back-view resolution.
    - Point 5: **all four density factors counted** (layers, edge rate + raw edge set, node count with mechanical jobs, 3-scale motif) plus the **open breathing area and rhythmic breakpoint** (§2.2).

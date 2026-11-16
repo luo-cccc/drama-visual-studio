@@ -98,13 +98,13 @@ Semi-real is a specific set of proportions and a specific amount of texture, not
 
 Common proportion bands (derive via [../engine/03-costume-and-craft.md](../engine/03-costume-and-craft.md) §2.1):
 
-- Detached / aristocratic / austere / haute couture: `8.5-head slender fashion proportion`.
-- Grounded / martial / working / approachable: `7.5-to-8-head athletic proportion`.
-- Youthful / compressed / compact: `7-to-7.5-head lithe youthful frame`.
+- Immortal / sovereign / abyssal / haute couture: `8.5-head slender fashion proportion`.
+- Sleek martial / agile swordsman / modern tailored: `7.5-to-8-head lithe athletic proportion`.
+- Youthful prodigy / compact spirit: `7-to-7.5-head lithe youthful frame`.
 
-State the proportion, the waist-cut height, and the shoulder-waist-hip line together. A head count without a body returns an invented torso.
+State the proportion, the high waist-cut ratio, and the shoulder-waist-hip line together. A head count without a body returns an invented torso.
 
-**The band is a range, not a target.** `8.5-head` is the top of one band and it is the figure most often reached for; a cast in which every character is 8.5-head slender has a proportion system, not a cast. Use the band the character's Position earns: an exhausted elder is not 8.5-head, a labourer is not 8.5-head, and a child is not in these bands at all. The shoulder-waist-hip line is the second half of the decision and is never inherited from the previous character.
+**The band is a range, not a single number.** While `8.0-to-8.5-head` is the high-aesthetic baseline for adult immortals, sovereigns, and couture leads, vary the exact head count (`7.5` vs `8.0` vs `8.5`) and the shoulder-waist-hip silhouette across a cast so an agile teen swordsman and a towering sect sovereign do not share the exact same body wireframe.
 
 **The skin rule.** Semi-real keeps pore-level detail at the close-up tier only — normally the bottom-right macro cell — and lets full-body views read as polished porcelain. Heroes are meant to look flawless at distance.
 
@@ -125,9 +125,9 @@ The anime face has six required elements. **Each element has two parts, and they
 | **1. Eye design** | `large almond eyes with a defined upper lid line, a clear double-lid crease, tapered inner and outer corners` | eye width to face (1.0–1.2×), inter-canthal distance, fissure ratio, canthal tilt, plus **periocular weight** (outward vs inward vs bare) |
 | **2. Iris** | `radial iris fibre with a darker limbal ring, a glassy depth with a bright secondary reflection, a wet lower meniscus` — two catchlights, not one | iris fill (0.75–0.95), **derived iris hue/value/temperature from gaze intent**, and chroma contrast against the costume |
 | **3. Nose** | `a minimal bridge` | bridge length to a defined tip vs a short high placement; nostril emphasis suppressed at full-body distance regardless |
-| **4. Mouth** | `a visible cupid's bow`; vertical striation only in the macro cell | lip ratio (1:1.0 / 1:1.4 / 1:1.7), width against the interpupillary line, and **functional lip state** (glossed mask vs matte/pressed/chapped tool) |
+| **4. Mouth** | `a visible cupid's bow`; vertical striation only in the macro cell | lip ratio (1:1.3 / 1:1.5 / 1:1.8), width against the interpupillary line, and **lip tint & finish** (velvet-matte restraint vs hydrated glassy gradient stain) |
 | **5. Brow** | `thin, shaped, and legible at distance` | brow angle and brow–eye distance — both mood parameters, moved per shot |
-| **6. Porcelain skin & marks** | `smooth porcelain skin with a soft subsurface glow`, visible fine pores only in the close-up macro cell | **specular/matte map** (where the matte zone and specular break sit) + **single mark rule** (default **zero** marks; at most 1 derived scar/ritual/occupational trace, never a copied mole) |
+| **6. Porcelain skin & marks** | `smooth porcelain skin with a soft subsurface glow`, visible fine pores only in the close-up macro cell | **specular/matte map** (velvet-matte cheek plane vs sharp nose-bridge/ cheekbone highlight) + **single mark rule** (default **zero** marks; at most 1 derived Dao/bloodline/fate mark, never a copied mole) |
 
 Rules:
 
@@ -179,8 +179,8 @@ Four persona-driven modes. Choose one as the character's signature and route it 
 | --- | --- | --- |
 | **High-key pearlescent glow** | aloof deities, tragic or imperious heroines, bridal-gothic couture, ink-wash immortals | `high-key pearlescent studio lighting with a soft overhead bloom, gentle rim falloff through layered sheer fabric, luminous porcelain subsurface glow` |
 | **Crisp chiaroscuro rim** | ruthless emperors, dark sword cultivators, gothic anti-heroes, syndicate bosses | `crisp side-back key with a cool silver rim response, clean luminous shadow transparency, sculpted facial planes` |
-| **Warm tactile global illumination** | martial monks, desert wanderers, unruly prodigies, grounded fighters | `warm directional global illumination with crisp specular contrast, tactile response on raw fibre and oxidized bronze, natural skin warmth` |
-| **Overcast diffuse mist** | battlefields, ruined sects, mourning, rain, exhausted or low-status characters | `overcast diffuse daylight, very large soft source, low contrast with intact material detail, thin atmospheric mist at ground level` |
+| **Warm tactile global illumination** | martial heroes, sun-lit pavilions, fiery prodigies, imperial court grandeur | `warm directional global illumination with crisp specular contrast, tactile response on silk brocade and gilded bronze, natural luminous skin warmth` |
+| **Overcast diffuse mist** | misty immortal peaks, bamboo rain, moonlit ruins, tragic or ethereal scenes | `overcast diffuse daylight, very large soft source, low contrast with intact material detail, thin atmospheric mist at ground level` |
 
 **Choosing the mode is a decision, not a register lookup.** Editorial picks one of the four as the colour and quality signature, routed through sheet-safe exposure. Glamour most often takes high-key pearlescent, also routed through sheet-safe exposure so the back view stays readable — but `most often` is not `always`, and treating it as always is what gives a cast one light: a glamour schemer, a glamour antagonist, and a glamour character introduced at night all read better outside it.
 

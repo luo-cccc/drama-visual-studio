@@ -54,7 +54,7 @@ Run this quick diagnostic when a design feels either too plain (under-designed) 
 
 | Measure | Floor | Fix |
 | --- | --- | --- |
-| **Visible layers** | editorial working 2–3 · editorial high-status 4–5 · glamour 5–6 · ceremonial 6 | add the floating layer first, then a translucent or contrasting inner layer showing a 2–5cm edge |
+| **Visible layers** | editorial sleek/martial 3–4 · editorial fantasy/sovereign 4–5 · glamour 5–6 · ceremonial 6 | add the floating sheer layer first, then a contrasting inner bodice or collar showing a 2–5cm edge |
 | **Edge treatment rate** | 60% minimum (editorial) · 80% minimum (glamour) | apply one shared trim language across collar, cuffs, placket, and hem in a single clause |
 | **Pattern coverage** | banded minimum for any high-status or glamour figure | carry one motif family at macro / mid / micro scales simultaneously ([../atlas/density.md](../atlas/density.md) §4) |
 | **Tight specular** | at least one metal, jade, lacquer, or wet-stone edge | add a polished hardware clasp or metal rim band — the cheapest way to buy material richness |

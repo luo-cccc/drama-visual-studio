@@ -18,7 +18,7 @@ When only an image is supplied, record what is visible — face, hairline, perma
 | **Identity block** | age band, gender presentation, status read; head count with waist-cut and shoulder-waist-hip; derived face bone structure (§1A), iris colour/optics, brows, nose, lip state, specular/matte map, and 0-or-1 mark (§1B); hairline and permanent hair; permanent accessories | copied word-for-word into every prompt; this is what keeps renders the same person |
 | **Look layer** | current costume: layers in order with physical understructure, closures, materials, trim language + raw set, motif family, palette roles (base / anchor / accent, with HEX when supplied), worn ornaments | sheet, scene, asset, and edit prompts |
 | **Pose vector** | `weight axis · shoulder-neck line · empty-hand action · chin & gaze` | prevents turnaround sheets from collapsing into a generic neutral stance |
-| **State layer** | current condition, imperfections, contradiction signal, recent events | scene placement and variation prompts |
+| **State layer** | current condition, transcendent/narrative traces, contradiction signal, recent events | scene placement and variation prompts |
 | **Palette** | 70/25/5 roles, plain-language names, HEX from the blueprint, one chromatic anchor | prevents the render from inverting the palette |
 | **Evidence status** | observed / confirmed / inferred, plus unknown areas | controls what may be asserted |
 | **Reference roles** | which image supplies identity, style, layout, or edit target | prevents a style reference from becoming an identity source |
@@ -42,7 +42,7 @@ IFV 声明：Invariant [...] · Free [...] · Forbidden [...]
 身份块：[verbatim identity block: Position, proportion + waist-cut, §1A bone + §1B surface/iris/lip/mark, hairline]
 姿态向量：[weight axis · shoulder-neck line · empty-hand action · chin & gaze]
 外观层：[current costume layers, physical support, closures, materials, trim + raw edges, motif, worn ornaments]
-状态层：[current condition, imperfections, contradiction signal, recent events]
+状态层：[current condition, transcendent/narrative traces, contradiction signal, recent events]
 配色：[70% base / 25% anchor / 5% accent + HEX + chromatic anchor]
 证据状态：[observed / confirmed / inferred / unknown]
 参考图角色：[identity image / style reference / layout reference / edit target]

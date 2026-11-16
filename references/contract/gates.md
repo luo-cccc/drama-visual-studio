@@ -57,11 +57,11 @@ Register comparison:
 | Hero node | one sculpted worn ornament or armature piece, never a held prop | hair/crown system or chest armature may be the hero |
 | Palette | classic Eastern fantasy palettes (玄黑、月白、天青、绛红、鎏金、幻紫) are fully legal; differentiate across the batch via §9 | same; no two characters in one project may share the same key colour family (§9, axis 2) |
 
-**Direction 7 in glamour is a family, not a single look.** `flawless surface plus one lethal signal` is the formula; the signal is the design decision. A wire-thin collar chain, impossible symmetry, a hairline port, a breath of frost, ash-stained fingertips — pick one derived from the character's conflict, and make it the only one. Two glamour characters in one project may both be direction 7 as long as the signal is visibly different; they may not share the signal.
+**Contradiction signals are a family, not a single look.** All seven high-aesthetic contradiction directions ([../engine/01-truth-and-pose.md](../engine/01-truth-and-pose.md) §5) work across both registers; the concrete **signal** is the design decision. Ink-jade fingertips, a gold-mended half-shattered jade crown, a blackened-gold spinal chime chain, frost-crystalline sleeve hems, a faded mortal red cord on a demon sovereign — pick one derived from the character's Dao or conflict, and make it unique to them. Two characters in one project may share a direction number only if their concrete signals and silhouettes are completely different (§9, axis 5).
 
-**The native-range trap.** Glamour's palette column reads as permission, and repeated over a project it becomes a single look: pearl white, silver, moon white, one saturated accent, high-key light, Top-Peak Cascade, direction 7. Five characters designed under that column are one character five times. The register picks acceptance criteria; it does not pick the design. §9 exists because this column is the most common cause of a homogenised cast.
+**The single-palette reflex trap.** Even when classic Eastern fantasy palettes are legal in both registers, repeating the exact same combination (`moon-white + silver + Top-Peak Cascade` or `obsidian + red eyes`) across a project turns five characters into one character five times. The register sets density and spectacle; §9 forces every character in a batch to take a different silhouette family and key colour family.
 
-Glamour's one material obligation: flawlessness is not featurelessness. Damage is absent; BJD surface perfection carries the credibility — porcelain clarity, a controlled specular, sculpted strand clumps, a wet lower lid, a bright secondary eye reflection.
+**Surface obligation in both registers:** flawlessness is not flatness. BJD surface perfection carries the credibility — porcelain clarity, a velvet-matte cheek plane against a sharp nose-bridge specular, sculpted hair strand clumps, a wet lower meniscus, and a bright secondary eye reflection.
 
 ## 3. Risk gear
 

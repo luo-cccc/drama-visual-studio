@@ -16,7 +16,7 @@ Layer 4 coordinate system. Richness cannot be requested with adjectives (`elabor
 
 ## 1. Factor 1: Layering
 
-A high-status or glamour figure layers **4–6 visible garments**; a working or low-status figure layers **2–3**. Enumerate them in order in blueprint point 5.
+A standard fantasy, sovereign, or glamour figure layers **4–6 visible garments**; a sleek martial, assassin, or minimalist modern figure layers **3–4**. Enumerate them in order in blueprint point 5.
 
 | Layer slot | Structural role | Where its edge must show |
 | --- | --- | --- |
@@ -43,12 +43,12 @@ Six edge treatments (pick **one primary trim language** per character and repeat
 1. **Contrast piping (窄滚边)**: a 3–5mm cord or folded bias strip in a contrasting value/temperature.
 2. **Woven/embroidered band (宽镶边)**: a 2–4cm structured border carrying the mid-scale motif.
 3. **Rigid metal/mineral rim (金属/玉石压边)**: hammered bronze, tarnished silver, or dark iron binding along a stiff collar, shoulder guard, or corset edge — buys an immediate tight specular highlight.
-4. **Raw/frayed/fused edge (刻意毛边/焦边)**: unhemmed selvedge, salt-stiffened fray, or heat-sealed edge.
-5. **Pendant fringe/link edge (垂穗/链边)**: short metal links, seed-beads, or knotted cords hanging from a mantle or hem.
-6. **Stepped layer reveal (叠边外露)**: inner lining folded back over the outer cuff or lapel.
+4. **Unbound sheer / dissolving edge (轻盈流光留白边/微烬边)**: laser-clean sheer organza hems that float weightlessly, frost-crystallized rims, or ember-singed edges left deliberately unbound by heavy metal so the silhouette breathes.
+5. **Pendant fringe/link edge (垂穗/银链边)**: fine silver links, mineral pearls, or silk tassels hanging from a cloud-yoke or hem.
+6. **Stepped layer reveal (叠边外露)**: contrasting inner silk lining folded back over the outer cuff or lapel.
 
-**The Deliberately-Raw Set (未处理边集):**
-Treat **60–80% of edges in editorial** and **80–90% in glamour**. The remaining **10–40% deliberately untreated edges** are where character truth lives (e.g. `collar, placket, and shoulder yoke bound in riveted dark-iron rim, while the lower hem and left working cuff are left raw and unhemmed`). Always name both the treated set and the raw set in blueprint point 5.
+**The Deliberately-Unbound Edge Set (留白未包边集):**
+Treat **60–80% of edges in editorial** and **80–90% in glamour**. Leave the remaining **10–40% of edges deliberately unbound** (e.g. `collar, placket, waist-corset, and right cuff bound in blackened-gold filigree rim, while the sheer outer smoke-organza sleeve and high thigh-slit edge are left unbound and weightless`) so the garment does not turn into stiff upholstery. Always name both the bound set and the unbound/raw set in blueprint point 5.
 
 ---
 
@@ -75,9 +75,9 @@ A single motif family (grown from the seed in [../engine/03-costume-and-craft.md
 3. **Micro scale (Field texture):** the motif worked **tone-on-tone** (jacquard weave, blind embossing, quilted stitch, or low-contrast thread) across a large fabric expanse, catching light only at grazing angles.
 
 Coverage levels:
-- **Bare:** zero pattern, weave texture only (strict ascetic or impoverished working character — must be deliberate).
-- **Banded:** pattern confined to 2–4 structural borders (minimum for designed figures).
-- **Fielded:** one major garment panel (e.g. the main skirt or outer coat) carries the micro repeat across its field, while adjacent panels stay plain (**one primary open area is mandatory**).
+- **Bare:** zero surface pattern, relying purely on luxury material weave and sheen (minimalist modern or austere sword-ascetic — must be deliberate).
+- **Banded:** pattern confined to 2–4 structural borders (minimum for sleek martial figures).
+- **Fielded:** one major garment panel (e.g. the main skirt or brocade lining) carries the micro repeat across its field, while adjacent panels stay plain (**one primary open area is mandatory**).
 - **Allover / Layered:** multiple layers carry different scales of the motif (glamour / ceremonial).
 
 ---
@@ -101,10 +101,10 @@ Write all four factors into Block 4 of the English prompt as four concrete const
 
 | Setting | Visible Layers | Treated Edge Rate | Ornament Nodes | Pattern Level |
 | --- | --- | --- | --- | --- |
-| **Editorial — Working / Low-Status** | 2–3 | 60–70% | 2–4 (1 hero + 1–3 functional clasps) | Bare or Banded |
-| **Editorial — High-Status / Formal** | 4–5 | 70–80% | 4 (1 hero + 3 supporting) | Banded or Fielded |
-| **Glamour** | 5–6 (incl. 1 floating) | 80–90% | 8–15 (descending head → waist) | Fielded or Allover |
-| **Ceremonial / Imperial** | 6 (incl. 2 floating) | 85–90% | 12–18 (clustered at crown/yoke) | Layered pattern |
+| **Editorial — Sleek Martial / Agile / Minimalist** | 3–4 | 60–70% | 3–4 (1 hero + 2–3 structural clasps) | Banded or Fielded |
+| **Editorial — Standard Fantasy / Sovereign / Couture** | 4–5 | 70–80% | 4 (1 hero + 3 supporting) | Fielded |
+| **Glamour** | 5–6 (incl. ≥ 1 floating) | 80–90% | 8–15 (descending head → waist) | Fielded or Allover |
+| **Ceremonial / Awakening** | 6 (incl. 2 floating) | 85–90% | 12–18 (clustered at crown/yoke) | Layered pattern |
 
 ### 6A. Batch Band-Spread Rule
 

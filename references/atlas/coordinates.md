@@ -27,7 +27,7 @@ Use **eye width (EW)** — the width of one open palpebral fissure — as the sc
 | 13 | **Facial index** | **Identity (Anchor)** | face length ÷ face width | 1.35–1.45 | > 1.48: long, narrow, ascetic, patrician · < 1.32: broad, short, grounded |
 | 14 | **Chin width** | **Identity** | ÷ mouth width | 0.82–0.96 | < 0.82: pointed, fragile · ≥ 0.96: square, broad, immovable |
 | 15 | **Cheekbone** | **Identity** | height and forward projection | mid-height, restrained | High & flat: sculptural, operatic · Low & soft: rounded, gentle |
-| 16 | **Lower lid fullness** | Mood | aegyo-sal / orbicularis volume | 2–4 mm | Tight/absent: sleepless, cold · Full: youthful or exhausted |
+| 16 | **Lower lid fullness** | Mood | aegyo-sal / orbicularis volume | 2–4 mm | Tight/flat: cool, aloof, sharp · Full: youthful, gentle, alluring |
 
 - **Identity parameters (1, 2, 5, 9, 10, 11, 12, 13, 14, 15):** derived once per character via [../engine/02-face-derivation.md](../engine/02-face-derivation.md) §1A, locked in the record, never varied across outfits.
 - **Mood parameters (3, 4, 6, 7, 8, 16):** adjusted per shot or per 2×2 bust cell via [../engine/02-face-derivation.md](../engine/02-face-derivation.md) §3.
@@ -43,7 +43,7 @@ At full-body thumbnail size (10%), the viewer reads outline before any fabric or
 | **Column** | narrow, vertical, unbroken from shoulder to ankle/floor | austere, disciplined, self-contained, unyielding | one sharp horizontal break (belt bar, stiff yoke, or split hem) so it does not read as a tube |
 | **Bell / A-line** | fitted upper torso expanding from waist or hip into a wide lower base | anchored, ceremonial, territorial, formal | a narrow shoulder or high collar so the triangle has a clear apex |
 | **Trapeze** | narrow shoulders expanding outward continuously from collarbone or bust to hem | unstable, theatrical, expansive, untethered | exposed tight calves/boots or narrow wrists emerging from the wide base |
-| **Cocoon** | rounded outer shell, oversized through the midsection, tapering or pooling at the hem | insulated, exhausted, secretive, shielded | one hard structural anchor (shoulder strap, rigid collar, or exposed forearm) |
+| **Cocoon** | rounded outer shell, draped through the midsection, tapering or pooling at the hem | languid, aloof, mysterious, untethered | one sharp structural anchor (sculpted collar, waist-jade, or exposed collarbone/forearm) |
 | **Hourglass / X** | wide or constructed shoulder line, hard waist suppression, flared hip or skirt | high-tension, controlled, sculptural, couture | deliberate asymmetry in placket or hem to prevent mannequin stiffness |
 | **Asymmetric** | radical left-right or diagonal outline difference (e.g. one side floor-length, one side cropped at thigh/hip) | unresolved, dangerous, fractured, kinetic | one calm continuous vertical axis (spine or standing leg) to keep the figure grounded |
 
