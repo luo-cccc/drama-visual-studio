@@ -99,6 +99,15 @@ LEDGER_AXES = [
 LEDGER_MANDATORY = {0, 1}   # silhouette, key colour
 LEDGER_MIN_DIFFERENT = 5
 
+# Mode C looks: contract/gates.md §9A. A variant keeps silhouette and key
+# colour, so it is judged on these four instead of the nine cast axes.
+LOOK_AXES = ["topology", "trim", "motif", "node distribution"]
+LOOK_MIN_DIFFERENT = 3
+
+# A variant inherits these two from its character, so they must MATCH rather
+# than differ — the inverse of the cast rule. gates.md §9A.
+LOOK_AXES_CAST = ["silhouette", "key colour"]
+
 
 def strip_prompt(text):
     """Return the prompt body, dropping fences, trailing parameters, and headings."""
@@ -233,16 +242,18 @@ def check(args):
     else:
         notes.append("node clause: no explicit node count in the prompt (count it from the blueprint)")
 
-    # --- batch differentiation against the ledger ---
+    # --- batch differentiation against the ledger, or variant integrity ---
     differ, ledger_fail = [], []
-    if args.ledger:
+    if args.variant_of:
+        differ, ledger_fail = check_variant(args, low, notes)
+    elif args.ledger:
         try:
-            rows = read_ledger(args.ledger)
+            cast, _variants = read_ledger(args.ledger)
         except OSError as exc:
             ledger_fail.append(f"ledger unreadable: {exc}")
-            rows = []
-        if not rows:
-            notes.append("ledger supplied but holds no rows; this is the first character")
+            cast = []
+        if not cast:
+            notes.append("ledger supplied but holds no cast rows; this is the first character")
         else:
             # The blueprint's declared vector always wins. A prompt-derived
             # vector can only see the axes that were written into prose, so
@@ -260,7 +271,7 @@ def check(args):
                     f"only {len(comparable)}/{len(LEDGER_AXES)} axes are visible in the prompt; "
                     "pass --vector from the blueprint to check the full nine"
                 )
-            for name, row in rows:
+            for name, row in cast:
                 res = compare_vector(vector, row)
                 differ.append(
                     f"vs {name}: {res['different']}/{res['comparable']} comparable axes differ"
@@ -276,11 +287,202 @@ def check(args):
                     ledger_fail.append(
                         f"batch: {name} differs on {res['different']}/{res['comparable']} comparable axes, "
                         f"needs {need}")
+            notes.append(
+                "mode: cast (Mode A/B) — axes 1-2 binding. If this is a second outfit for an "
+                "existing character, pass --variant-of <name> instead; see gates.md §9A"
+            )
     else:
         notes.append("no --ledger supplied; batch differentiation not checked")
 
     failures.extend(ledger_fail)
     return failures, notes, freq, nwords, differ
+
+
+def check_variant(args, low, notes):
+    """Variant integrity for a second look on an existing character.
+
+    Per contract/gates.md §9A a variant is exempt from axes 1-2 and from the
+    five-of-nine cast rule. It is judged instead on identity integrity (the
+    record's identity block, not a re-derivation) and look separation (three of
+    four look factors differ from that character's previous look).
+    """
+    differ, fails = [], []
+    parent = args.variant_of.strip()
+    try:
+        cast, variants = read_ledger(args.ledger) if args.ledger else ([], [])
+    except OSError as exc:
+        return [], [f"ledger unreadable: {exc}"]
+
+    notes.append(f"mode: variant (Mode C) of {parent} — axes 1-2 exempt, look separation applies")
+
+    # Identity integrity: the prompt must restate the record's values rather
+    # than derive new ones. The script can only check that an identity block is
+    # present; whether the values match is a judgement, reported as such.
+    has_identity = any(
+        re.search(p, low) for pats in IDENTITY_ANCHORS.values() for p in pats
+    )
+    if not has_identity:
+        fails.append(
+            "variant: no identity anchoring value found — a variant must restate the "
+            "record's identity block, not omit it (bank/face.md §2A scope)"
+        )
+    else:
+        notes.append("identity integrity: identity block present (values must match the record verbatim)")
+
+    # Silhouette and key colour must MATCH the parent, not merely be exempt.
+    # An exemption with no positive check lets a genuinely new character be
+    # filed as a variant to escape axes 1-2, which is the failure this whole
+    # section exists to prevent. A variant that changed its own silhouette or
+    # key colour without a stated status reason is a recast.
+    parent_row = next((row for name, row in cast if name.strip().lower() == parent.lower()), None)
+    if parent_row is None:
+        notes.append(
+            f"variant: {parent} not found in the ledger cast rows — inherited silhouette and "
+            "key colour cannot be verified; add the character's cast row first"
+        )
+    elif len(parent_row) >= 2:
+        mine = [lexical_family(parent_row[0], low), lexical_family(parent_row[1], low)]
+        if args.inherit:
+            stated = ["present" if ok else "absent" for ok in mine]
+            differ.append(
+                f"inherited axes vs {parent}: silhouette {stated[0]}, key colour {stated[1]} "
+                f"(ledger: {parent_row[0]} / {parent_row[1]})"
+            )
+            changed = [LOOK_AXES_CAST[i] for i, ok in enumerate(mine) if not ok]
+            if changed:
+                fails.append(
+                    "variant: silhouette or key colour differs from "
+                    f"{parent} ({', '.join(changed)}). A variant inherits both by default; "
+                    "if the character's status really changed, deliver it as a new character "
+                    "with a new lock line instead (gates.md §9A)"
+                )
+        else:
+            notes.append(
+                "variant: pass --inherit to also verify silhouette and key colour still match "
+                f"{parent} ({parent_row[0]} / {parent_row[1]})"
+            )
+
+    # Look separation.
+    look = parse_look_vector(args.vector)
+    if not look:
+        fails.append(
+            "variant: no look vector — pass --vector \"topology · trim · motif · nodes\" "
+            "so look separation can be checked (gates.md §9A)"
+        )
+        return differ, fails
+
+    baseline = variant_baseline(parent, cast, variants)
+    if baseline is None:
+        notes.append(f"variant: no previous look recorded for {parent}; look separation not comparable")
+        return differ, fails
+
+    for label, prior in baseline:
+        res = compare_look(look, prior)
+        differ.append(
+            f"vs {label}: {res['different']}/{res['comparable']} look factors differ"
+        )
+        if res["comparable"] < LOOK_MIN_DIFFERENT:
+            notes.append(
+                f"  only {res['comparable']} look factors comparable against {label}; "
+                f"{LOOK_MIN_DIFFERENT} of four is the rule — record the missing factor"
+            )
+        if res["different"] < LOOK_MIN_DIFFERENT:
+            fails.append(
+                f"variant: {label} differs on {res['different']}/{res['comparable']} look factors, "
+                f"needs {LOOK_MIN_DIFFERENT} of four ({', '.join(LOOK_AXES)})"
+            )
+    return differ, fails
+
+
+# The ledger may hold either language while the prompt holds the other, so the
+# families are given both forms. Keys are the English family label used in
+# form.md §3 / costume.md §3; values are what either language may say.
+FAMILY_SYNONYMS = {
+    "cocoon": ["cocoon", "uncinched", "松弛", "茧"],
+    "column": ["column", "narrow vertical", "立柱", "直筒"],
+    "bell": ["bell", "a-line", "钟形", "伞"],
+    "trapeze": ["trapeze", "梯形"],
+    "hourglass": ["hourglass", "沙漏"],
+    "asymmetric": ["asymmetric", "不对称"],
+    "bone-white": ["bone", "ivory", "pearl", "骨白", "象牙", "珠白"],
+    "obsidian": ["obsidian", "blue-black", "黑曜", "墨黑"],
+    "celadon": ["celadon", "jade", "青瓷", "玉青"],
+    "cinnabar": ["cinnabar", "oxblood", "rust", "朱砂", "铁锈"],
+    "glacier": ["glacier", "titanium", "冰川", "钛"],
+    "earth-jewel": ["umber", "verdigris", "earth", "土金", "铜绿", "赭"],
+}
+
+
+def lexical_family(needle, text):
+    """Does the prompt state the family named in the ledger row?
+
+    The ledger and the prompt may be in different languages, and a family has
+    several spellings, so this expands both sides through FAMILY_SYNONYMS and
+    accepts a hit on any alias. A token of two characters or more from the
+    ledger row also counts, which covers an alias list the table does not have.
+    """
+    needle = (needle or "").strip().lower()
+    if not needle:
+        return True
+    candidates = set()
+    candidates.update(FAMILY_SYNONYMS.get(needle, []))
+    # A Chinese label ("骨白") is a *value* in the table, so find its English key
+    # and add that family's whole alias list rather than only the label itself.
+    for key, aliases in FAMILY_SYNONYMS.items():
+        if needle == key or needle in aliases:
+            candidates.add(key)
+            candidates.update(aliases)
+    candidates.add(needle)
+    for token in re.split(r"[\s·/]+", needle):
+        if len(token) >= 2:
+            candidates.add(token)
+            candidates.update(FAMILY_SYNONYMS.get(token, []))
+    return any(c and c in text for c in candidates)
+
+
+def parse_look_vector(text):
+    """Read a variant's four look factors: topology, trim, motif, nodes."""
+    if not text:
+        return []
+    parts = [p.strip().lower() for p in re.split(r"[·|,;]", text) if p.strip()]
+    return (parts + [""] * len(LOOK_AXES))[: len(LOOK_AXES)]
+
+
+def variant_baseline(parent, cast, variants):
+    """Collect the parent's previous looks to compare a new variant against.
+
+    The cast row supplies topology, trim, and motif; node distribution is not
+    recorded at cast level, so it is blank there and only comparable between
+    two variants of the same character.
+    """
+    out = []
+    for name, row in cast:
+        if name.strip().lower() == parent.lower():
+            look = ["", "", "", ""]
+            if len(row) > 2:
+                look[0] = row[2]      # topology
+            if len(row) > 6:
+                look[1] = row[6]      # trim
+            if len(row) > 7:
+                look[2] = row[7]      # motif
+            out.append((f"{name}（正装）", look))
+    for label, par, look in variants:
+        if par.strip().lower() == parent.lower():
+            out.append((label, look))
+    return out or None
+
+
+def compare_look(look, prior):
+    """Diff four look factors on the ones both sides declare."""
+    differing, comparable = 0, 0
+    for i, mine in enumerate(look):
+        if not mine or i >= len(prior) or not prior[i]:
+            continue
+        comparable += 1
+        theirs = prior[i]
+        if mine not in theirs and theirs not in mine:
+            differing += 1
+    return {"different": differing, "comparable": comparable}
 
 
 def parse_vector(text):
@@ -292,23 +494,54 @@ def parse_vector(text):
 def read_ledger(path):
     """Read a batch ledger written to the format in contract/records.md §8.
 
-    A row is `<name> | axis · axis · ...` with the nine axes in LEDGER_AXES
-    order. Blank lines, the header word, and prose are ignored.
+    Returns (cast, variants).
+      cast     — `name | axis · ... ` with the nine axes in LEDGER_AXES order
+      variants — `↳ label | identity locked · topology · trim · motif · nodes`,
+                 stored as (label, parent_name, four_look_factors)
+
+    Variant lines inherit their parent from the nearest preceding cast row, per
+    gates.md §9A. Blank lines, the header word, and prose are ignored.
     """
-    rows = []
+    cast, variants = [], []
+    parent = None
     with open(path, encoding="utf-8") as fh:
         for line in fh:
             if "|" not in line:
                 continue
-            name, _, rest = line.partition("|")
-            name = name.strip().lstrip("-* ").strip()
+            raw_name, _, rest = line.partition("|")
+            name = raw_name.strip().lstrip("-* \t").strip()
             if not name or name.lower().startswith("批次账本"):
                 continue
             parts = [p.strip().lower() for p in re.split(r"[·|]", rest) if p.strip()]
             if len(parts) < 2:
                 continue
-            rows.append((name, parts))
-    return rows
+
+            is_variant = raw_name.strip().startswith("↳") or raw_name.strip().startswith("↳")
+            if is_variant:
+                label = name.lstrip("↳").strip()
+                look = parse_variant_look(parts)
+                variants.append((label, parent or "", look))
+            else:
+                cast.append((name, parts))
+                parent = name
+    return cast, variants
+
+
+def parse_variant_look(parts):
+    """Pull the four look factors out of a variant line's clauses."""
+    look = ["", "", "", ""]
+    for clause in parts:
+        if "identity locked" in clause or "identity" in clause:
+            continue
+        if look[0] == "" and ("topology" in clause):
+            look[0] = clause
+        elif look[1] == "" and ("trim" in clause or "压边" in clause or "镶边" in clause or "包边" in clause):
+            look[1] = clause
+        elif look[2] == "" and ("motif" in clause or "花" in clause or "纹" in clause):
+            look[2] = clause
+        elif look[3] == "" and ("node" in clause or "节点" in clause):
+            look[3] = clause
+    return look
 
 
 def ledger_vector_from_prompt(low):
@@ -365,9 +598,17 @@ def main():
                     help="also read base/anchor/accent lines from the file and check caps")
     ap.add_argument("--ledger", default=None,
                     help="batch ledger file; check this character's axes against it (records.md §8)")
+    ap.add_argument("--variant-of", dest="variant_of", default=None, metavar="NAME",
+                    help="Mode C: this is a second look for character NAME; skips axes 1-2 "
+                         "and checks identity integrity plus look separation (gates.md §9A)")
+    ap.add_argument("--inherit", action="store_true",
+                    help="Mode C: also verify silhouette and key colour still match the "
+                         "character, i.e. the variant did not quietly become a recast (gates.md §9A)")
     ap.add_argument("--vector", default=None,
                     help="this character's nine-axis vector from the blueprint, '·'-separated; "
-                         "give it whenever --ledger is used so all nine axes are checked")
+                         "give it whenever --ledger is used so all nine axes are checked. "
+                         "With --variant-of, give the four look factors instead: "
+                         "'topology · trim · motif · node distribution'")
     ap.add_argument("--budget", default=None, help="override the upper word budget")
     args = ap.parse_args()
 

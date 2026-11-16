@@ -43,6 +43,8 @@ This split is the practical answer to "how do I look different without looking l
 
 Read this before setting any identity parameter. §2 defines the dials; this section decides where to put them, and it exists because "the identity set comes from the character" is not a step.
 
+**Scope: this procedure runs once, for a new character.** It does not run for a second outfit, a hairstyle change, or an ornament set on a character who already exists. A re-derivation returns a different set of ten values, which is a new person wearing the same name — the recast failure, moved from drift to procedure. A costume variant restates the record's ten values verbatim and designs only the look layer; that route is [../pipeline/design.md](../pipeline/design.md) §1 Mode C and [../contract/gates.md](../contract/gates.md) §9A.
+
 **The rule.** Each identity parameter is set by one **character fact**, not by the register, the genre, or the last character you designed. Walking the ten parameters without facts produces the population mean in every slot, which is a face.
 
 **Five steps. Do them in order.**

@@ -102,6 +102,7 @@ For each requested output, decide what is preserved, what may change, and what m
 | **Portrait** | identity, costume, palette, confirmed finish | framing, background, light | lower body outside the crop |
 | **Identity sheet** | identity, build, costume construction, palette | layout, panel count, background value | hidden anatomy, back details, footwear |
 | **Costume sheet** | identity, costume construction, palette | display magnification, background value | hidden head space, costume back |
+| **Costume variant** | identity **verbatim**, palette roles, confirmed finish, silhouette family (unless status changed) | garment layers, construction, closures, materials, trim, motif, topology, ornament set, hair styling | the new look's hidden backs, footwear, and the support for any new volume |
 | **GPT Image 2 sheet** | identity, design, palette, medium | layout language, exclusion form | newly designed minor-character details |
 | **Character in a scene** | identity, costume, palette, register | pose, scale, camera, environmental light | contact shadows, bounce light, occlusion |
 | **Scene variation** | scene structure, current accepted state | time, weather, characters, props | new lighting, reflections, surface state |
@@ -133,8 +134,21 @@ Keep it in the conversation or deliver it as text; do not create project files u
 ```text
 批次账本
 [角色名或编号] | silhouette · key colour family · topology · register+gear · contradiction+signal · light · trim language · motif family · face anchor
+    ↳ [variant label] | identity locked · topology · trim language · motif family · node distribution
 [角色名或编号] | ...
 ```
+
+A **variant line** sits under its character with a `↳` marker. It records only the look factors, because a variant's identity is locked and its silhouette and key colour are inherited — see [gates.md](gates.md) §9A. A variant never consumes a silhouette or key colour slot in the cast, and it is never compared against other characters on axes 1 and 2.
+
+```text
+批次账本
+A 女主 | cocoon · 骨白 · topology 4 松弛负空间 · glamour gear 2 · dir7 / 血红虹膜 · 高调珠光 · 窄银掐丝包边 · 五瓣星花 · 面部指数 1.52 + 眼裂 0.44
+    ↳ A 夜行 | identity locked · topology 1 顶峰下泻 · 铜棕皮革压边 · 蛇蜕鳞纹 · 节点上移至肩
+    ↳ A 婚礼 | identity locked · topology 5 骨相紧束 · 珠白缎镶边 · 团花缠枝 · 节点聚于发冠
+B 女配 | column · 铁锈朱砂 · topology 1 顶峰下泻 · glamour gear 2 · dir7 / 发际线一道冷光细缝 · 温和实用灯 · 铜棕皮革压边 · 蛇蜕鳞纹 · 口宽 0.78 + 颌角方
+```
+
+Note that `A 夜行` shares trim and motif with `B`. That is legal: a variant is only compared against **its own character's other looks**, never against the cast, so the reuse does not collide with B's slot. If the intent was for A's night look and B to be visually distinct on set, that is a staging decision, not a ledger failure — say so and change one of them for a different reason.
 
 Worked rows, one project, one glamour short drama. The point is that axes 1 and 2 never repeat and only five axes need to clear:
 
@@ -151,5 +165,6 @@ Rules:
 - **Record what was adopted, not what was proposed.** An unadopted draft does not occupy an axis.
 - **A repeat on a non-mandatory axis is allowed only with a stated reason.** Five of nine differing is the floor; if a character must share the trim language (a uniformed faction), say so and take a different axis instead.
 - **Do not invent a row for a character who has no record.** The ledger and the character record in §1 are separate: §1 holds one character's identity, §8 holds the cast's spread.
+- **A variant line is not a cast row.** It inherits silhouette and key colour from its character, carries only the look factors, and is exempt from the axis 1/2 hard rule per [gates.md](gates.md) §9A.
 - **Do not restate the axis definitions here.** They live in [gates.md](gates.md) §9 and this file only stores the values.
 

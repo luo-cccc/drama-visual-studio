@@ -14,9 +14,24 @@ Design mode answers two questions in order: **who is this person**, then **what 
 | **Mode A-Split** | turnaround sheet + face sheet, identity block reused word-for-word | identity-critical characters reused across many shots, or an engine that cannot hold seven panels |
 | **Mode A-Compact** | the single-sheet layout trimmed to 270–310 words | engines with hard prompt limits, or a draft; never a delivery asset |
 | **Mode B — exploration** | 3 contrasting Genre + Truth + Motif + Silhouette combinations at one locked gear | broad or ambiguous briefs |
+| **Mode C — costume variant** | a second look for an existing character: identity block reused verbatim, only the look layer is designed | new outfit, hairstyle, ornament set, or occasion change on a character that already exists |
 | **Portrait** | head-to-waist half body | a one-off look, a quick read, no costume structure needed |
 
 Mode A layout, body occupancy, per-cell scoping, and backgrounds are specified in [sheet.md](sheet.md). Do not invent a different layout here. State the target canvas and engine with the mode.
+
+### Mode C — design a variant, not a person
+
+Mode C is the one mode whose subject already exists. Run it when the request is a new outfit rather than a new character: 换装、换发型、加饰品、场合变更.
+
+**What changes:**
+
+1. **Start from the character record, not from layer 1.** The identity block, palette roles, and confirmed finish come from [../contract/records.md](../contract/records.md) §1 and are reused word for word. Layers 2–5 design the look; layer 6 styles it inside the inherited identity.
+2. **Do not run [../bank/face.md](../bank/face.md) §2A.** That procedure derives an identity set from Position facts, and re-running it for an outfit change returns a different person. Restate the record's ten values instead.
+3. **Derive the seed from this outfit's occasion, not the character's whole life.** A variant's seed answers "what is this look for", so a night crossing and a wedding produce different seeds from the same person. The procedure is [../bank/costume.md](../bank/costume.md) §1C, applied to the occasion.
+4. **Keep the silhouette family and key colour family by default.** They are how the viewer recognizes the character — [../contract/gates.md](../contract/gates.md) §9A. Change them only when the character's status or role has actually changed, and state the reason in the blueprint.
+5. **Clear the look-separation test.** At least three of four look factors — trim language, motif family, gravity topology, node distribution — must differ from that character's previous look. Two outfits sharing all four are one outfit with a different name.
+
+**What the delivery drops:** the batch-differentiation vector against other characters. A variant is not compared to the cast on axes 1 and 2. It carries `identity locked` and its four look factors instead, recorded as a `↳` line in the ledger per [../contract/records.md](../contract/records.md) §8.
 
 ## 2. The design stack
 
@@ -62,7 +77,21 @@ Rules for the blueprint:
 - **A blueprint may not claim more than the prompt contains.** §6B checks this before delivery.
 - Keep the work proportional: a one-off portrait may abbreviate to the lock line, thesis, identity block, face parameters, and palette. A design sheet or a recurring character gets all seven points.
 
-See [../demos.md](../demos.md) for two calibrated examples with all seven points filled.
+**Mode C changes what points 2 and 7 contain, and nothing else.**
+
+| Point | Mode A / B | Mode C variant |
+| --- | --- | --- |
+| 1 锁定 | lock line with silhouette and key colour chosen for a new character | same fields; **silhouette and key colour inherited**, and the line says so |
+| 2 角色事实与设计论点 | three answers about who this person is | the **occasion** the outfit is for, plus a thesis about this look; the person is already established |
+| 3 核心视觉母题 | seed from the character's conflict | seed from **this occasion's** conflict |
+| 4 视觉重心与背部叙事 | topology for this character | topology for **this look**, differing from the previous look |
+| 5 装饰密度（计数） | four factors at a point in the band | same counting, **placed differently** from the previous look |
+| 6 审美秩序 | full aesthetic order | same, with palette roles inherited and only the accent allocation re-decided |
+| 7 半写实渲染与微妆 | identity set **derived** per §2A | identity set **restated verbatim** from the record; do not re-derive |
+
+A Mode C blueprint that re-derives the identity set, or that changes the silhouette without a status reason, is not a variant — it is a recast, and it should be delivered as a new character with a new lock line instead.
+
+See [../demos.md](../demos.md) for three calibrated examples with all seven points filled.
 
 ## 4. Compose the free-flow English prompt
 
@@ -144,7 +173,8 @@ The same applies to point 6's palette: the colour named as base, anchor, and acc
 | Restraint | counted | one hero node plus three supporting; one primary open area named | delete the weakest node |
 | Face parameters in band | counted | identity-set parameters inside [../contract/visual.md](../contract/visual.md) §4; no parameter pushed past the chibi or uncanny guard | pull back to the band, not to the preset; derive the value with [../bank/face.md](../bank/face.md) §2A |
 | **Identity set derived, not defaulted** | counted | each of the ten identity parameters traces to a Position fact per [../bank/face.md](../bank/face.md) §2A-1; the anchoring three (facial index, mouth width, inter-canthal distance) are named in the blueprint as values | run §2A-1 and §2A-3; a parameter with no fact behind it is a default |
-| **Batch differentiation** | counted | axes 1–2 (silhouette, key colour family) differ from every ledger row; axes 3–9 clear at least five of nine total; the vector is reported against the ledger | return to Layer 0; redesign the repeating axis, not the whole character — [../contract/gates.md](../contract/gates.md) §9 |
+| **Batch differentiation** (Mode A/B) | counted | axes 1–2 (silhouette, key colour family) differ from every ledger row; axes 3–9 clear at least five of nine total; the vector is reported against the ledger | return to Layer 0; redesign the repeating axis, not the whole character — [../contract/gates.md](../contract/gates.md) §9 |
+| **Variant integrity** (Mode C) | counted | identity block is the record's, word for word — no re-derived value; silhouette and key colour inherited, or a stated status change; **three of four look factors** (trim, motif, topology, node distribution) differ from that character's previous look | restore the record's identity block verbatim; change a look factor — [../contract/gates.md](../contract/gates.md) §9A |
 | Silhouette | judged | identifiable at 10% size, one family, one contrast shape | change the family or widen the hem/shoulder contrast |
 | Value | judged | clear dark / light / focal hierarchy in grayscale; focal contrast at face, chest, or hands | increase value separation; move the contrast off the hem |
 | Palette reads as named | judged | one relationship visibly present; one chromatic anchor legible at thumbnail after desaturation; dark mass has a named temperature | name the relationship, delete extra hues, give the dark mass a temperature |
@@ -166,7 +196,8 @@ The same applies to point 6's palette: the colour named as base, anchor, and acc
 | Hair as a system | counted | mass and length, crown volume, face framing, texture behaviour, inner streaks, headpiece inventory with hanging depth — all six written | see [../bank/costume.md](../bank/costume.md) §5A |
 | Face parameters in band | counted | glamour values inside [../bank/face.md](../bank/face.md) §3 and [../contract/visual.md](../contract/visual.md) §4; iris fill ≤ 0.95, eye width to face ≤ 1.2; no chibi drift | pull into the band; derive the value, do not re-run the preset |
 | **Identity set derived, not defaulted** | counted | each of the ten identity parameters traces to a Position fact per [../bank/face.md](../bank/face.md) §2A-1; facial index is derived, never assumed 1.4–1.45 | run §2A-1; the glamour preset's facial index is a slot, not a value |
-| **Batch differentiation** | counted | axes 1–2 differ from every ledger row; at least five of nine differ; the vector is reported against the ledger | return to Layer 0 — [../contract/gates.md](../contract/gates.md) §9 |
+| **Batch differentiation** (Mode A/B) | counted | axes 1–2 differ from every ledger row; at least five of nine differ; the vector is reported against the ledger | return to Layer 0 — [../contract/gates.md](../contract/gates.md) §9 |
+| **Variant integrity** (Mode C) | counted | identity block is the record's, word for word; silhouette and key colour inherited or a stated status change; **three of four look factors** differ from that character's previous look | restore the identity block; change a look factor — [../contract/gates.md](../contract/gates.md) §9A |
 | No props | counted | hands empty, in hair, or resting | see [../contract/gates.md](../contract/gates.md) §4 |
 | Accent cap | counted | 2, binding | cut to 2 |
 | Density gradient | judged | head > chest > waist > hem, each zone strictly lighter than the one above; at least one plain run or bare skin below the waist | move ornament upward; never add more below to even it out |

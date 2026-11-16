@@ -5,7 +5,7 @@ description: Design bold, high-aesthetic characters and costumes in a unified se
 
 # Drama Visual Studio
 
-One skill, three modes. Design the character, then produce the prompts its production needs — or start from a design that already exists.
+One skill, four modes. Design the character, design a second look for one, produce the prompts its production needs — or start from a design that already exists.
 
 The pack is engine-agnostic by structure. Midjourney is the default engine for art direction and first images, GPT Image 2 for structured sheets and scene edits, with SD/Flux and CN engines supported through the same exclusion policy. Midjourney is the default, not the requirement.
 
@@ -33,7 +33,7 @@ Files are grouped by how they load, not by topic. Read the required set, open th
 
 ### Design mode — create a character or outfit
 
-Use when the user supplies a character concept, a race/profession/archetype, a costume idea, a new outfit for an existing character, or asks for a new design sheet, and the requested design or outfit is not yet confirmed.
+Use when the user supplies a character concept, a race/profession/archetype, a costume idea, or asks for a new design sheet, and the requested design or costume is not yet confirmed. A second outfit for a character who already exists is [variant mode](#variant-mode--a-second-outfit-for-a-character-who-already-exists), not design mode.
 
 Follow [pipeline/design.md](references/pipeline/design.md). It owns the batch layer, the 6-layer design stack, the 7-point blueprint, the prompt budget, the single preflight, and drift repair.
 
@@ -47,11 +47,30 @@ Deliver, in order:
 
 For a reusable character that later shots will reuse, finish with the compact character record from [contract/records.md](references/contract/records.md) §1.
 
-**Before designing anything, read the batch ledger** ([contract/records.md](references/contract/records.md) §8). A single character designed in isolation passes every check and can still be the previous character with a different name — silhouette and key colour must differ from every existing row, and five of the nine axes must differ from any other character. When there is no ledger, this is the first character: create one.
+**Before designing anything, read the batch ledger** ([contract/records.md](references/contract/records.md) §8) **and check whether this is a new character or a second look.** Those two cases have different rules and the wrong one fails a correct design.
+
+- **New character** — silhouette and key colour must differ from every existing row, and five of the nine axes must differ from any other character ([contract/gates.md](references/contract/gates.md) §9).
+- **Second look for an existing character** — this is Mode C, a variant. Silhouette and key colour are **inherited**, not cleared; the identity block is restated verbatim and never re-derived; and three of four look factors must differ from that character's previous look ([contract/gates.md](references/contract/gates.md) §9A, [pipeline/design.md](references/pipeline/design.md) §1 Mode C). Running the cast rule here would demand that the character stop looking like themselves.
+
+When there is no ledger, this is the first character: create one.
 
 **Two things are decided, not copied.** The seed comes from the script's conflict ([bank/costume.md](references/bank/costume.md) §1C), not from the seed library, which is calibration. The identity set of ten face parameters comes from the character's Position facts ([bank/face.md](references/bank/face.md) §2A), not from a register preset. Craft strings — the eye design, the iris fibre, the porcelain finish — are reused verbatim; those are how a thing renders, not who this person is. [Contract/gates.md](references/contract/gates.md) §8 is the distinction and §9 is the batch check.
 
 Keep the work proportional: a one-off portrait may abbreviate to the lock line, thesis, identity block, and palette. A design sheet or a recurring character gets the full 7 points.
+
+### Variant mode — a second outfit for a character who already exists
+
+Use when the request is a new outfit, hairstyle, ornament set, or occasion look on a character who already has a record, and the character themself is not changing.
+
+Follow [pipeline/design.md](references/pipeline/design.md) §1 Mode C. In short:
+
+1. **Read the character record** ([contract/records.md](references/contract/records.md) §1) and reuse its identity block, palette roles, and confirmed finish word for word. **Do not run [bank/face.md](references/bank/face.md) §2A** — that procedure derives a new face, and this character already has one.
+2. **Derive the seed from this outfit's occasion**, not the character's whole life ([bank/costume.md](references/bank/costume.md) §1C).
+3. **Design the look layer:** layers, construction, closures, materials, trim language, motif family, gravity topology, ornament set. Clear three of four against the character's previous look.
+4. **Keep silhouette and key colour** unless their status or role has actually changed, and say so when it has.
+5. Deliver the same 7-point blueprint, with points 2 and 7 rewritten per Mode C: point 2 is the occasion, point 7 restates the record's identity values.
+
+Record the result as a `↳` variant line under its character in the ledger, carrying `identity locked` plus the four look factors — not as a new cast row.
 
 ### Production mode — turn a design into an output prompt
 
@@ -73,6 +92,7 @@ Use when the user supplies a generated image and asks whether it matches its sou
 ## Output contract
 
 - **Design mode**: lock line, 7-point blueprint, preflight counts, one prompt per selected sheet mode, engine-appropriate exclusions, and a short inferred-detail note.
+- **Variant mode**: lock line with silhouette and key colour marked as inherited, 7-point blueprint with points 2 and 7 rewritten, preflight counts including variant integrity, one prompt, exclusions, and the `↳` ledger line.
 - **Production mode**: a short handoff note when useful (source, locked fields, inferred fields), then one copy-ready prompt per requested output.
 - **Review mode**: observed findings first; a focused correction prompt only when requested.
 
@@ -90,6 +110,7 @@ Universal rules — each is owned by one file, so read it there rather than expe
 | Capability limits and what never to promise | [contract/gates.md](references/contract/gates.md) §7 |
 | **Craft versus decision — what is reused and what is derived** | [contract/gates.md](references/contract/gates.md) §8 |
 | **Batch differentiation — the nine axes and the five-of-nine rule** | [contract/gates.md](references/contract/gates.md) §9 |
+| **Same-character variants — identity locked, look separation** | [contract/gates.md](references/contract/gates.md) §9A |
 | Character and location records, reference roles, output delta | [contract/records.md](references/contract/records.md) |
 | **Batch ledger — the project's axis vector** | [contract/records.md](references/contract/records.md) §8 |
 | Canvas choice, vertical composition, safe areas | [bank/framing.md](references/bank/framing.md) |
@@ -108,10 +129,14 @@ Two rules that apply everywhere and are worth stating once at the top level:
 ```bash
 python -I scripts/preflight.py prompt.txt --register editorial
 python -I scripts/preflight.py prompt.txt --register glamour --palette
-python -I scripts/preflight.py prompt.txt --register glamour     --ledger batch.txt --vector "cocoon · umber · languid · glamour gear 2 · dir2 · warm-gi · rope piping · rope-knot · facial 1.30"
+python -I scripts/preflight.py prompt.txt --register glamour \
+    --ledger batch.txt --vector "cocoon · umber · languid · glamour gear 2 · dir2 · warm-gi · rope piping · rope-knot · facial 1.30"
+python -I scripts/preflight.py variant.txt --register glamour \
+    --ledger batch.txt --variant-of "A 女主" --inherit \
+    --vector "topology 5 骨相紧束 · 珠白缎镶边 · 团花缠枝 · 节点聚于发冠"
 ```
 
-Pass `--vector` whenever you pass `--ledger`. The vector comes from the blueprint's own nine axes; without it the checker can only see the three or four axes that happen to be visible in the prompt prose, and it will report fewer differences than the design actually has.
+Pass `--vector` whenever you pass `--ledger`. For a new character it is the blueprint's nine axes; without it the checker can only see the three or four axes visible in the prompt prose and will report fewer differences than the design has. For a variant, `--variant-of` switches to Mode C: axes 1 and 2 are exempt and `--vector` becomes the four look factors instead. Add `--inherit` to verify the opposite of the cast rule — that the silhouette and key colour still match the character, so a new character cannot be filed as a variant to escape axes 1-2.
 
 Use it for the counted lines, then judge the rest yourself. It cannot see silhouette readability, value hierarchy, whether the face wins, whether the design is charming, or whether it reads as a product. It also cannot see whether the face looks like the batch's last character — it checks that ten values were derived from facts, which is a procedure and not a result. Those are judged checks, and reporting them as though a script passed them is the one thing the preflight forbids.
 

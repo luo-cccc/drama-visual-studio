@@ -192,3 +192,23 @@ Rules:
 - **Test in this order:** wide shot (silhouette), grayscale (value), desaturated thumbnail (key colour), then the nine-axis table. A cast that passes the first three and fails the fourth is still homogenised.
 - **The batch does not have to be complete.** Read the ledger, then write the one distinguishing clause each new character needs; do not re-audit characters already accepted unless the user asks.
 - **Report the vector, don't assert difference.** `对本批次：silhouette cocoon（与 A 的 column 不同）· key 土金宝石（与 A 骨白不同）· topology 4（与 A 的 5 不同）` is a check. `和其他角色有区分` is a claim.
+
+### 9A. Same-character variants are exempt from axes 1 and 2
+
+**These nine axes govern different characters. They do not govern a second outfit for one character.** A new costume, hairstyle, or ornament set on an existing character is a **variant**, not a cast member, and applying the cast rule to it produces the wrong answer: the rule says a shared silhouette and a shared key colour are hard failures, while a variant is *supposed* to keep both.
+
+Why the exemption is correct rather than a loophole: silhouette family and key colour family are what the viewer uses to recognize a character across shots. Recasting them for a costume change is how a character stops being the same person between episodes — the exact failure the identity block exists to prevent, moved from the face to the outline.
+
+**The requirement moves instead of disappearing.** A variant is judged on two things:
+
+| Test | Requirement | If it fails |
+| --- | --- | --- |
+| **Identity integrity** | the identity block is reused **word for word** from the character's record — face parameters, hairline, permanent marks, body ratio, skin finish. No re-derivation. | recast: restore the record's identity block verbatim, discard the derived values |
+| **Look separation** | at least **three of four** look factors differ from that character's previous look: trim language, motif family, gravity topology, node distribution | the variant reads as the same outfit recoloured; change a look factor, not the identity |
+
+Look factors are the ones the look layer owns per [../bank/truth.md](../bank/truth.md) §8 — hair styling, clothing, makeup, temporary accessories. Silhouette and key colour are **preserved by default** and may change only when the character's situation has actually changed their status or role, and the change is stated in the blueprint.
+
+- **A variant is not a new ledger row competing with its character.** Record it as a variant of that character; the format is in [records.md](records.md) §8. It does not consume a silhouette or key colour slot.
+- **A variant may carry its own topology, trim, and motif, and should.** Two outfits for one character that share all four look factors are one outfit with a different name.
+- **Do not re-derive the identity set for a variant.** [../bank/face.md](../bank/face.md) §2A is the procedure for a new character. Running it again for an outfit change generates a different person and calls it a wardrobe update.
+- **Ornaments are look, not identity.** A permanent accessory named in the record stays; added pieces are per-outfit. The no-props rule still holds — [§4](gates.md) does not relax for a variant.
